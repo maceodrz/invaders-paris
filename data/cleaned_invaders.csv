@@ -1,0 +1,1255 @@
+Latitude,Longitude,id,address,Flashed,Flashable
+48.865889,2.37815,PA_0532,113 rue Oberkampf,False,True
+48.861071,2.350494,PA_0002,45 rue Quincampoix,False,True
+48.848851,2.348519,PA_0003,14 rue de la Montagne Sainte-GeneviÃ¨ve,False,False
+48.847105,2.351085,PA_0004,22 rue Monge,False,True
+48.85181,2.33376,PA_0005,25 rue Guisarde,False,True
+48.855063,2.336769,PA_0006,40 rue de Seine,False,True
+48.873073,2.363517,PA_0007,89 quai de Valmy,False,True
+48.865787,2.397594,PA_0008,Impasse Cordon-Boussard,False,True
+48.865787,2.397594,PA_1083,Impasse Cordon-Boussard,False,True
+48.85326,2.37574,PA_0010,30 rue de Charonne,False,True
+48.847401,2.375463,PA_0013,47 avenue Daumesnil,False,True
+48.848836,2.372716,PA_0014,59 avenue Ledru-Rollin,False,True
+48.848117,2.380831,PA_0015,24 rue de CÃ®teaux,False,True
+48.84949,2.374375,PA_0016,76 avenue Ledru-Rollin,False,True
+48.815751,2.361939,PA_0017,face Ã  la rue Voltaire,False,True
+48.888538,2.341277,PA_0018,16 rue Saint-Vincent,False,True
+48.873203,2.364043,PA_0019,pont piÃ©ton de la Grange aux Belles,False,True
+48.870718,2.345908,PA_0020,20 rue Saint-Fiacre,False,True
+48.870137,2.345564,PA_0021,12 rue Saint-Fiacre,False,True
+48.859843,2.364654,PA_0022,68 rue de Turenne,False,True
+48.8622,2.35343,PA_0023,5 impasse Beaubourg,False,True
+48.833385,2.354526,PA_0024,73 avenue des Gobelins,False,True
+48.864634,2.363456,PA_0025,2 rue de la Corderie,False,True
+48.861207,2.357949,PA_0027,fontaine des Haudriettes,False,True
+48.853923,2.376619,PA_0028,face au 5 rue Keller,False,True
+48.862597,2.359894,PA_0029,21 rue Pastourelle,False,True
+48.860959,2.350511,PA_0030,44 rue Quincampoix,False,True
+48.86125,2.35068,PA_0031,30 rue de Venise,False,True
+48.86096,2.36275,PA_0032,108 rue Vieille du Temple,False,True
+48.858645,2.358503,PA_0034,61 rue Vieille du Temple,False,True
+48.857217,2.361749,PA_0035,24 rue PavÃ©e,False,True
+48.857217,2.361749,PA_0482,24 rue PavÃ©e,False,True
+48.837191,2.373305,PA_0036,face au 7 boulevard Vincent Auriol,False,True
+48.85557,2.369763,PA_0037,8 rue du Pasteur Wagner,False,True
+48.853203,2.374937,PA_0038,1 passage ThÃ©riÃ©,False,True
+48.848325,2.346597,PA_0039,2 rue d'Ã‰cosse,False,True
+48.847145,2.348168,PA_0040,45 rue de la Montagne Sainte-GeneviÃ¨ve,False,True
+48.89768,2.386005,PA_0041,Porte de la Villette,False,True
+48.8537,2.34268,PA_0043,26 rue de l'Hirondelle,False,True
+48.853573,2.338489,PA_0044,2 rue de l'Ancienne ComÃ©die,False,True
+48.852267,2.339178,PA_0046,statue de Danton,False,True
+48.8516,2.37796,PA_0047,4bis passage de la Main d'Or,False,True
+48.85586,2.3693,PA_0048,10 rue Amelot,False,True
+48.865957,2.378379,PA_0049,117 rue Oberkampf,False,True
+48.85284,2.3744,PA_0051,13 rue de Charonne,False,True
+48.836908,2.372367,PA_0053,face au 16 boulevard Vincent Auriol,False,True
+48.827765,2.352881,PA_0055,43 rue du Moulin des PrÃ©s,False,True
+48.828724,2.351604,PA_0056,10 rue Simonet,False,True
+48.834487,2.369748,PA_0057,34 rue Louise Weiss,False,True
+48.833443,2.370642,PA_0058,14 rue Louise Weiss,False,True
+48.844321,2.284636,PA_0059,1 rue Lacordaire,False,True
+48.86361,2.344486,PA_0060,Ã©glise Saint-Eustache,False,True
+48.866362,2.347259,PA_0061,2 rue des Petits Carreaux,False,True
+48.867695,2.345456,PA_0062,99 rue de RÃ©aumur,False,True
+48.867695,2.345456,PA_1078,99 rue de RÃ©aumur,False,True
+48.853421,2.379863,PA_0063,74 rue de Charonne,False,True
+48.864766,2.297397,PA_0064,devant le MusÃ©e d'Art Moderne,False,True
+48.853092,2.373914,PA_0065,30 rue de Lappe,False,True
+48.885639,2.33807,PA_0066,63 rue des Trois FrÃ¨res,False,True
+48.885639,2.33807,PA_0067,63 rue des Trois FrÃ¨res,False,True
+48.885639,2.33807,PA_0068,63 rue des Trois FrÃ¨res,False,True
+48.834656,2.354171,PA_0069,40 rue du Banquier,False,True
+48.856829,2.355465,PA_0070,1 rue de la Verrerie,False,True
+48.854802,2.35902,PA_0071,5 rue de Fourcy,False,True
+48.8616,2.367487,PA_0072,rue Charles Luizet,False,True
+48.8684,2.379376,PA_0073,93 rue Jean-Pierre Timbaud,False,True
+48.834295,2.332466,PA_0075,sur le piÃ©destal du lion,False,True
+48.83833,2.357013,PA_0076,"statue de Jeanne ""au secours"" d'Arc",False,True
+48.847133,2.331439,PA_0077,10 rue de Fleurus,False,True
+48.828953,2.352885,PA_0078,21 passage du Moulin des PrÃ©s,False,True
+48.82788,2.35146,PA_0079,5 rue ChÃ©reau,False,True
+48.881628,2.330889,PA_0080,5 rue Ballu,False,True
+48.864884,2.377955,PA_0081,88 rue Saint-Maur,False,True
+48.846892,2.408596,PA_0082,pasage de la VoÃ»te,False,True
+48.864552,2.364555,PA_0083,fontaine Boucherat,False,True
+48.856007,2.366677,PA_0084,15 rue du Pas de la Mule,False,True
+48.853194,2.378192,PA_0085,58 rue de Charonne,False,True
+48.850563,2.360204,PA_0086,pont de Sully,False,True
+48.837394,2.374162,PA_0087,escalier du port de la Gare,False,True
+48.862666,2.335168,PA_0088,sortie nord du Carrousel,False,True
+48.862751,2.346483,PA_0089,1 rue Baltard,False,True
+48.86372,2.34899,PA_0090,mÃ©tro Etienne Marcel,False,True
+48.86031,2.347383,PA_0092,8 rue de la Ferronnerie,False,True
+48.859832,2.333481,PA_0093,pont du Carroussel,False,True
+48.84704,2.33263,PA_0094,porte Fleurus du jardin du Luxembourg,False,True
+48.867242,2.337616,PA_0095,65 rue Richelieu,False,True
+48.83944,2.389005,PA_0097,205 rue de Charenton,False,True
+48.853192,2.343702,PA_0098,sur la fontaine Saint-Michel,False,True
+48.853192,2.343702,PA_0099,sur la fontaine Saint-Michel,False,True
+48.839907,2.361975,PA_0102,42 boulevard de l'HÃ´pital,False,True
+48.839907,2.361975,PA_0564,42 boulevard de l'HÃ´pital,False,True
+48.859253,2.354045,PA_0103,dans la cour,False,True
+48.853403,2.414337,PA_0104,sud de la place de la Porte de Montreuil,False,True
+48.86744,2.3638,PA_0105,Ã  droite du lion de la statue,False,True
+48.853901,2.361889,PA_0106,2 rue Charlemagne,False,True
+48.859382,2.292935,PA_0107,rive gauche nord,False,True
+48.859936,2.29058,PA_0108,tunnel de l'avenue de New York,False,True
+48.859764,2.352534,PA_0109,tuyaux d'Ã©vacuation du Centre Pompidou,False,True
+48.86263,2.35125,PA_0110,91 rue Quincampoix,False,True
+48.891598,2.344664,PA_0111,20 rue Hermel,False,True
+48.835,2.326943,PA_0112,19 rue Gassendi,False,True
+48.846596,2.351423,PA_0113,46 rue du Cardinal Lemoine,False,True
+48.857153,2.357275,PA_0114,26 rue Vieille du Temple,False,True
+48.857153,2.357275,PA_1023,26 rue Vieille du Temple,False,True
+48.858572,2.359639,PA_0115,impasse des ArbalÃ©triers,False,True
+48.854719,2.372764,PA_0116,45 passage ThiÃ©rÃ©,False,True
+48.854414,2.373113,PA_0117,31 passage ThiÃ©rÃ© sur le trottoir,False,True
+48.835576,2.375347,PA_0118,1 rue Raymond Ayron,False,True
+48.859426,2.402789,PA_0119,102 rue de Bagnolet,False,True
+48.859426,2.402789,PA_0824,102 rue de Bagnolet,False,True
+48.869474,2.367228,PA_0120,44 quai de Jemmapes,False,True
+48.857629,2.332797,PA_0121,7 rue des Saints-PÃ¨res,False,True
+48.840487,2.353132,PA_0122,sous le lierre,False,True
+48.873356,2.324385,PA_0124,40 rue de l'Arcade,False,True
+48.83954,2.39581,PA_0125,sud de la Fontaine aux Lions,False,True
+48.859222,2.292681,PA_0126,pont d'IÃ©na (rive gauche),False,True
+48.852,2.37376,PA_0128,1 rue de Charonne,False,True
+48.856488,2.403152,PA_0131,53 rue des Orteaux,False,True
+48.856255,2.405541,PA_0132,97 rue des MaraÃ®chers,False,True
+48.851674,2.3779,PA_0133,7 passage de la Main d'Or,False,True
+48.860367,2.333511,PA_0135,entrÃ©e sud du Carrousel,False,True
+48.857374,2.347233,PA_0143,place du ChÃ¢telet,False,True
+48.86014,2.35078,PA_0144,face au 49 rue Saint-Merri,False,True
+48.8593,2.353009,PA_0145,9 rue Saint-Merri,False,True
+48.834234,2.355438,PA_0146,2 rue VÃ©ronÃ¨se,False,True
+48.842848,2.365852,PA_0147,gare d'Austerlitz,False,True
+48.85593,2.35063,PA_0148,sur le pont d'Arcole,False,True
+48.854717,2.362911,PA_0149,1 rue de Turenne,False,True
+48.84745,2.34358,PA_0150,angle de la Sorbonne,False,True
+48.843051,2.346784,PA_0151,28 rue Lhomond,False,True
+48.86619,2.323337,PA_0152,place de la Concorde,False,True
+48.841734,2.400953,PA_0154,mÃ©tro de Bel-Air,False,True
+48.851375,2.348257,PA_0155,16 rue des Trois Portes,False,True
+48.85991,2.354299,PA_0156,2 rue Simon le Franc,False,True
+48.846242,2.348976,PA_0157,10 rue Clovis,False,True
+48.8607,2.363722,PA_0158,7 rue Debelleyme.,False,True
+48.876025,2.351035,PA_0159,69 rue d'Hauteville,False,True
+48.885374,2.340677,PA_0160,16 rue AndrÃ© Barsacq,False,True
+48.884163,2.339665,PA_0161,17 rue Yvonne Le Tac,False,True
+48.884617,2.370559,PA_0162,8 quai de la Seine,False,True
+48.84691,2.34355,PA_0163,133 rue Saint-Jacques,False,True
+48.887647,2.340567,PA_0165,5 rue Cortot,False,True
+48.885298,2.38531,PA_0166,face au 21 rue Georges Auric,False,True
+48.865523,2.336674,PA_0167,37 rue Richelieu,False,True
+48.865523,2.336674,PA_0168,37 rue Richelieu,False,True
+48.886355,2.341469,PA_0169,2 rue du Mont Cenis,False,True
+48.89119,2.3318,PA_0172,21 rue Carpeaux,False,True
+48.851599,2.373552,PA_0175,18 passage du Chantier,False,True
+48.849961,2.33077,PA_0176,12 rue Cassette,False,True
+48.865373,2.33081,PA_0177,12 rue du 29 Juillet,False,True
+48.874702,2.305926,PA_0178,165 rue du Faubourg Saint-HonorÃ©,False,True
+48.82725,2.50721,PA_0179,entrÃ©e du tunnel de Champigny,False,True
+48.851063,2.331925,PA_0180,14 rue Madame,False,True
+48.850645,2.331768,PA_0181,20-24 rue Madame,False,True
+48.850962,2.331918,PA_0182,18 rue Madame,False,True
+48.85035,2.331885,PA_0183,19 rue de MÃ©ziÃ¨res,False,True
+48.852326,2.341737,PA_0184,2 rue Mignon,False,True
+48.872642,2.33117,PA_0185,8 rue Scribe,False,True
+48.846366,2.354711,PA_0187,fontaine Jussieu,False,True
+48.85788,2.36018,PA_0188,39 rue des Francs-Bourgeois,False,True
+48.860515,2.354532,PA_0189,3 rue Geoffroy Langevin,False,True
+48.860208,2.403704,PA_0190,1 rue Stendhal,False,True
+48.86068,2.402905,PA_0191,21 chemin du Parc de Charonne,False,True
+48.860974,2.404965,PA_0192,face au 130 rue de Bagnolet,False,True
+48.860974,2.404965,PA_0785,face au 130 rue de Bagnolet,False,True
+48.865294,2.356472,PA_0193,29 rue de RÃ©aumur,False,True
+48.859993,2.377448,PA_0194,61 rue du Chemin Vert,False,True
+48.900821,2.344819,PA_0195,avenue de la porte Clignancourt,False,True
+48.883703,2.368895,PA_0196,place de la Bataille de Stalingrad,False,True
+48.886559,2.33238,PA_0197,cimetiÃ¨re de Montmartre,False,True
+48.874305,2.372611,PA_0198,27 rue Sainte-Marthe,False,True
+48.844506,2.37238,PA_0200,face au 194 rue de Bercy,False,True
+48.87801,2.37682,PA_0201,19 rue Georges Lardennois,False,True
+48.889956,2.395975,PA_0204,place de la porte de Pantin,False,True
+48.878073,2.35168,PA_0205,parvis de Saint-Vincent-de-Paul,False,True
+48.883508,2.327428,PA_0206,place de Clichy,False,True
+48.887721,2.332576,PA_0207,7 rue DamrÃ©mont,False,True
+48.837428,2.331491,PA_0208,mÃ©tro Raspail,False,True
+48.833351,2.379387,PA_0209,sur la coque du Batofar,False,True
+48.885295,2.359571,PA_0210,6 rue Marx Dormoy,False,True
+48.852441,2.371607,PA_0211,30 rue du Faubourg Saint-Antoine,False,True
+48.85705,2.39305,PA_0212,123 boulevard de Charonne,False,True
+48.842099,2.349683,PA_0213,84 rue Mouffetard,False,True
+48.842592,2.386157,PA_0215,0 rue Montgallet,False,True
+48.842592,2.386157,PA_1056,0 rue Montgallet,False,True
+48.821572,2.342467,PA_0216,67 rue de l'Amiral Mouchez,False,True
+48.84423,2.37204,PA_0218,Tunnel Van-Gogh,False,True
+48.81957,2.37367,PA_0219,face au 8 rue AndrÃ© Voguet,False,True
+48.837396,2.373523,PA_0220,mÃ©tro Quai de la Gare,False,True
+48.873796,2.382938,PA_0221,91 rue Rebeval,False,True
+48.871109,2.374427,PA_0222,94 rue du Faubourg du Temple,False,True
+48.848217,2.376069,PA_0223,20 rue Abel,False,True
+48.819874,2.373607,PA_0224,sur les panneaux d'information du pÃ©riph',False,True
+48.819453,2.373015,PA_0225,sur le pont du periph' porte d'Ivry,False,True
+48.876749,2.351173,PA_0226,83 rue d'Hauteville,False,True
+48.88991,2.38295,PA_0228,pont de la rue de l'Ourcq,False,True
+48.851027,2.339681,PA_0229,rue Antoine Dubois,False,True
+48.864322,2.349905,PA_0231,1 rue Tiquetonne,False,True
+48.864543,2.347672,PA_0232,11 rue FranÃ§aise,False,True
+48.844456,2.276331,PA_0233,1 rue des CÃ©vennes,False,True
+48.87095,2.29964,PA_0236,16 rue Magellan,False,True
+48.873433,2.297074,PA_0237,156 avenue des Champs Ã‰lysÃ©es,False,True
+48.866054,2.307521,PA_0238,8 rue FranÃ§ois 1er,False,True
+48.845741,2.373868,PA_0240,face au 23 boulevard Diderot,False,True
+48.841006,2.400885,PA_0241,mÃ©tro Bel-Air face sud,False,True
+48.844487,2.406932,PA_0242,94-100 avenue Saint-MandÃ©,False,True
+48.846819,2.375117,PA_0243,8bis rue Abel,False,True
+48.864602,2.371976,PA_0245,47 rue Oberkampf,False,True
+48.833349,2.289533,PA_0247,1 rue Firmin Gillot,False,True
+48.868299,2.374516,PA_0248,64 rue de la Fontaine au Roi,False,True
+48.868861,2.367355,PA_0250,entrÃ©e du mini-square de Jemmapes,False,True
+48.860668,2.348006,PA_0251,Ã  l'ouest de la fontaine des Innocents,False,True
+48.864059,2.301387,PA_0253,pont de l'Alma cÃ´tÃ© rive droite,False,True
+48.871809,2.300541,PA_0254,101 avenue des Champs-Ã‰lysÃ©es,False,True
+48.861297,2.291354,PA_0255,sous le banc face Ã  l'arrÃªt de bus Varsovie,False,True
+48.860866,2.291805,PA_0256,place de Varsovie,False,True
+48.857696,2.285713,PA_0257,mÃ©tro Passy,False,True
+48.854483,2.278808,PA_0258,29 avenue de Lamballe,False,True
+48.84826,2.259879,PA_0259,78 rue d'Auteuil,False,True
+48.847438,2.268704,PA_0260,place de l'Ã‰glise d'Auteuil,False,True
+48.848006,2.397285,PA_0262,place de la Nation (cÃ´tÃ© avenue du TrÃ´ne),False,True
+48.86995,2.285663,PA_0263,sur les marches du mÃ©tro Victor Hugo,False,True
+48.862998,2.275514,PA_0264,115 rue de la Tour,False,True
+48.862923,2.272269,PA_0265,face au 27 boulevard Jules Sandeau,False,True
+48.864649,2.29564,PA_0266,11 rue de la Manutention,False,True
+48.864144,2.290235,PA_0267,10 rue de Magdebourg,False,True
+48.879002,2.303607,PA_0268,96 rue de Courcelles,False,True
+48.818166,2.45549,PA_0269,sur le Chasseur Ã  pied de la Redoute de Gravelle,False,True
+48.86818,2.36524,PA_0270,2 rue Yves Toudic,False,True
+48.869135,2.377477,PA_0271,7 rue Vancouleurs,False,True
+48.8268,2.364164,PA_0272,96 rue de Tolbiac,False,True
+48.860374,2.350215,PA_0273,21 rue Aubry le Boucher,False,True
+48.879429,2.365226,PA_0275,14 rue Pierre Dupont,False,True
+48.853336,2.375826,PA_0277,31 rue de Charonne,False,True
+48.85287,2.40656,PA_0278,53 rue des MaraÃ®chers,False,True
+48.87163,2.37615,PA_0279,116 rue du Faubourg du Temple,False,True
+48.863872,2.385976,PA_0280,8 rue Spinoza,False,True
+48.858056,2.352673,PA_0282,61 rue de la Verrerie,False,True
+48.87084,2.37355,PA_0283,101 rue du Faubourg du Temple,False,True
+48.86603,2.34607,PA_0285,passage Ben Aiad,False,True
+48.887508,2.344445,PA_0286,28 rue du Chevalier de la Barre,False,True
+48.867868,2.390122,PA_0291,15 rue des PlÃ¢triÃ¨res,False,True
+48.870664,2.37335,PA_0293,84 rue du Faubourg du Temple,False,True
+48.85821,2.35607,PA_0294,14 rue de Moussy,False,True
+48.863788,2.344822,PA_0295,4 rue du Jour,False,True
+48.850261,2.373484,PA_0301,44 rue de Charenton,False,True
+48.879066,2.389857,PA_0302,37 rue de Belleville,False,True
+48.82682,2.35075,PA_0303,24 passage Boiton,False,True
+48.84271,2.35551,PA_0305,face au 49 rue Geoffroy-Saint-Hilaire,False,True
+48.868685,2.389394,PA_0307,77 rue de MÃ©nilmontant,False,True
+48.841443,2.225299,PA_0308,2 quai du 4 septembre,False,True
+48.876904,2.282737,PA_0309,1 boulevard de l'Amiral Bruix,False,True
+48.83748,2.255328,PA_0310,passerelle de la Porte de Saint-Cloud,False,True
+48.83748,2.255328,PA_1335,passerelle de la Porte de Saint-Cloud,False,True
+48.843579,2.330293,PA_0311,face au 5 rue BrÃ©a,False,True
+48.828366,2.327061,PA_0312,parvis de Saint-Pierre de Montrouge,False,True
+48.830074,2.351154,PA_0315,face au 32 boulevard Auguste Blanqui,False,True
+48.827372,2.334741,PA_0316,rue des Artistes,False,True
+48.827372,2.334741,PA_0940,rue des Artistes,False,True
+48.83667,2.33168,PA_0317,devant la Fondation Cartier,False,True
+48.836622,2.338129,PA_0320,34 rue du Faubourg Saint-Jacques,False,True
+48.846537,2.342015,PA_0321,17 rue Malebranche,False,True
+48.848861,2.332883,PA_0322,77 allÃ©e du SÃ©minaire,False,True
+48.85437,2.384158,PA_0323,102 rue de Charonne,False,True
+48.86496,2.39397,PA_0325,17 rue Robineau,False,True
+48.84783,2.39293,PA_0326,10 rue de Picpus,False,True
+48.87301,2.34781,PA_0327,29 rue du Faubourg PoissonniÃ¨re,False,True
+48.865113,2.344234,PA_0328,40 rue Ã‰tienne Marcel,False,True
+48.88652,2.36116,PA_0329,14 rue Pajol,False,True
+48.878407,2.349266,PA_0330,102 rue du Faubourg PoissonniÃ¨re,False,True
+48.859389,2.353003,PA_0331,2 rue Pierre au Lard,False,True
+48.859626,2.38935,PA_0332,41 rue du Repos sous la plaque du cimÃ¨tiÃ¨re,False,True
+48.880004,2.344263,PA_0333,39 rue Condorcet,False,True
+48.84398,2.363976,PA_0334,7-13 Place Valhubert,False,True
+48.882124,2.369949,PA_0335,135 boulevard de la Villette,False,True
+48.890439,2.353239,PA_0336,centre d'HygiÃ¨ne Sociale,False,True
+48.86541,2.39475,PA_0339,square du Docteur-Grancher,False,True
+48.85356,2.35363,PA_0340,45 quai de Bourbon,False,True
+48.879075,2.336928,PA_0342,19 rue LaferriÃ¨re,False,True
+48.860173,2.291105,PA_0343,pont d'IÃ©na (rive droite),False,True
+48.859365,2.293519,PA_0344,tunnel du quai Branly,False,True
+48.84892,2.32166,PA_0345,95 rue de SÃ¨vres,False,True
+48.842905,2.312245,PA_0346,16 boulevard Pasteur,False,True
+48.843163,2.325474,PA_0347,passage des Ã‰pinettes,False,True
+48.884037,2.356254,PA_0348,39bis boulevard de la Chapelle,False,True
+48.861245,2.302593,PA_0349,7 avenue Bosquet,False,True
+48.822933,2.365082,PA_0350,Ã©cole primaire de l'avenue d'Ivry,False,True
+48.870021,2.394195,PA_0351,121 rue de MÃ©nilmontant,False,True
+48.877675,2.358214,PA_0352,21 rue d'Alsace,False,True
+48.86946,2.32475,PA_0353,sortie de mÃ©tro face au 27 boulevard de la Madeleine,False,True
+48.858659,2.345915,PA_0354,13 rue Jean Lantier,False,True
+48.862629,2.349708,PA_0355,4 rue de la Grande Truanderie,False,True
+48.832037,2.290355,PA_0357,21 boulevard Lefebvre,False,True
+48.871463,2.391285,PA_0358,14 rue de Savies,False,True
+48.866424,2.332864,PA_0359,45 rue Saint-Roch,False,True
+48.863935,2.331188,PA_0360,0 rue Saint-Roch,False,True
+48.871724,2.364704,PA_0362,en face de Chez Prune,False,True
+48.826298,2.360009,PA_0363,116 avenue de Choisy,False,True
+48.83711,2.29638,PA_0364,347 rue de Vaugirard,False,True
+48.839249,2.300281,PA_0365,268 rue de Vaugirard,False,True
+48.8299,2.30356,PA_0366,127 rue Castagnary,False,True
+48.82981,2.3017,PA_0367,108 rue Brancion,False,True
+48.853404,2.385082,PA_0369,7 rue Jules VallÃ¨s,False,True
+48.85037,2.38316,PA_0371,Ouest de la fontaine de Montreuil,False,True
+48.85191,2.37404,PA_0372,63 rue du Faubourg Saint-Antoine,False,True
+48.866061,2.378809,PA_0373,121 rue Oberkampf,False,True
+48.853198,2.326541,PA_0374,29 boulevard Raspail,False,True
+48.870922,2.395388,PA_0375,2 rue de l'Est,False,True
+48.86167,2.362442,PA_0376,28 rue de Poitou,False,True
+48.86302,2.37105,PA_0377,52 boulevard Voltaire,False,True
+48.86174,2.36131,PA_0378,45 rue de Poitou,False,True
+48.85881,2.35731,PA_0379,17 rue des Blancs-Manteaux,False,True
+48.862947,2.309289,PA_0380,port du Gros-caillou,False,True
+48.852271,2.301291,PA_0381,allÃ©e Thomy Thierry,False,True
+48.869815,2.378334,PA_0384,26 rue du Moulin Joly,False,True
+48.83149,2.36856,PA_0385,41 rue Dunois,False,True
+48.881849,2.32087,PA_0386,croisement rue de Rome/bvd des Batignolles,False,True
+48.841083,2.320092,PA_0388,Gare Montparnasse,False,True
+48.879467,2.389352,PA_0389,86 rue de Botzaris,False,True
+48.856021,2.386367,PA_0390,1 passage Gustave Lepeu,False,True
+48.83174,2.385019,PA_0391,114 quai de Bercy,False,True
+48.854565,2.342448,PA_0392,35 quai des Grands Augustins,False,True
+48.854351,2.344578,PA_0394,pont Saint-Michel,False,True
+48.85182,2.32449,PA_0395,14 rue Chomel,False,True
+48.862668,2.35441,PA_0396,49 rue de Beaubourg,False,True
+48.84742,2.365655,PA_0398,1 pont Morland,False,True
+48.862586,2.302184,PA_0399,pont de l'Alma,False,True
+48.862166,2.302284,PA_0400,93 quai d'Orsay,False,True
+48.843999,2.354947,PA_0401,fontaine de Cuvier,False,True
+48.86244,2.32015,PA_0402,quai Anantole France,False,True
+48.83208,2.30289,PA_0403,porte N-E du parc George Brassens,False,True
+48.869401,2.342066,PA_0404,face au 2 place de la Bourse,False,True
+48.830168,2.305931,PA_0405,face au 110 rue Castagnary,False,True
+48.860747,2.357133,PA_0406,4 rue de Braque,False,True
+48.860102,2.360883,PA_0407,93 rue Vieille du Temple,False,True
+48.868393,2.38822,PA_0410,0 rue de la Mare,False,True
+48.867053,2.397994,PA_0411,68 rue Orfila,False,True
+48.864799,2.393552,PA_0412,15 rue Robineau,False,True
+48.869917,2.323209,PA_0413,3 boulevard Malsherbes,False,True
+48.891977,2.410014,PA_0414,2 rue du 11 Novembre 1918,False,True
+48.852895,2.386345,PA_0415,34 rue Titon,False,True
+48.871537,2.363221,PA_0416,9 rue de Marseille,False,True
+48.901461,2.344331,PA_0418,139 avenue Michelet,False,True
+48.909131,2.336024,PA_0420,45 rue Anselme,False,True
+48.86476,2.39571,PA_0421,71 rue des Rondeaux,False,True
+48.83124,2.36918,PA_0422,32 rue Dunois,False,True
+48.871812,2.309915,PA_0423,63 avenue Franklin Delano Roosevelt,False,True
+48.864665,2.295582,PA_0424,13 rue de la Manutention,False,True
+48.816064,2.357022,PA_0426,face au pavillon d'Italie,False,True
+48.829912,2.375363,PA_0427,10 rue de Tolbiac,False,True
+48.874504,2.292356,PA_0428,7 avenue de la Grande ArmÃ©e,False,True
+48.876277,2.292479,PA_0429,22 avenue Carnot,False,True
+48.872183,2.36513,PA_0430,le Comptoire GÃ©nÃ©ral,False,True
+48.847269,2.414288,PA_0431,rond-point de la porte de Vincennes,False,True
+48.871131,2.393294,PA_0432,24 rue de l'Est,False,True
+48.843322,2.402278,PA_0433,33 rue de Sibuet,False,True
+48.840725,2.39799,PA_0434,19 rue Lamblardie,False,True
+48.860945,2.350814,PA_0436,Centre culturel de Serbie,False,True
+48.877651,2.370595,PA_0437,place du Colonel Fabien,False,True
+48.882949,2.385862,PA_0438,petite ceinture pont de la rue Manin,False,True
+48.884036,2.32822,PA_0439,134 boulevard de Clichy,False,True
+48.815533,2.356289,PA_0441,7 rue Gabriel PÃ©ri,False,True
+48.87446,2.393054,PA_0442,46 Olivier MÃ©tra,False,True
+48.87615,2.381094,PA_0443,entrÃ©e sud des Buttes Chaumont,False,True
+48.883149,2.365842,PA_0444,14 rue Chaudron,False,True
+48.880303,2.360816,PA_0445,181 rue Lafayette,False,True
+48.870261,2.373237,PA_0446,174 rue Saint-Maur,False,True
+48.87265,2.36377,PA_0447,Ã  l'intÃ©rieur d'Artazart,False,True
+48.872148,2.365148,PA_0448,80 quai Jemmapes,False,True
+48.871552,2.314716,PA_0449,73 rue du Faubourg Saint-HonorÃ©,False,True
+48.86477,2.356862,PA_0450,5 rue Volta,False,True
+48.853334,2.376638,PA_0451,39 rue de Charonne,False,True
+48.853334,2.376638,PA_0654,39 rue de Charonne,False,True
+48.852811,2.376367,PA_0452,5 passage Saint-Antoine,False,True
+48.864562,2.389631,PA_0453,24 Ã  32 rue des Amandiers,False,True
+48.873127,2.363638,PA_0454,Assainissement de Valmy,False,True
+48.855155,2.337721,PA_0455,48 rue Mazarine,False,True
+48.8646,2.294413,PA_0456,1 place d'IÃ©na,False,True
+48.866403,2.390936,PA_0458,16 rue Elise Borey,False,True
+48.834914,2.36825,PA_0459,mÃ©tro Chevaleret,False,True
+48.834395,2.369952,PA_0460,39P rue Louise Weiss,False,True
+48.861765,2.400009,PA_0461,5-7 rue Charles Renouvier,False,True
+48.868378,2.347578,PA_0462,44 rue de ClÃ©ry,False,True
+48.857053,2.355457,PA_0464,6 rue de la Verrerie,False,True
+48.856977,2.378546,PA_0465,114 rue de la Roquette,False,True
+48.868146,2.373402,PA_0466,51 rue de la Fontaine au Roi,False,True
+48.871567,2.384969,PA_0467,parc de Belleville,False,True
+48.86592,2.34698,PA_0468,65 rue Montorgueil,False,True
+48.864784,2.345683,PA_0470,64 rue Tiquetonne,False,True
+48.868821,2.390091,PA_0471,83 rue de MÃ©nilmontant,False,True
+48.85904,2.371362,PA_0472,11Z rue Gaby Sylvia,False,True
+48.851471,2.338006,PA_0473,3 rue Saint-Sulpice,False,True
+48.880578,2.308577,PA_0474,2 rue de Prony,False,True
+48.874673,2.293325,PA_0475,2 avenue de la Grande ArmÃ©e,False,True
+48.87181,2.306088,PA_0476,1 rue Paul Baudry,False,True
+48.854338,2.415553,PA_0477,267b rue de Paris,False,True
+48.852616,2.281438,PA_0478,pont du Rouelle,False,True
+48.85587,2.359774,PA_0480,14 rue du Roi de Sicile,False,True
+48.844974,2.332482,PA_0481,sous la plaque de rue du coin du parc,False,True
+48.863924,2.352013,PA_0483,7 rue du Bourg l'AbbÃ©,False,True
+48.878388,2.323006,PA_0484,24 rue de Vienne,False,True
+48.870264,2.289909,PA_0485,15 rue Paul ValÃ©rie,False,True
+48.852909,2.31909,PA_0486,26 rue Vaneau,False,True
+48.83484,2.40039,PA_0488,79 rue de Wattignies,False,True
+48.874111,2.385594,PA_0489,1 rue Clavel,False,True
+48.899579,2.391981,PA_0490,10 rue du Chemin de Fer,False,True
+48.87388,2.39531,PA_0492,36 rue du Soleil,False,True
+48.86124,2.3435,PA_0493,87 rue Saint-HonorÃ©,False,True
+48.841328,2.325149,PA_0494,41 rue Delambre,False,True
+48.844497,2.352557,PA_0495,17 rue de Navarre,False,True
+48.868789,2.356291,PA_0496,51 boulevard Saint-Martin,False,True
+49.006762,2.528152,PA_0497,sortie routiÃ¨re de Roissy-Charles-de-Gaulle,True,True
+48.880778,2.33573,PA_0498,64 rue de la Rochefoucauld,False,True
+48.877519,2.365507,PA_0499,pont EugÃ¨ne-Varlin,False,True
+48.866361,2.364673,PA_0501,au pied des escaliers du boulevard du Temple,False,True
+48.840414,2.353,PA_0502,29 rue Censier,False,True
+48.860382,2.364672,PA_0503,74 rue de Turenne,False,True
+48.857714,2.35837,PA_0504,52 rue des Rosiers,False,True
+48.859788,2.362908,PA_0505,12 rue de Thorigny,False,True
+48.866887,2.349292,PA_0506,square Pierre Lazareff,False,True
+48.875379,2.369037,PA_0507,21 rue Juliette Dodu,False,True
+48.861702,2.344175,PA_0508,9 rue des Prouvaires,False,True
+48.853266,2.370649,PA_0510,place de la Bastille,False,True
+48.864153,2.296905,PA_0514,Palais de Tokyo,False,True
+48.848534,2.393914,PA_0515,278 rue du Faubourg Saint-Antoine,False,True
+48.870172,2.395543,PA_0516,129-133 rue de MÃ©nilmontant,False,True
+48.86167,2.36546,PA_0517,13 rue Froissart,False,True
+48.835546,2.494696,PA_0520,viaduc rue Jacques KablÃ©,False,True
+48.875538,2.399825,PA_0521,cimetiÃ¨re de Belleville,False,True
+48.866379,2.369036,PA_0522,Square Jules Ferry,False,True
+48.852787,2.353224,PA_0523,face au 4 rue Jean du Bellay,False,True
+48.826905,2.508885,PA_0524,244 avenue du GÃ©nÃ©ral de Gaulle,False,True
+48.859482,2.352759,PA_0525,16 rue Saint-Merri,False,True
+48.860432,2.487126,PA_0526,au croisement de l'A86 et de la ligne de RER E,False,True
+48.833181,2.366221,PA_0527,74 rue Dunois,False,True
+48.850632,2.34756,PA_0528,13 rue des Anglais,False,True
+48.849394,2.351715,PA_0529,15 rue de Pontoise,False,True
+48.873512,2.388421,PA_0530,83 rue de la Mare,False,True
+48.87015,2.395348,PA_0531,129 rue de MÃ©nilmontant,False,True
+48.900816,2.343811,PA_0533,sous le pÃ©riph' porte de Cligancourt,False,True
+48.8646,2.2967,PA_0534,entrÃ©e du Palais de Tokyo,False,True
+48.855303,2.39992,PA_0535,37 rue de Terre Neuve,False,True
+48.83952,2.38871,PA_0536,7 rue de la Planchette,False,True
+48.86626,2.38281,PA_0537,piscine de l'Espace Form,False,True
+48.862014,2.354191,PA_0539,30 rue Beaubourg dans la cour,False,True
+48.8682,2.38131,PA_0540,impasse Questre,False,True
+48.843367,2.379208,PA_0542,5 rue de Rambouillet,False,True
+48.832575,2.370989,PA_0543,1 rue Duchefdelaville,False,True
+48.86761,2.39659,PA_0545,62 rue Villiers de l'Isle Adam,False,True
+48.831983,2.39717,PA_0546,320bis rue de Charenton,False,True
+48.873155,2.381651,PA_0547,place FrÃ©hel,False,True
+48.870979,2.373844,PA_0548,103 rue du Faubourg du Temple,False,True
+48.873262,2.358945,PA_0549,54 rue des Vinaigriers,False,True
+48.85482,2.3366,PA_0550,8 rue de l'Ã‰chaudÃ©,False,True
+48.865235,2.411501,PA_0551,1 avenue Ibsen,False,True
+48.871768,2.330301,PA_0552,3 rue Auber,False,True
+48.881482,2.339937,PA_0553,74 rue des Martyrs,False,True
+48.843257,2.391561,PA_0554,101 rue de Reuilly,False,True
+48.854589,2.368784,PA_0555,11 boulevard Beaumarchais,False,True
+48.851905,2.349057,PA_0556,2 rue de l'HÃ´tel Colbert,False,True
+48.841544,2.341198,PA_0557,282 rue Saint-Jacques,False,True
+48.838579,2.39589,PA_0558,45 rue de la BrÃ¨che aux Loups,False,True
+48.83874,2.396419,PA_0559,1 rue Raoul,False,True
+48.86858,2.27404,PA_0560,65 boulevard Flandrin,False,True
+48.892412,2.339938,PA_0562,27 rue du Ruisseau,False,True
+48.862193,2.337129,PA_0563,2 place du Palais Royal,False,True
+48.881076,2.361865,PA_0565,3 rue Philippe de Girard,False,True
+48.859867,2.388514,PA_0566,181 rue de la Roquette,False,True
+48.876023,2.402223,PA_0567,117 rue Haxo,False,True
+48.879885,2.35878,PA_0568,2 rue de l'Aqueduc,False,True
+48.816851,2.442683,PA_0569,passerelle de Charentonneau,False,True
+48.8553,2.3595,PA_0570,82 rue FranÃ§ois Miron,False,True
+48.84726,2.36746,PA_0571,10 boulevard de la Bastille,False,True
+48.856483,2.357385,PA_0572,27 rue du Roi de Sicile,False,True
+48.829989,2.493827,PA_0574,avenue Pierre Brossolette,False,True
+48.861596,2.363004,PA_0575,22 rue de Poitou,False,True
+48.862441,2.335272,PA_0576,2 place du Carrousel,False,True
+48.873222,2.389838,PA_0577,5 rue Levert,False,True
+48.845263,2.311836,PA_0578,3 place Henri Queuille,False,True
+48.862527,2.334869,PA_0579,entrÃ©e nord-ouest du Carrousel,False,True
+48.85795,2.35288,PA_0580,59 rue de la Verrerie,False,True
+48.862465,2.335164,PA_0581,entrÃ©e nord-est du Carrousel,False,True
+48.866571,2.3357,PA_0582,14 rue Villedo,False,True
+48.877746,2.326297,PA_0583,2 impasse d'Amsterdam,False,True
+48.877251,2.326795,PA_0584,17 rue d'Amsterdam,False,True
+48.861338,2.353407,PA_0585,mÃ©tro Rambuteau,False,True
+48.859193,2.367439,PA_0586,89 boulevard Beaumarchais,False,True
+48.852634,2.363238,PA_0588,5 rue Charles V,False,True
+48.874413,2.386179,PA_0589,1 rue Melingue,False,True
+48.863723,2.349401,PA_0590,17 rue Ã‰tienne Marcel,False,True
+48.869106,2.372997,PA_0591,villa du Clos de Malvert,False,True
+48.84908,2.33412,PA_0592,19 rue FÃ©rou,False,True
+48.836438,2.278256,PA_0593,place Balard sous la Petite Ceinture,False,True
+48.836677,2.278782,PA_0594,place Balard,False,True
+48.837935,2.281867,PA_0595,183 rue de Lourmel,False,True
+48.843339,2.295586,PA_0596,85 rue de la Croix Nivert,False,True
+48.849209,2.297638,PA_0597,mÃ©tro La Motte-Picquet-Grenelle,False,True
+48.8572,2.310167,PA_0598,1 avenue de la Motte-Picquet,False,True
+48.886784,2.384861,PA_0599,2 rue de l'Ourcq,False,True
+48.886487,2.396877,PA_0600,entrÃ©e du tunnel de la porte Chaumont,False,True
+48.859886,2.485377,PA_0601,A86 Ã  l'angle du stade Pierre de Coubertin,False,True
+48.873826,2.385557,PA_0602,cour de la MÃ©tairie,False,True
+48.846707,2.387123,PA_0604,36 rue Erard,False,True
+48.884387,2.34245,PA_0605,1 place Suzanne Valadon,False,True
+48.867182,2.344938,PA_0606,39 rue d'Aboukir,False,True
+48.883487,2.341899,PA_0607,48 rue d'Orsel,False,True
+48.820142,2.484218,PA_0608,1 avenue du GÃ©nÃ©ral de Gaulle,False,True
+48.884224,2.359716,PA_0609,35 boulevard de la Chapelle,False,True
+48.861698,2.400375,PA_0610,passage Stendhal,False,True
+48.961187,2.473746,PA_0611,boulevard Georges Braque,False,False
+48.858923,2.352351,PA_0612,14 rue du Renard,False,True
+48.816267,2.361211,PA_0613,derriÃ¨re un poteau Ã  l'entrÃ©e d'un tunnel,False,True
+48.826254,2.298492,PA_0614,bretelle de pÃ©riphÃ©rique Porte Brancion,False,True
+48.85257,2.376714,PA_0615,17 passage de la Bonne Graine,False,True
+48.877728,2.288333,PA_0616,31 place Saint-Ferdinand,False,True
+48.880365,2.292817,PA_0617,14 rue Pierre Demours,False,True
+48.880564,2.29294,PA_0618,15 rue Pierre Demours,False,True
+48.882618,2.30578,PA_0619,47 rue Cardinet,False,True
+48.87046,2.38677,PA_0620,escalier menant vers le passage Piat,False,True
+48.888993,2.396147,PA_0621,porte de Pantin,False,True
+48.835582,2.412255,PA_0622,au pied du 18 boulevard de la Guyane,False,True
+48.827254,2.385989,PA_0623,porte de la Gare cÃ´tÃ© Ivry,False,True
+48.851942,2.328452,PA_0624,10 rue de SÃ¨vres,False,True
+48.837111,2.296615,PA_0626,200 rue de la Convention,False,True
+48.843542,2.325509,PA_0629,impasse Robiquet,False,True
+48.857442,2.318064,PA_0630,30 rue de Martignac,False,True
+48.872847,2.331371,PA_0631,entrÃ©e Nord de l'OpÃ©ra,False,True
+48.852136,2.342636,PA_0634,10 rue Hautefeuille,False,True
+48.84873,2.332644,PA_0635,21 rue de Vaugirard,False,True
+48.847975,2.351684,PA_0636,32 rue de Poissy,False,True
+48.855987,2.366663,PA_0637,22 place des Vosges,False,True
+48.864746,2.353433,PA_0638,79 rue des Gravilliers,False,True
+48.88667,2.338443,PA_0639,122 rue Lepic,False,True
+48.886268,2.337896,PA_0641,2 rue d'Orchampt,False,True
+48.885997,2.338538,PA_0642,46 rue Berthe,False,True
+48.884576,2.337857,PA_0643,21 rue des Abbesses,False,True
+48.886213,2.344091,PA_0644,2 rue Lamarck,False,True
+48.879724,2.400606,PA_0645,rue Charles Monselet,False,True
+48.827974,2.304927,PA_0646,porte de Vanves,False,True
+48.889471,2.336834,PA_0647,66 rue Caulaincourt,False,True
+48.868227,2.401491,PA_0648,mÃ©tro Pelleport,False,True
+48.882785,2.389945,PA_0649,1 rue Gaston Pinot,False,True
+48.847517,2.268078,PA_0650,1 rue Desaugiers,False,True
+48.867162,2.283506,PA_0651,52 rue Saint-Didier,False,True
+48.865032,2.282824,PA_0652,25 rue des Sablons,False,True
+48.871372,2.309827,PA_0653,33 rue du ColisÃ©e,False,True
+48.862195,2.363702,PA_0655,34 rue Debelleyme,False,True
+48.89589,2.3395,PA_0656,112bis rue Championnet,False,True
+48.88318,2.371115,PA_0657,3 avenue Jean JaurÃ¨s,False,True
+48.871633,2.404115,PA_0658,mÃ©tro Saint-Fargeau,False,True
+48.894157,2.332085,PA_0659,194 rue Championnet,False,True
+48.883433,2.314096,PA_0660,46 rue de LÃ©vis,False,True
+48.885168,2.302939,PA_0661,41 rue AmpÃ¨re,False,True
+48.881089,2.289603,PA_0663,25 rue Guersant,False,True
+48.87718,2.29226,PA_0664,31 rue des Acacias,False,True
+48.86556,2.285567,PA_0665,127 rue de Lauriston,False,True
+48.852895,2.28643,PA_0666,face au 29 quai de grenelle,False,True
+48.823602,2.36211,PA_0667,64 avenue de Choisy,False,True
+48.866368,2.380604,PA_0668,26 avenue Jean Aicard,False,True
+48.898293,2.35365,PA_0669,pont ferroviaire de la porte des Poissonniers,False,True
+48.874863,2.382439,PA_0670,17 rue de l'Ã‰querre,False,True
+48.876522,2.378205,PA_0671,54 avenue Bolivar,False,True
+48.864357,2.381662,PA_0672,1 avenue Jean Aicard,False,True
+48.85358,2.338324,PA_0673,1 rue de l'Ancienne ComÃ©die,False,True
+48.840239,2.315487,PA_0674,passage Alexandre,False,True
+48.827125,2.325317,PA_0675,1bis rue Friant,False,True
+48.854694,2.336777,PA_0677,46 rue de Seine,False,True
+48.857238,2.336413,PA_0678,6 rue de Seine,False,True
+48.840425,2.349749,PA_0679,1 rue de l'ArbalÃ¨te,False,True
+48.868496,2.388493,PA_0680,4 rue de la Mare,False,True
+48.855447,2.362038,PA_0681,10 rue d'Ormesson,False,True
+48.856802,2.362962,PA_0682,21 rue des Francs-Bourgeois,False,True
+48.865832,2.370005,PA_0683,132 boulevard Richard Lenoir,False,True
+48.840199,2.359213,PA_0684,23bis rue Poliveau,False,True
+48.85823,2.48817,PA_0685,sortie 18 de l'A86,False,True
+48.828627,2.399139,PA_0686,1 rue Marius Delcher,False,True
+48.901307,2.342903,PA_0690,12 rue Jean-Henri Fabre,False,True
+48.85038,2.26577,PA_0691,1 rue Rafflet,False,True
+48.854442,2.265482,PA_0692,24 rue du Docteur Blanche,False,True
+48.848932,2.266419,PA_0693,15 rue Pierre GuÃ©rin,False,True
+48.848773,2.2634,PA_0694,26 rue Poussin,False,True
+48.852472,2.267952,PA_0695,1 rue Jasmin,False,True
+48.861165,2.363171,PA_0696,9 rue Debellyeme,False,True
+48.853908,2.369859,PA_0697,14 boulevard Richard Lenoir,False,True
+48.855118,2.37208,PA_0698,10 rue Saint-Sabin,False,True
+48.85736,2.40393,PA_0699,127 rue des PyrÃ©nÃ©es,False,True
+48.852469,2.406015,PA_0700,65 rue des PyrÃ©nÃ©es,False,True
+48.85402,2.38187,PA_0701,1 rue Godefroy Cavaignac,False,True
+48.853809,2.38185,PA_0702,98 rue de Charonne,False,True
+48.853172,2.377438,PA_0703,47 rue de Charonne,False,True
+48.852243,2.365003,PA_0704,17 rue de la Cerisaie,False,True
+48.825532,2.374785,PA_0705,32 rue de Patay,False,True
+48.830642,2.367399,PA_0706,42 villa Auguste Blanqui,False,True
+48.85343,2.36409,PA_0707,17 rue Beautreillis,False,True
+48.875696,2.381437,PA_0708,11 passage Gauthier,False,True
+48.852983,2.366907,PA_0710,7 rue de LesdiguiÃ¨res,False,True
+48.855854,2.367249,PA_0711,27 rue des Tournelles,False,True
+48.880354,2.353532,PA_0712,20 rue de Dunkerque,False,True
+48.869021,2.358775,PA_0713,1 rue Taylor,False,True
+48.826486,2.378769,PA_0714,25 rue Watt,False,True
+48.857119,2.395469,PA_0715,3 CitÃ© Aubry,False,True
+48.856953,2.398039,PA_0717,2 rue des Orteaux,False,True
+48.855747,2.378545,PA_0718,39 rue Basfroi,False,True
+48.85859,2.3802,PA_0719,1 rue Camille Desmoulins,False,True
+48.86022,2.347488,PA_0720,19 rue de la Ferronnerie,False,True
+48.862132,2.356246,PA_0722,11 rue Michel Lecomte,False,True
+48.881331,2.327524,PA_0723,12 rue de Parme,False,True
+48.875964,2.347827,PA_0724,4 rue Papillon,False,True
+48.879386,2.357742,PA_0725,7 rue de Dunkarque,False,True
+48.88561,2.316589,PA_0726,135 rue de Rome,False,True
+48.880744,2.328624,PA_0727,51 rue de Clichy,False,True
+48.883526,2.323402,PA_0728,18 rue Caroline,False,True
+48.87584,2.326082,PA_0729,cour du Havre,False,True
+48.875865,2.347215,PA_0730,6 rue Bleue,False,True
+48.873293,2.38255,PA_0732,2 rue Jouye-Rouve,False,True
+48.870538,2.377714,PA_0733,38 rue du Moulin Joly,False,True
+48.873159,2.343061,PA_0734,20 rue du Faubourg Montmartre,False,True
+48.87899,2.319,PA_0735,66 rue des Rochers,False,True
+48.8658,2.33036,PA_0736,334 rue Saint-HonorÃ©,False,True
+48.87271,2.396104,PA_0737,21 rue Charles FrÃ©del,False,True
+48.875831,2.383608,PA_0738,20 rue Clavel,False,True
+48.869942,2.394924,PA_0739,120 rue de MÃ©nilmontant,False,True
+48.838869,2.396012,PA_0740,99 rue Claude Decaen,False,True
+48.88212,2.370526,PA_0741,194 boulevard de la Villette,False,True
+48.872953,2.390778,PA_0742,322 rue des PyrÃ©nÃ©es,False,True
+48.869494,2.36897,PA_0743,45 rue du Faubourg du Temple,False,True
+48.868755,2.392021,PA_0744,La Bellevilloise,False,True
+48.86436,2.364217,PA_0746,79 rue Charlot,False,True
+48.853989,2.338092,PA_0747,librairie Mazarine,False,True
+48.89966,2.38804,PA_0748,Avenue de la Porte de la Villette,False,True
+48.85901,2.436125,PA_0749,face au conservatoire de Montreuil,False,True
+48.857381,2.434642,PA_0750,4 rue du Sergent Bobillot,False,True
+48.860505,2.439718,PA_0751,11 rue Girardot,False,True
+48.876096,2.440929,PA_0752,14 boulevard Edouard Branly,False,True
+48.852952,2.407912,PA_0753,120 rue d'Avron,False,True
+48.860385,2.375421,PA_0754,59bis rue Popincourt,False,True
+48.875067,2.340506,PA_0755,6 rue de la Victoire,False,True
+48.87662,2.339413,PA_0756,4 rue Flechier,False,True
+48.83374,2.24399,PA_0757,place Marcel Sembat,False,True
+48.830897,2.257281,PA_0758,44 quai du Point du Jour,False,True
+48.851105,2.2784,PA_0761,1 quai Louis BlÃ©riot,False,True
+48.848516,2.260419,PA_0762,face au 99 boulevard de Montmorency,False,True
+48.875949,2.441232,PA_0763,A3/Boulevard Edouard Branly,False,True
+48.852426,2.341462,PA_0764,28 rue Serpente,False,True
+48.844762,2.346528,PA_0765,17 rue de l'Estrapade,False,True
+48.841397,2.349618,PA_0766,97 rue Mouffetard,False,True
+48.839616,2.356229,PA_0767,0 rue du Fer Ã  Moulin,False,True
+48.846213,2.378005,PA_0768,42 boulevard Diderot,False,True
+48.860716,2.355181,PA_0769,65 rue du Temple,False,True
+48.878821,2.345214,PA_0770,6 rue de la Tour d'Auvergne,False,True
+48.858658,2.402883,PA_0771,132 rue des PyrÃ©nÃ©es,False,True
+48.868623,2.371913,PA_0774,119 avenue Parmentier,False,True
+48.865825,2.340667,PA_0775,4 place des Victoires,False,True
+48.87263,2.324096,PA_0776,14 rue Castellane,False,True
+48.82046,2.37492,PA_0778,pÃ©riphÃ©rique le long des immeubles de la rue Maryse BastiÃ©,False,True
+48.851286,2.331966,PA_0780,12 rue Madame,False,True
+48.846086,2.35432,PA_0781,2 rue des Boulangers,False,True
+48.852734,2.33924,PA_0795,8 cour du Commerce Saint-AndrÃ©,False,True
+48.861041,2.362933,PA_0796,110 rue Vieille du Temple,False,True
+48.859905,2.324936,PA_0797,77 rue de Lille,False,True
+48.854443,2.331097,PA_0798,184 boulevard Saint-Germain,False,True
+48.86583,2.3435,PA_0800,56bis rue du Louvre,False,True
+48.85719,2.33175,PA_0801,maison de Serge Gainsbourg,False,True
+48.85263,2.33386,PA_0802,27 rue du Four,False,True
+48.852498,2.339247,PA_0803,entrÃ©e de la Cour du Commerce Saint-AndrÃ©,False,True
+48.843246,2.406068,PA_0809,7 rue Lasson,False,True
+48.850527,2.392899,PA_0810,1 passage Turquetil,False,True
+48.850359,2.383073,PA_0811,Est de la fontaine de Montreuil,False,True
+48.8493,2.3777,PA_0812,12bis rue de Cotte,False,True
+48.87185,2.365215,PA_0813,passerelle Richerand,False,True
+48.86688,2.35142,PA_0814,10 rue du Ponceau,False,True
+48.858605,2.35195,PA_0815,15 rue du Renard,False,True
+48.85227,2.360164,PA_0816,ancienne gare maritime Sully-Morland,False,True
+48.860202,2.404223,PA_0817,1 rue Saint-Blaise,False,True
+48.859604,2.368528,PA_0818,68 rue Saint-Sabin,False,True
+48.860951,2.34241,PA_0819,2 rue Bailleul,False,True
+48.862364,2.363723,PA_0820,10 rue de Bretagne,False,True
+48.854407,2.395969,PA_0821,Ã©dicule EDF face au 81 boulevard de Charonne,False,True
+48.858452,2.400672,PA_0822,2 rue de Lesseps,False,True
+48.8867,2.38499,PA_0823,145 avenue Jean JaurÃ¨s,False,True
+48.855796,2.423043,PA_0825,186 rue de Paris,False,True
+48.872319,2.378194,PA_0826,22 rue Denoyez,False,True
+48.863391,2.399423,PA_0827,1 bis rue des Rondonneaux,False,True
+48.854764,2.399058,PA_0828,38 rue de Terre Neuve,False,True
+48.855099,2.398948,PA_0829,104 rue de Buzenval,False,True
+48.856031,2.405892,PA_0830,68 rue des Orteaux,False,True
+48.851954,2.401255,PA_0831,mÃ©tro Buzenval,False,True
+48.857551,2.399387,PA_0832,100 rue de la RÃ©union,False,True
+48.857411,2.399298,PA_0833,dans l'Abribus,False,True
+48.85837,2.39874,PA_0834,entrÃ©e du PÃ¨re Lachaise,False,True
+48.85916,2.39961,PA_0835,13 rue de Lasseps,False,True
+48.853818,2.374087,PA_0836,11 passage ThiÃ©rÃ©,False,True
+48.855904,2.375263,PA_0837,53bis rue de la Roquette,False,True
+48.85637,2.39423,PA_0838,113 boulevard de Charonne,False,True
+48.862906,2.348743,PA_0839,20 rue de la Grande Truanderie,False,True
+48.864981,2.348423,PA_0841,4 rue Marie Stuart,False,True
+48.866503,2.333121,PA_0842,32 rue Saint-Roch,False,True
+48.866503,2.333121,PA_1040,32 rue Saint-Roch,False,True
+48.866059,2.32519,PA_0843,246 rue de Rivoli,False,True
+48.87421,2.31016,PA_0844,20 rue de Courcelles,False,True
+48.87421,2.31016,PA_0918,20 rue de Courcelles,False,True
+48.872463,2.30986,PA_0845,73 rue La BoÃ©tie,False,True
+48.864751,2.359575,PA_0846,4 rue de RÃ©aumur,False,True
+48.841557,2.307994,PA_0847,mÃ©tro Volontaires,False,True
+48.84012,2.31498,PA_0848,1 rue de l'Armorique,False,True
+48.840532,2.323702,PA_0849,3 rue du Maine,False,True
+48.84065,2.32324,PA_0850,1 rue Poinsot,False,True
+48.842183,2.330338,PA_0851,14 Bis rue de la Grande ChaumiÃ¨re,False,True
+48.859408,2.38287,PA_0852,10 rue Saint-Maur,False,True
+48.873725,2.365062,PA_0853,12 rue de la Grange aux Belles,False,True
+48.884381,2.356058,PA_0854,1 rue de Tombouctou,False,True
+48.887443,2.335894,PA_0855,75 rue Lepic,False,True
+48.88653,2.34136,PA_0856,rue Saint-Eleuthere,False,True
+48.88637,2.340571,PA_0857,sud-ouest de la place du Tertre,False,True
+48.878807,2.336978,PA_0858,1 rue la BruyÃ¨re,False,True
+48.869763,2.351582,PA_0859,1 rue de la Lune,False,True
+48.86133,2.339842,PA_0860,1 rue de l'Oratoire,False,True
+48.861853,2.37005,PA_0861,30 passage Saint-Sebastien,False,True
+48.873264,2.309465,PA_0862,127 rue du Faubourg Saint-HonorÃ©,False,True
+48.816734,2.347442,PA_0863,statue derriÃ¨re le stade Charlety,False,True
+48.878599,2.337431,PA_0864,32 place Saint-Georges,False,True
+48.881236,2.331532,PA_0865,53 rue Blanche,False,True
+48.880597,2.331499,PA_0866,0 rue Paul Escudier,False,True
+48.880949,2.312029,PA_0867,30 boulevard de Courcelles,False,True
+48.86979,2.32322,PA_0868,1 boulevard Malsherbes,False,True
+48.871945,2.364654,PA_0869,quai de Valmy,False,True
+48.8717,2.364576,PA_0870,au dessus de chez Prune,False,True
+48.854906,2.399089,PA_0871,29 rue de Terre Neuve,False,True
+48.881777,2.368809,PA_0872,Le Point (pas si) EphÃ©mÃ¨re,False,True
+48.85318,2.346164,PA_0873,rue du Chat qui PÃ¨che,False,True
+48.85304,2.34564,PA_0874,18 rue de la Huchette,False,True
+48.825452,2.353816,PA_0875,2 rue des Peupliers,False,True
+48.856137,2.424849,PA_0877,146 rue de Paris,False,True
+48.858694,2.362751,PA_0878,17 rue Payenne,False,True
+48.856036,2.371354,PA_0879,22 rue Saint-Sabin,False,True
+48.858934,2.329937,PA_0880,4 rue de Beaune,False,True
+48.85819,2.32827,PA_0881,20 rue du Bac,False,True
+48.868625,2.366984,PA_0882,29 boulevard Jules Ferry,False,True
+48.889524,2.371311,PA_0883,3 rue Curial,False,True
+48.88157,2.365937,PA_0884,205 rue La Fayette,False,True
+48.877328,2.29472,PA_0885,36 rue Brey,False,True
+48.853537,2.380393,PA_0886,43 rue Saint-Bernard,False,True
+48.828006,2.389592,PA_0887,sur le bastion de Bercy,False,True
+48.854688,2.372167,PA_0888,21 rue de la Roquette,False,True
+48.89116,2.373707,PA_0889,34 rue Mathis,False,True
+48.894525,2.334337,PA_0890,175bis rue Championnet,False,True
+48.886024,2.317294,PA_0891,59 rue Legendre,False,True
+48.873719,2.309874,PA_0892,7 avenue Myron Herrick,False,True
+48.864492,2.332738,PA_0893,6 rue des Pyramides,False,True
+48.868841,2.337102,PA_0894,11 rue Saint-Augustin,False,True
+48.900435,2.387233,PA_0895,place Auguste Baron,False,True
+48.81901,2.3294,PA_0896,23 avenue du Docteur Lannelongue,False,True
+48.819408,2.295427,PA_0897,1 boulevard Gabriel PÃ©ri,False,True
+48.882134,2.337751,PA_0900,place Pigalle,False,True
+48.838477,2.300103,PA_0901,1 rue LÃ©on Delhomme,False,True
+48.846342,2.301983,PA_0902,17 rue de Cambronne,True,True
+48.881567,2.301958,PA_0903,15 rue Cardinet,False,True
+48.849948,2.37878,PA_0904,23 rue d'Aligre,False,True
+48.885039,2.354615,PA_0906,9 rue de la Goutte d'Or,False,True
+48.853621,2.38963,PA_0908,10 citÃ© Beauharnais,False,True
+48.903461,2.391909,PA_0910,72 avenue Jean JaurÃ¨s,False,True
+48.90018,2.38639,PA_0911,7Z place Auguste Baron,False,True
+48.915428,2.357463,PA_0912,pont de Soissons,False,True
+48.910287,2.34409,PA_0913,42 avenue Michelet,False,True
+48.900339,2.292583,PA_0914,5 rue Baudin,False,True
+48.891474,2.285538,PA_0915,69 rue Anatole France,False,True
+48.87954,2.294866,PA_0916,14 rue Bayen,False,True
+48.87987,2.295,PA_0917,2 rue de Fourcroy,False,True
+48.864308,2.347732,PA_0919,12 rue FranÃ§aise,False,True
+48.875313,2.440717,PA_0920,41 boulevard Edouard Branly,False,True
+48.838591,2.375702,PA_0921,pont de Bercy/quai de Bercy,False,True
+48.837552,2.374027,PA_0922,pont de Bercy/quai d'Austerlitz,False,True
+48.836981,2.390012,PA_0923,face au 36 rue Coriolis,False,True
+48.842509,2.37178,PA_0924,56 quai de la RapÃ©e,False,True
+48.850165,2.362963,PA_0925,17 boulevard Morland,False,True
+48.861722,2.3516,PA_0926,149 rue Saint-Martin,False,True
+48.815316,2.360387,PA_0929,1 rue du GÃ©nÃ©ral Leclerc,False,True
+48.873136,2.345165,PA_0930,8 rue de TrÃ©vise,False,True
+48.874087,2.347349,PA_0931,2 rue Ambroise Thomas,False,True
+48.869025,2.356239,PA_0932,ThÃ©Ã¢tre de la Renaissance,False,True
+48.827162,2.336602,PA_0933,11ter rue d'AlÃ©sia,False,True
+48.833181,2.310077,PA_0934,76 rue de VouillÃ©,False,True
+48.847476,2.301551,PA_0935,2 rue Cambronne,False,True
+48.841776,2.363471,PA_0936,boulevard de l'HÃ´pital sous le mÃ©tro,False,True
+48.830319,2.346681,PA_0937,face au 80 boulevard Auguste Blanqui,False,True
+48.830237,2.346628,PA_0938,face au 91 boulevard Auguste Blanqui,False,True
+48.834147,2.33202,PA_0939,mÃ©tro Denfert-Rochereau,False,True
+48.841811,2.303352,PA_0941,103 rue Cambronne,False,True
+48.825857,2.352675,PA_0942,2 passage Foubert,False,True
+48.831301,2.37904,PA_0943,entrÃ©e des Frigos,False,True
+48.850812,2.384482,PA_0944,10 rue Faidherbe,False,True
+48.866294,2.369865,PA_0945,81 rue de la Folie MÃ©ricourt,False,True
+48.870725,2.35482,PA_0946,1 rue de Metz,False,True
+48.875181,2.355805,PA_0947,105 rue du Faubourg Saint-Denis,False,True
+48.87101,2.35325,PA_0948,33 rue du Faubourg Saint-Denis,False,True
+48.844942,2.297832,PA_0949,1 rue Joseph Liouville,False,True
+48.850446,2.293254,PA_0950,mÃ©tro Dupleix,False,True
+48.850322,2.294131,PA_0951,face au 75 boulevard de Grenelle,False,True
+48.868124,2.324819,PA_0952,4 rue du Chevalier de Saint-Georges,False,True
+48.859264,2.354778,PA_0953,9 rue du PlÃ¢tre,False,True
+48.86588,2.36391,PA_0955,12 rue BÃ©ranger,False,True
+48.866906,2.353345,PA_0956,5 rue Papin,False,True
+48.844588,2.368976,PA_0957,86 Quai de la RapÃ©e,False,True
+48.836181,2.392206,PA_0958,255 rue de Charenton,False,True
+48.863771,2.362772,PA_0959,1 rue du Forez,False,True
+48.858285,2.389569,PA_0960,141 boulevard Philippe Auguste,False,True
+48.85078,2.37858,PA_0961,2 rue Trousseau,False,True
+48.876826,2.406605,PA_0962,mÃ©tro Porte des Lilas,False,True
+48.866341,2.364533,PA_0963,41 boulevard du Temple,False,True
+48.858728,2.332779,PA_0965,statue de Paris du pont du Carrousel,False,True
+48.855595,2.287752,PA_0966,pont de Bir-Hakeim,False,True
+48.854678,2.289107,PA_0967,105 quai Branly,False,True
+48.856601,2.28661,PA_0968,nord du pont de Bir-Hakeim,False,True
+48.849996,2.27966,PA_0969,Statue de la LibertÃ©,False,True
+48.850592,2.28058,PA_0970,allÃ©e des Cygnes,False,True
+48.830178,2.334976,PA_0971,1 rue du Saint-Gothard,False,True
+48.846276,2.415351,PA_0972,22 rue Bernard Lecache,False,True
+48.8672,2.353292,PA_0973,entrÃ©e du square Emile Chautemps,False,True
+48.8672,2.353292,PA_0974,entrÃ©e du square Emile Chautemps,False,True
+48.8672,2.353292,PA_0975,entrÃ©e du square Emile Chautemps,False,True
+48.868233,2.343669,PA_0976,130 rue Montmartre,False,True
+48.86606,2.351805,PA_0977,passage Basfour,False,True
+48.863739,2.346475,PA_0978,28 rue Montorgueil,False,True
+48.850876,2.361237,PA_0979,pont de Sully cÃ´tÃ© rive Droite,False,True
+48.839793,2.383141,PA_0980,sous le pont du boulevard de Bercy,False,True
+48.845118,2.383271,PA_0981,place du Colonel Bourgouin,False,True
+48.865966,2.406642,PA_0983,rue Mondoville,False,True
+48.882183,2.392771,PA_0984,1 place Rhin et Danube,False,True
+48.879782,2.399501,PA_0985,52 boulevard SÃ©rurier,False,True
+48.87939,2.38444,PA_0986,face Ã  la rue du Tunnel,False,True
+48.8875,2.378722,PA_0987,39 quai de la Loire,False,True
+48.883751,2.350654,PA_0988,mÃ©tro BarbÃ¨s-Rochechouart,False,True
+48.89142,2.361296,PA_0989,2 rue de l'Ã‰vangile,False,True
+48.884479,2.360347,PA_0990,mÃ©tro La Chapelle,False,True
+48.87414,2.37435,PA_0991,33 boulevard de la Villette,False,True
+48.876705,2.408995,PA_0993,entrÃ©e du pÃ©riphÃ©rique porte des Lilas,False,True
+48.896963,2.310692,PA_0994,0 boulevard Duaumont,False,True
+48.886437,2.31856,PA_0995,place du Docteur FÃ©lix Lobligeois,False,True
+48.879968,2.287779,PA_0996,face au 89 avenue des Ternes,False,True
+48.861738,2.350808,PA_0997,61 rue Quincampoix,False,True
+48.863976,2.350135,PA_0998,impasse des Peintres,False,True
+48.857783,2.380989,PA_0999,136 rue de la Roquette,False,True
+48.859588,2.379518,PA_1000,dans le hall de la GÃ©nÃ©rale,False,True
+48.859588,2.379518,PA_1001,dans le hall de la GÃ©nÃ©rale,False,True
+48.77895,2.4408,PA_1002,face au Castorama de CrÃ©teil,False,True
+48.877676,2.306245,PA_1004,66 rue de Courcelles,False,True
+48.865237,2.375371,PA_1005,89 rue Oberkampf,False,True
+48.872126,2.346739,PA_1006,9 rue BergÃ¨re,False,True
+48.873453,2.340495,PA_1007,11 rue Drouot,False,True
+48.868701,2.33839,PA_1008,75 rue de Richelieu,False,True
+48.85849,2.38921,PA_1009,1 boulevard de MÃ©nilmontant,False,True
+48.87723,2.387829,PA_1010,1 Rue Carducci,False,True
+48.873463,2.352622,PA_1011,1 rue Martel,False,True
+48.878535,2.345251,PA_1012,32 rue de Rochechouart,False,True
+48.8516,2.384666,PA_1014,10 rue Paul Bert,False,True
+48.876297,2.387547,PA_1015,29 rue de la Villette,False,True
+48.87905,2.390206,PA_1016,34 rue de CrimÃ©e,False,True
+48.878821,2.388289,PA_1017,86 rue de la Villette,False,True
+48.889951,2.360135,PA_1018,place Paul Eluard,False,True
+48.8731,2.363303,PA_1019,23 rue des Vinaigriers,False,True
+48.895858,2.343033,PA_1020,86 rue Championnet,False,True
+48.895526,2.338842,PA_1021,1 impasse Robert,False,True
+48.890852,2.340473,PA_1022,27 rue FrancÅ“oeur,False,True
+48.85006,2.384156,PA_1024,198 rue du Faubourg Saint-Antoine,False,True
+48.875058,2.319318,PA_1025,5 place Saint-Augustin,False,True
+48.837786,2.521098,PA_1026,52 Grande Rue Charles-de-Gaulle,False,True
+48.856768,2.395604,PA_1027,CitÃ© Aubry,False,True
+48.868194,2.383677,PA_1028,9 rue des Maronites,False,True
+48.86058,2.345563,PA_1030,41 rue des Bourdonnais,False,True
+48.90066,2.38924,PA_1031,face Ã  un entrepÃ´t abandonnÃ©,False,True
+48.858224,2.364399,PA_1032,51 rue de Turenne,False,True
+48.861085,2.36695,PA_1033,1 boulevard des Filles du Calvaire,False,True
+48.86119,2.344233,PA_1034,48 rue Saint-HonorÃ©,False,True
+48.825751,2.383472,PA_1035,14 rue Jean-Baptiste Berlier,False,True
+48.819469,2.361984,PA_1036,144 boulevard MassÃ©na,False,True
+48.825982,2.357178,PA_1037,84 avenue d'Italie,False,True
+48.856784,2.272968,PA_1038,5 rue Pajou,False,True
+48.854947,2.386129,PA_1039,1 impasse Delaunay,False,True
+48.754462,2.375199,PA_1041,rond-point d'Espagne,False,True
+48.773999,2.403205,PA_1042,A86 cÃ´tÃ© cimetiÃ¨re nouveau de Vitry,False,True
+48.773718,2.403313,PA_1043,A86 cÃ´tÃ© cimetiÃ¨re communal de Choisy,False,True
+48.816089,2.35889,PA_1044,Ã©changeur porte d'Italie,False,True
+48.864685,2.401248,PA_1045,3 rue de la Chine,False,True
+48.865017,2.358505,PA_1046,22 rue RÃ©aumur,False,True
+48.865495,2.374638,PA_1047,88ter avenue Parmentier,False,True
+48.765394,2.34389,PA_1048,Autoroute du Soleil,False,True
+48.883048,2.349524,PA_1050,191 rue du Faubourg PoissonniÃ¨re,False,True
+48.855152,2.339623,PA_1051,22 rue Dauphine,False,True
+48.887431,2.347243,PA_1052,rue du Chevalier de la Barre,False,True
+48.884115,2.33884,PA_1053,8 place des Abbesses,False,True
+48.85264,2.385094,PA_1054,26 rue Chanzy,False,True
+48.82677,2.466303,PA_1055,bretelle de sortie de l'autoroute de l'Est,False,True
+48.86687,2.336551,PA_1058,24 rue des Petits Champs,False,True
+48.853931,2.336917,PA_1059,54 rue de Seine,False,True
+48.882709,2.336903,PA_1060,villa de Guelma,False,True
+48.888662,2.34657,PA_1061,29 rue ramey,False,True
+48.858213,2.355071,PA_1063,28 rue des Archives,False,True
+48.861797,2.365288,PA_1064,16 rue Froissart,False,True
+48.864989,2.354527,PA_1065,59 rue au Maire (Simpson),False,True
+48.864658,2.408417,PA_1066,McDo de la porte de Bagnolet,False,True
+48.874683,2.356845,PA_1067,1 rue de la FidÃ©litÃ©,False,True
+48.862872,2.362363,PA_1068,39 rue de Bretagne,False,True
+48.868221,2.388062,PA_1069,121 rue des Amandiers,False,True
+48.848529,2.398585,PA_1070,pavillon Saint-Louis,False,True
+48.873677,2.322444,PA_1071,58 rue d'Anjou,False,True
+48.873321,2.323701,PA_1072,32 rue Pasquier,False,True
+48.872287,2.313515,PA_1073,41 rue de PenthiÃ¨vre,False,True
+48.871275,2.315733,PA_1074,22 rue du Cirque,False,True
+48.85321,2.33609,PA_1075,158 boulevard Saint-Germain,False,True
+48.851785,2.336608,PA_1076,MarchÃ© Saint-Germain,False,True
+48.885708,2.334902,PA_1077,65 rue des Abbesses,False,True
+48.867372,2.319147,PA_1080,Espace Pierre Cardin,False,True
+48.848875,2.378264,PA_1082,place d'Aligre,False,True
+48.870268,2.356426,PA_1084,36 rue du Faubourg Saint-Martin,False,True
+48.875807,2.360599,PA_1085,ancien Couvent des RÃ©collets,False,True
+48.851037,2.347996,PA_1086,2 rue des Anglais,False,True
+48.852782,2.346484,PA_1087,1 rue de la Huchette,False,True
+48.841155,2.356097,PA_1088,77 rue Buffon,False,True
+48.872053,2.308972,PA_1089,79 rue de la BoÃ©tie,False,True
+48.884271,2.365263,PA_1090,mÃ©tro Stalingrad,False,True
+48.882881,2.371915,PA_1091,fontaine du Conservatoire Municipal du 19e,False,True
+48.875669,2.382055,PA_1092,18-20 rue Pradier,False,True
+48.840818,2.369772,PA_1093,CitÃ© de la Mode et du Design,False,True
+48.861817,2.364411,PA_1094,132 rue Vieille du Temple,False,True
+48.847363,2.395058,PA_1095,18ter rue Jaucourt,False,True
+48.869639,2.43046,PA_1096,18 rue des Lilas ou presque,False,True
+48.861527,2.34125,PA_1097,20 rue du Louvre,False,True
+48.852527,2.389316,PA_1098,1 citÃ© Voltaire,False,True
+48.865444,2.336659,PA_1100,Ã  gauche de la Fontaine MoliÃ¨re,False,True
+48.869977,2.311583,PA_1101,7 avenue Matignon,False,True
+48.858905,2.362321,PA_1102,place de Thorigny,False,True
+48.829159,2.353403,PA_1103,3 passage du Moulin des PrÃ©s,False,True
+48.834243,2.364409,PA_1104,68 rue Jenner,False,True
+48.884592,2.363443,PA_1105,16 boulevard de la Chapelle,False,True
+48.890901,2.345418,PA_1106,1 rue Ferdinand Flocon,False,True
+48.853257,2.342696,PA_1107,place Saint-AndrÃ© des Arts,False,True
+48.826848,2.363756,PA_1108,98 rue de Tolbiac,False,True
+48.82331,2.365508,PA_1109,51 avenue d'Ivry,False,True
+48.845788,2.413853,PA_1110,direction de la Voirie et des DÃ©placements,False,True
+48.881673,2.271323,PA_1111,80 avenue Charles de Gaulle,False,True
+48.889849,2.250182,PA_1112,place de l'Iris,False,True
+48.882934,2.239863,PA_1113,6 place de Stalingrad,False,True
+48.885113,2.326865,PA_1114,impasse de la DÃ©fense,False,True
+48.8597,2.388525,PA_1115,208 rue de la Roquette,False,True
+48.852293,2.40426,PA_1116,74 rue d'Avron,False,True
+49.00441,2.567216,PA_1117,Terminal 2D Porte 6,True,True
+48.877504,2.477093,PA_1118,boulevard Gabriel PÃ©ri sous le pÃ©riph',False,True
+48.862546,2.415945,PA_1119,29 avenue de la RÃ©publique,False,True
+48.84101,2.398884,PA_1120,84 rue de Picpus,False,True
+48.847343,2.40358,PA_1121,52 cours de Vincennes,False,True
+48.89626,2.384498,PA_1122,avenue Corentin Cariou,False,True
+48.834196,2.305686,PA_1123,1 rue Santos-Dumont,False,True
+48.873141,2.339479,PA_1124,11 rue Chauchat,False,True
+48.874285,2.330577,PA_1125,88 rue de Provence,False,True
+48.871175,2.324306,PA_1126,27 place de la Madeleine,False,True
+48.860227,2.363758,PA_1127,10 rue du Roi DorÃ©,False,True
+48.85681,2.40473,PA_1128,112 rue des PyrÃ©nÃ©es,False,True
+48.847182,2.375001,PA_1129,19 rue Parrot,False,True
+48.84454,2.372361,PA_1130,face au 194 rue de Bercy,False,True
+48.839617,2.395918,PA_1131,est de la Fontaine au Lions,False,True
+48.836388,2.390802,PA_1132,26 rue Coriolis,False,True
+48.84537,2.40917,PA_1133,19 rue Montera,False,True
+48.827182,2.366977,PA_1134,74 rue de Tolbiac,False,True
+48.849242,2.38951,PA_1135,36 rue Tillier,False,True
+48.835882,2.391304,PA_1136,18 rue Coriolis,False,True
+48.895025,2.40982,PA_1137,pont Delizy,False,True
+48.898349,2.406627,PA_1138,112 avenue du GÃ©nÃ©ral Leclerc,False,True
+48.874031,2.385394,PA_1139,93 rue de Belleville,False,True
+48.866469,2.335957,PA_1140,10 rue Villedo,False,True
+48.848419,2.304209,PA_1141,Agence Spatiale EuropÃ©enne,False,True
+48.849797,2.400222,PA_1142,8 rue de la Plaine,False,True
+48.875841,2.286832,PA_1143,place du GÃ©nÃ©ral Patton,False,True
+48.874751,2.284192,PA_1144,18 rue Piccini,False,True
+48.826858,2.382021,PA_1145,1 rue de la Croix Jarry,False,True
+48.86275,2.387093,PA_1146,154 rue du Chemin Vert,False,True
+48.873024,2.363929,PA_1147,pont de la Grange aux Belles,False,True
+48.851057,2.398819,PA_1149,42 boulevard de Charonne,False,True
+48.844928,2.364385,PA_1150,quai Saint-Bernard,False,True
+48.86423,2.33027,PA_1151,mÃ©tro Tuileries,False,True
+48.853332,2.36127,PA_1152,village Saint-Paul,False,True
+48.854585,2.3626,PA_1153,87 rue Saint-Antoine,False,True
+48.868562,2.363243,PA_1154,0 rue LÃ©on Jouhaux,False,True
+48.857685,2.414452,PA_1155,pont piÃ©ton de la rue Lucien Lambeau,False,True
+48.856563,2.356857,PA_1156,12 rue Vieille du Temple,False,True
+48.86391,2.354822,PA_1157,81 rue de Beaubourg,False,True
+48.851158,2.398184,PA_1158,33 boulevard de Charonne,False,True
+48.87847,2.298683,PA_1159,6 place des Ternes,False,True
+48.874707,2.305867,PA_1160,165 rue du Faubourg Saint-HonorÃ©,False,True
+48.858606,2.359031,PA_1161,42 rue des Francs-Bourgeois,False,True
+48.862045,2.34868,PA_1162,14 rue des PrÃ©cheurs,False,True
+48.871181,2.36107,PA_1163,8 place Jacques Bonsergent,False,True
+48.885151,2.303648,PA_1164,130 avenue de Wagram,False,True
+48.868077,2.348778,PA_1165,48 rue du Caire,False,True
+48.852446,2.35698,PA_1166,1 quai de Bourbon,False,True
+48.849736,2.332597,PA_1167,84 rue Bonaparte,False,True
+48.886756,2.300392,PA_1168,1 rue Verniquet,False,True
+48.89895,2.359518,PA_1169,6 avenue de la Porte de la Chapelle,False,True
+48.864156,2.355424,PA_1170,45 rue des Gravilliers,False,True
+48.846868,2.347805,PA_1171,68 rue de la Montagne Sainte-GeneviÃ¨ve,False,True
+48.858828,2.350647,PA_1172,93 rue de la Verrerie,False,True
+48.840096,2.371144,PA_1173,terrasse du Wanderlust,False,True
+48.83699,2.391172,PA_1174,14 rue des Fonds-Verts,False,True
+48.877413,2.342371,PA_1175,2 rue Rodier,False,True
+48.877403,2.342256,PA_1176,5 rue Rodier,False,True
+48.868795,2.340272,PA_1177,Agence France Presse,False,True
+48.82156,2.368532,PA_1178,82 boulevard MassÃ©na,False,True
+48.830787,2.356652,PA_1179,213 boulevard Vincent Auriol,False,True
+48.835102,2.353336,PA_1180,47 avenue des Gobelins,False,True
+48.874815,2.328576,PA_1181,58 rue Caumartin,False,True
+48.880838,2.290073,PA_1182,22 rue Guersant,False,True
+48.845604,2.402938,PA_1183,9 rue Marsoulan,False,True
+48.762395,2.340419,PA_1184,croisement E50/A6B,False,True
+48.853446,2.379467,PA_1185,59 rue de Charonne,False,True
+48.853717,2.399535,PA_1186,32 impasse de la Confiance,False,True
+48.882103,2.402702,PA_1187,89 rue AndrÃ© Joineau,False,True
+48.842502,2.334858,PA_1188,81 rue d'Assas,False,True
+48.844147,2.350387,PA_1189,43 rue LacÃ©pÃ¨de,False,True
+48.852589,2.334419,PA_1190,2 rue Princesse Leia,False,True
+48.814755,2.355387,PA_1191,le long de la D126B,False,True
+48.8411,2.313336,PA_1196,2 impasse Mathieu,False,True
+48.843878,2.322431,PA_1197,6 rue de l'ArrivÃ©e,False,True
+48.842276,2.329685,PA_1198,145 boulevard Raspail,False,True
+48.821567,2.352432,PA_1199,Poterne des Peupliers,False,True
+48.852528,2.347302,PA_1200,35 rue de la BÃ»cherie,False,True
+48.86438,2.37326,PA_1201,14 rue Ternaux,False,True
+48.883249,2.301697,PA_1202,129 avenue de Wagram,False,True
+48.847823,2.340895,PA_1203,64 rue Monsieur le Prince,False,True
+48.852275,2.403237,PA_1204,61 rue d'Avron,False,True
+48.835457,2.368736,PA_1205,bÃ¢timent Marguerite Bottard,False,True
+48.866206,2.368824,PA_1206,22 avenue de la RÃ©publique,False,True
+48.873118,2.361351,PA_1207,31 rue Lucien Sampaix,False,True
+48.833951,2.30942,PA_1208,35 rue Castagnary,False,True
+48.85219,2.338901,PA_1209,99 boulevard Saint-Germain,False,True
+48.86885,2.337762,PA_1210,3 rue Saint-Augustin,False,True
+48.865411,2.385035,PA_1211,1 passage MondÃ©sir,False,True
+48.87139,2.36078,PA_1212,16 place Jacques Bonsergent,False,True
+48.86088,2.34856,PA_1213,4 rue Berger,False,True
+48.842979,2.401823,PA_1214,42 rue Leroy DuprÃ©,False,True
+48.86757,2.33329,PA_1215,3 rue Danielle Casanova,False,True
+48.873466,2.285079,PA_1216,1 rue Duret,False,True
+48.863861,2.320227,PA_1217,pont de la Concorde,False,True
+48.89067,2.37648,PA_1218,2 rue Mathys,False,True
+48.87559,2.39896,PA_1219,261 rue de Belleville,False,True
+48.871694,2.352584,PA_1220,7 rue d'Enghien,False,True
+48.84453,2.351911,PA_1221,place Benjamin Fondane,False,True
+48.863935,2.380904,PA_1222,90 avenue de la RÃ©publique,False,True
+48.85785,2.27793,PA_1223,1 place de Passy,False,True
+48.844904,2.405649,PA_1224,57 avenue du docteur Netter,False,True
+48.84691,2.40845,PA_1225,100 cours de Vincennes,False,True
+48.844418,2.381721,PA_1227,129 coulÃ©e verte RenÃ©-Dumont,False,True
+48.834496,2.357361,PA_1228,22 rue Watteau,False,True
+48.876716,2.339576,PA_1229,62 rue Lamartine,False,True
+48.873571,2.334758,PA_1230,7 rue Lafayette,False,True
+48.888359,2.392077,PA_1231,200 avenue Jean JaurÃ¨s,False,True
+48.8953,2.34591,PA_1232,102 rue du Mont Cenis,False,True
+48.88558,2.34984,PA_1233,2 rue des Poissonniers,False,True
+48.79161,2.86916,PA_1234,ObÃ©lisque de Villeneuve-le-Comte,False,True
+48.840436,2.346044,PA_1235,72 rue Claude Bernard,False,True
+48.936142,2.40488,PA_1238,CimetiÃ¨re de la Courneuve,False,True
+48.920939,2.411101,PA_1239,54 avenue Paul Vaillant Couturier,False,True
+48.83349,2.36299,PA_1240,114 boulevard Vincent Auriol,False,True
+48.849604,2.355828,PA_1241,1 quai de la Tournelle,False,True
+48.84986,2.402556,PA_1242,26 rue de la Plaine,False,True
+48.859383,2.388855,PA_1243,15 boulevard de MÃ©nilmontant,False,True
+48.86267,2.36748,PA_1244,4 rue Oberkampf,False,True
+48.85012,2.35524,PA_1245,pont de la Tournelle,False,True
+48.85283,2.352059,PA_1246,12 pont Saint-Louis,False,True
+48.881194,2.402437,PA_1247,HÃ´pital Robert DebrÃ©,False,True
+48.86411,2.37048,PA_1248,101 boulevard Richard Lenoir,False,True
+48.857501,2.354399,PA_1249,24 rue de la Verrerie,False,True
+48.864018,2.408127,PA_1250,176 rue de Bagnolet,False,True
+48.879424,2.29163,PA_1251,8 place Tristan Bernard,False,True
+48.866053,2.286101,PA_1252,110 rue Lauriston,False,True
+48.8659,2.303735,PA_1253,1 rue du Boccador,False,True
+48.868783,2.303745,PA_1254,23 rue Marbeuf,False,True
+48.86657,2.34065,PA_1255,5 place des Petits PÃ¨res,False,True
+48.87759,2.352,PA_1256,29 rue des Petits HÃ´tels,False,True
+48.864625,2.300775,PA_1257,1 avenue du PrÃ©sident Wilson,False,True
+48.85416,2.37107,PA_1258,13 rue de la Roquette,False,True
+48.832738,2.493139,PA_1259,39 boulevard Albert 1er,False,True
+48.860761,2.34097,PA_1260,8 rue de l'Amiral de Coligny,False,True
+48.838297,2.388899,PA_1261,73 boulevard de Bercy,False,True
+48.863506,2.340478,PA_1262,7 rue du Bouloi,False,True
+48.85844,2.34213,PA_1263,Pont Neuf,False,True
+48.860166,2.342157,PA_1264,MusÃ©e en Herbes,False,True
+48.860307,2.352155,PA_1265,Centre Georges Pompidou,False,True
+48.866668,2.358042,PA_1266,41 rue Volta,False,True
+48.849561,2.395922,PA_1267,2 avenue de Bouvines,False,True
+48.858338,2.34264,PA_1268,Pont-Neuf,False,True
+48.866262,2.335576,PA_1269,28 rue Sainte-Anne,False,True
+48.88649,2.37473,PA_1270,passerelle du Bassin de la Villette,False,True
+48.836064,2.483849,PA_1271,Square de la Fontaine,False,True
+48.835508,2.302815,PA_1272,1 rue VouillÃ©,False,True
+48.84598,2.35441,PA_1273,39 rue LinnÃ©,False,True
+48.834859,2.284039,PA_1274,10 square Desnouettes,False,True
+48.88263,2.3439,PA_1275,12 place d'Anvers,False,True
+48.8867,2.34062,PA_1276,21 place du Tertre,False,True
+48.86645,2.3729,PA_1277,52 rue Jean-Pierre Timbaud,False,True
+48.874302,2.331238,PA_1278,80 rue de Provence,False,True
+48.82879,2.29954,PA_1279,86 Boulevard Lefebvre,False,True
+48.882183,2.31565,PA_1280,14 rue de LÃ©vis,False,True
+48.86545,2.36028,PA_1281,2 rue des Fontaines du Temple,False,True
+48.84608,2.42366,PA_1282,106 avenue Auber,False,True
+48.85967,2.34593,PA_1283,3 rue des DÃ©chargeurs,False,True
+48.894141,2.304917,PA_1284,pont ferroviaire,False,True
+48.863176,2.413119,PA_1285,porte de Bagnolet,False,True
+48.86314,2.44873,PA_1286,face au 72 rue de Rosny,False,True
+48.861909,2.423283,PA_1287,18 rue du Ravin,False,True
+48.883774,2.371245,PA_1288,5 quai de Loire,False,True
+48.864463,2.30079,PA_1289,place de l'Alma,False,True
+48.864463,2.30079,PA_1290,place de l'Alma,False,True
+48.859116,2.439633,PA_1291,48 rue du Capitaine Dreyfus,False,True
+48.890172,2.339008,PA_1292,13 rue Darwin,False,True
+48.835936,2.358502,PA_1293,2 rue Titien,False,True
+48.87243,2.31379,PA_1294,34 rue de PenthiÃ¨vre,False,True
+48.86002,2.35008,PA_1295,4 place Edmond Michelet,False,True
+48.82371,2.32248,PA_1296,1 rue Albert Sorel,False,True
+48.84447,2.39012,PA_1297,89 rue de Reuilly,False,True
+48.833676,2.243025,PA_1298,1 avenue AndrÃ© Morizet,False,True
+48.854211,2.338847,PA_1299,42 rue Dauphine,False,True
+48.820773,2.375991,PA_1300,Maison Internationale de sÃ©jour pour jeunes actifs,False,True
+48.85615,2.38256,PA_1301,11 rue FranÃ§ois de NeufchÃ¢teau,False,True
+48.88261,2.36154,PA_1302,1 rue Cail,False,True
+48.86007,2.36654,PA_1303,3 rue Saint-Claude,False,True
+48.84787,2.35083,PA_1304,17 rue Monge,False,True
+48.819987,2.310661,PA_1306,46 avenue Pierre Brossolette,False,True
+48.83654,2.37973,PA_1307,parc de Bercy,False,True
+48.83359,2.24405,PA_1308,103 avenue Edouard Vaillant,False,True
+48.846992,2.27452,PA_1309,pont Mirabeau,False,True
+48.872937,2.316054,PA_1310,14 rue PenthiÃ¨vre,False,True
+48.860064,2.307714,PA_1311,15 rue Jean Nicot,False,True
+48.85809,2.30925,PA_1312,22 rue de la ComÃ¨te,False,True
+48.89254,2.341678,PA_1313,22 rue Duc,False,True
+48.839807,2.349835,PA_1314,139 rue Mouffetard,False,True
+48.823465,2.325342,PA_1315,142 avenue du GÃ©nÃ©ral Leclerc,False,True
+48.824791,2.362316,PA_1316,74 rue Baudricourt,False,True
+48.853478,2.342471,PA_1317,17 rue GÃ®t le CÅ“ur,False,True
+48.873174,2.353176,PA_1318,11 rue des Petites Ã‰curies,False,True
+48.878305,2.342657,PA_1319,1 rue de l'agent Bailly,False,True
+48.87896,2.344649,PA_1320,12 rue de la Tour d'Auvergne,False,True
+48.876741,2.348639,PA_1321,87 rue du Faubourg Montmartre,False,True
+48.875211,2.340823,PA_1322,53 rue du Faubourg Montmartre,False,True
+48.84958,2.403919,PA_1323,square Sarah Bernhart,False,True
+48.87452,2.35493,PA_1324,4 rue Paradis,False,True
+48.87571,2.34906,PA_1325,56 rue de Paradis,False,True
+48.87706,2.34802,PA_1326,85 rue la Fayette,False,True
+48.876683,2.35138,PA_1327,84 rue de Hauteville,False,True
+48.875096,2.351786,PA_1328,27bis rue de Paradis,False,True
+48.87586,2.34773,PA_1329,2 rue Bleue,False,True
+48.836249,2.354942,PA_1330,20 rue Pirandello,False,True
+48.826936,2.354507,PA_1331,11 rue Henri Michaux,False,True
+48.847532,2.353049,PA_1332,46 rue des FossÃ©s Saint-Bernard,False,True
+48.868992,2.331137,PA_1333,10 rue de la Paix,False,True
+48.868334,2.33012,PA_1334,25 place VendÃ´me,False,True
+48.8504,2.38552,PA_1336,24 rue de Montreuil,False,True
+48.852094,2.337119,PA_1337,93 rue de Seine,False,True
+48.84316,2.34947,PA_1338,62 rue Mouffetard,False,True
+48.84513,2.431637,PA_1339,1 rue des Vignerons,False,True
+48.87657,2.3443,PA_1340,1 rue de Rochechouart,False,True
+48.847605,2.431089,PA_1341,40 avenue Aubert,False,True
+48.85396,2.30379,PA_1342,allÃ©e Adrienne Lecouvreur,False,True
+48.856405,2.309643,PA_1343,72 boulevard de la Tour Maubourg,False,True
+48.85428,2.35011,PA_1344,26 rue Chanoinesse,False,True
+48.82107,2.416826,PA_1345,16 rue Jean-Baptiste Marty,False,True
+48.849121,2.367468,PA_1346,pilier est du pont de l'Arsenal,False,True
+48.86697,2.36199,PA_1347,6 rue Notre-Dame-de-Nazareth,False,True
+48.818205,2.424209,PA_1348,39 rue du MarÃ©chal Leclerc,False,True
+48.83023,2.33425,PA_1349,51 rue de la Tombe Issoire,False,True
+48.847199,2.317914,PA_1350,133 rue de SÃ¨vres,False,True
+48.841848,2.325479,PA_1351,63 rue du Montparnasse,False,True
+48.825731,2.360137,PA_1352,117 avenue de Choisy,False,True
+48.832787,2.355016,PA_1353,9 rue Philippe de Champagne,False,True
+48.88067,2.360431,PA_1354,18 rue de l'Aqueduc,False,True
+48.877247,2.354811,PA_1355,85bis boulevard Magenta,False,True
+48.847904,2.392827,PA_1356,168 boulevard Diderot,False,True
+48.87968,2.32403,PA_1357,2 rue de Saint-Petersbourg,False,True
+48.845624,2.342319,PA_1358,3 rue Royer-Collard,False,True
+48.848891,2.342013,PA_1359,place de la Sorbonne,False,True
+48.846042,2.343019,PA_1360,2 rue des FossÃ©s Saint-Jacques,False,True
+48.859462,2.370537,PA_1361,3 allÃ©e Verte,False,True
+48.849187,2.391903,PA_1362,2 rue des Boulets,False,True
+48.886605,2.377463,PA_1363,70 quai de la Loire,False,True
+48.855164,2.419351,PA_1364,2 rue Paul Bert,False,True
+48.850272,2.358674,PA_1365,14 quai de BÃ©thune,False,True
+48.85137,2.37634,PA_1366,90 avenue Ledru-Rollin,False,True
+48.886719,2.29596,PA_1367,160 boulevard Berthier,False,True
+48.865088,2.443442,PA_1368,place FranÃ§ois Mitterrand,False,True
+48.904005,2.359106,PA_1369,52 avenue du PrÃ©sident Wilson,False,True
+48.84147,2.353741,PA_1370,1 rue Larrey,False,True
+48.827832,2.342522,PA_1371,107 rue de la GlaciÃ¨re,False,True
+48.895855,2.346609,PA_1372,64 rue Championnet,False,True
+48.865095,2.347384,PA_1373,20 rue Marie Stuart,False,True
+48.85767,2.368618,PA_1374,3 rue Clotilde de Vaux,False,True
+48.863173,2.387689,PA_1375,42 boulevard de MÃ©nilmontant,False,True
+48.80272,2.42844,PA_1376,1 rue du capitaine Roland Deplanque,False,True
+48.8955,2.328048,PA_1377,121 avenue de Saint-Ouen,False,True
+48.825606,2.207041,PA_1378,rue des Caves du Roi,False,True
+48.82426,2.211876,PA_1379,5 avenue de l'Europe,False,True
+48.852444,2.344784,PA_1380,19 rue de la Harpe,False,True
+48.863603,2.425093,PA_1381,passerelle rue de l'Ã‰pine,False,True
+48.90133,2.34393,PA_1382,160 rue des Rosiers,False,True
+48.84314,2.36379,PA_1383,2 boulevard de l'HÃ´pital,False,True
+48.841148,2.352861,PA_1384,25 rue Daubenton,False,True
+48.865518,2.293006,PA_1385,4 rue BoissiÃ¨re,False,True
+48.827843,2.275555,PA_1386,3 rue Henri Mayer,False,True
+48.820094,2.310909,PA_1387,52 avenue Pierre Brossolette,False,True
+48.80819,2.241036,PA_1388,face Ã  la gare de Meudon - Val-Fleury,False,True
+48.813576,2.246601,PA_1389,Ã  l'est du viaduc rue de Paris,False,True
+48.829516,2.262607,PA_1390,5 rue Rouget de Lisle,False,True
+48.813413,2.389114,PA_1391,31 rue Descartes,False,True
+48.871013,2.34982,PA_1392,8 rue d'Hauteville,False,True
+48.81102,2.384178,PA_1393,13 rue Marat,False,True
+48.889173,2.319612,PA_1394,27 rue des Moines,False,True
+48.864532,2.346783,PA_1395,44 rue Montorgueil,False,True
+48.890105,2.303452,PA_1396,96 boulevard Berthier,False,True
+48.869855,2.319257,PA_1397,2 rue d'Aguesseau,False,True
+48.891203,2.317949,PA_1398,157 rue Cardinet,False,True
+48.89351,2.33337,PA_1399,24 rue Vauvenargues,False,True
+48.816723,2.364213,PA_1400,sur l'atelier de maintenance de la ligne 7,False,True
+48.852234,2.48951,PA_1401,face Ã  l'immeuble Belledonne,False,True
+48.876339,2.414624,PA_1402,52 rue des BruyÃ¨res,False,True
+48.832218,2.25343,PA_1403,50 avenue Pierre Grenier,False,True
+48.845257,2.370876,PA_1404,14 boulevard Diderot,False,True
+48.830569,2.492884,PA_1405,autoroute de l'Est/N486,False,True
+48.886993,2.313772,PA_1406,11 rue TarbÃ©,False,True
+48.849721,2.345072,PA_1407,75 rue Saint-Jacques,False,True
+48.900471,2.367302,PA_1408,derriÃ¨re le square Charles-Hermite,False,True
+48.81045,2.3502,PA_1409,63 rue Gabriel PÃ©ri,False,True
+48.887532,2.320344,PA_1410,82 rue Nollet,False,True
+48.85871,2.2757,PA_1411,98 avenue Paul Doumer,False,True
+48.88794,2.307107,PA_1412,34 boulevard Pereire,False,True
+48.866212,2.293588,PA_1413,13 rue de LÃ¼beck,False,True
+48.844979,2.436589,PA_1414,16 avenue de Vincennes,False,True
+48.81849,2.383889,PA_1415,83 rue Victor Hugo,False,True
+48.821266,2.250127,PA_1416,place de la RÃ©sistance,False,True
+48.842906,2.362192,PA_1417,escalier derriÃ¨re la galerie d'anatomie,False,True
+48.849389,2.303341,PA_1418,18 avenue de Lowendal,False,True
+48.868935,2.362326,PA_1419,1 rue du ChÃ¢teau d'Eau,False,True
+48.847205,2.383652,PA_1420,28 rue de Chaligny,False,True
+48.852627,2.407411,PA_1421,49 du Volga,False,True
+48.757865,2.348017,PA_1422,Pondorly,False,True
+48.870216,2.347786,PA_1423,33 rue PoissonniÃ¨re,False,True
+48.859587,2.369238,PA_1424,1 rue PelÃ©e,False,True
+48.855821,2.371851,PA_1425,9 rue Sedaine,False,True
+48.880106,2.258447,PA_1426,pavillon ouest de la porte de Neuilly,False,True
+48.880106,2.258447,PA_1427,pavillon ouest de la porte de Neuilly,False,True
+48.870968,2.275511,PA_1428,Gare de l'Avenue Foch,False,True
+48.832224,2.280645,PA_1429,1 rue de la Porte d'Issy,False,True
+48.888272,2.299683,PA_1430,130 boulevard Berthier,False,True
+48.858271,2.294608,PA_1431,dernier Ã©tage de la Tour Eiffel,False,True
+48.85953,2.35116,PA_1432,place Igor Stravinsky,False,True
+48.841104,2.352405,PA_1433,36 rue Daubenton,False,True
+48.855267,2.432581,PA_1434,39 rue Edouard Vaillant,False,True
+48.87415,2.353033,PA_0227,15 rue Martel,False,True
