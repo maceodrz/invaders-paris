@@ -1,0 +1,15 @@
+# vens
+venv
+.ven
+.env
+venv
+
+# data
+data
+static/flash_invaders_map/html
+
+# Python things
+__pycache__
+*.pyc
+*.pyo
+.DS_Store
