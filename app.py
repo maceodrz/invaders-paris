@@ -12,7 +12,7 @@ def get_marker_color(row):
     """Determine marker color based on Flashed and Flashable status"""
     if not row["Flashable"]:
         return "gray"
-    return "green" if row["Flashed"] else "purple"
+    return "green" if row["Flashed"] else "violet"
 
 def create_map():
     df = pd.read_csv(CSV_FILE)
@@ -52,7 +52,7 @@ def create_map():
                     if (marker) {
                         // Update marker color based on action
                         const newColor = data.newColor;
-                        marker.src = marker.src.replace(/(red|green|purple|gray)/, newColor);
+                        marker.src = marker.src.replace(/(red|green|violet|gray)/, newColor);
                     }
                     
                     // Update popup content
@@ -133,14 +133,19 @@ def create_map():
         """
         
         # Create marker with data attribute
-        icon = folium.Icon(color=color, icon="info-sign", prefix='fa')
+        icon_html = f"""
+        <div>
+            <img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-{color}.png"
+                 data-invader-id="{invader_id}">
+        </div>
+        """
+        icon = folium.DivIcon(html=icon_html)
         
         marker = folium.Marker(
             location=[row["Latitude"], row["Longitude"]],
             popup=folium.Popup(popup_html, max_width=300),
             icon=icon
         )
-        
         marker._name = f'marker_{invader_id}'
         marker.add_to(paris_map)
     
@@ -226,6 +231,17 @@ def update_invader_status():
     
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route("/search_invaders")
+def search_invaders():
+    query = request.args.get('query', '').strip()
+    if not query:
+        return jsonify([])
+    
+    df = pd.read_csv(CSV_FILE)
+    # Convert IDs to strings for searching
+    matching_ids = df[df['id'].astype(str).str.contains(query)]['id'].tolist()
+    return jsonify(matching_ids)
 
 if __name__ == "__main__":
     app.run(debug=True)
