@@ -13,12 +13,27 @@
             flex-direction: column;
             gap: 20px;
             min-height: 100vh;
+            background-color: black;
         }
         
         h1 {
-            color: #333;
+            color: #ebe047;
             text-align: center;
+            font-family:'Copperplate', 'Arial Narrow', Arial, sans-serif;
             margin: 0;
+            position: relative;
+        }
+
+        h1::after {
+            content: 'Flashed Invaders Map';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: rgb(206, 135, 5);
+            z-index: -1;
+            transform: translate(2px, 2px);
         }
         
         .map-container {
@@ -28,6 +43,7 @@
             border-radius: 8px;
             overflow: hidden;
             position: relative;
+            z-index: 1;
         }
         
         .search-container {
@@ -82,6 +98,7 @@
             background: #f5f5f5;
             border-radius: 8px;
             box-sizing: border-box;
+            z-index: 1;
         }
 
         .upload-section {
@@ -123,6 +140,80 @@
             font-weight: bold;
             color: #333;
             margin: 10px 0;
+        }
+
+        .floating-image {
+            position: absolute;
+            width: 50px;
+            height: 40px;
+            opacity: 0.8;
+            animation: float 8s infinite;
+        }
+
+        .floating-image.top-left {
+            top: 15px;
+            left: 10px;
+            z-index: -1;
+        }
+
+        .floating-image.top-right {
+            top: 10px;
+            right: 10px;
+            z-index: -1;
+        }
+
+        .floating-image.top-middle-left {
+            top: 15px;
+            left: 25%;
+            z-index: -1;
+        }
+
+        .floating-image.top-middle-right {
+            top: 10px;
+            right: 25%;
+            z-index: -1;
+        }
+
+        .floating-image.middle-right {
+            top: 50%;
+            right: 10px;
+            z-index: 2;
+        }
+
+        .floating-image.middle-left {
+            top: 50%;
+            left: 10px;
+            z-index: 2;
+        }
+
+        .floating-image.bottom-left {
+            bottom: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+
+        .floating-image.bottom-right {
+            bottom: 10px;
+            right: 10px;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0% {
+            transform: translate(0, 0);
+            }
+            25% {
+            transform: translate(10px, -10px);
+            }
+            50% {
+            transform: translate(0, -20px);
+            }
+            75% {
+            transform: translate(-10px, -10px);
+            }
+            100% {
+            transform: translate(0, 0);
+            }
         }
     </style>
 </head>
@@ -197,6 +288,32 @@
                 searchResults.style.display = 'none';
             }
         });
+
+        // Function to create floating images
+        function createFloatingImages() {
+            const images = [
+                'static/images/invaders_png/invader_1.png',
+                'static/images/invaders_png/invader_2.png',
+                'static/images/invaders_png/invader_3.png',
+                'static/images/invaders_png/invader_4.png',
+                'static/images/invaders_png/invader_7.png',
+                'static/images/invaders_png/invader_6.png',
+                'static/images/invaders_png/invader_5.png',
+                'static/images/invaders_png/invader_8.png',
+                // Add more image paths as needed
+            ];
+            const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'top-middle-left', 'top-middle-right', 'middle-right', 'middle-left'];
+            images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = `floating-image ${positions[index % positions.length]}`;
+                img.style.animationDuration = `${5 + Math.random() * 7}s`;
+                document.body.appendChild(img);
+            });
+        }
+
+        // Call the function to create floating images
+        createFloatingImages();
     </script>
         <div class="controls-container">
             <div class="upload-section">
