@@ -9,16 +9,21 @@
             margin: 0;
             padding: 20px;
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 100vh;
         }
         
         h1 {
             color: #333;
             text-align: center;
+            margin: 0;
         }
         
         .map-container {
             width: 100%;
-            height: 80vh;
+            height: 70vh;
             border: 2px solid #f09bdd;
             border-radius: 8px;
             overflow: hidden;
@@ -44,6 +49,7 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             margin-bottom: 5px;
+            box-sizing: border-box;
         }
         
         .search-results {
@@ -69,6 +75,55 @@
             height: 100%;
             border: none;
         }
+
+        .controls-container {
+            width: 100%;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .upload-section {
+            margin-bottom: 20px;
+        }
+
+        .validation-section {
+            display: none;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+        
+        .button.cancel {
+            background-color: #f44336;
+        }
+        
+        .button.cancel:hover {
+            background-color: #da190b;
+        }
+
+        .info-text {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .status-text {
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -78,7 +133,7 @@
             <input 
                 type="text" 
                 class="search-input" 
-                placeholder="Rechercher un ID (ex: 67)"
+                placeholder="Rechercher un ID (ex: 12)"
                 oninput="searchInvaders(this.value)"
                 style="box-sizing: border-box;"
             >
@@ -142,6 +197,121 @@
                 searchResults.style.display = 'none';
             }
         });
+    </script>
+        <div class="controls-container">
+            <div class="upload-section">
+                <h3>Upload Vidéo</h3>
+                <p class="info-text">Faire un screen vidéo assez lent (scroller avec le doigt sans le lâcher dans l'élan). Et cut la fin pour garder uniquement la partie où on voit les invaders.</p>
+                <input type="file" id="video-upload" accept=".mp4,.mov,.avi" style="display: none;">
+                <button class="button" onclick="document.getElementById('video-upload').click()">Choisir une vidéo</button>
+            </div>
+    
+            <div class="validation-section" id="validation-section">
+                <h3>Validation des Invaders</h3>
+                <p class="status-text">Nouveaux invaders détectés: <span id="new-count">0</span></p>
+                <p class="info-text">Les invaders en bleu sont en attente de validation. Vous pouvez cliquer sur les marqueurs pour vérifier les détails avant de valider.</p>
+                <button class="button" onclick="validateInvaders()">Valider les invaders</button>
+                <button class="button cancel" onclick="cancelValidation()">Annuler</button>
+            </div>
+        </div>
+    
+        <script>
+            let pendingInvaders = [];
+            
+            document.getElementById('video-upload').addEventListener('change', function(e) {
+                if (!e.target.files.length) return;
+                
+                const file = e.target.files[0];
+                const formData = new FormData();
+                formData.append('video', file);
+                
+                // Afficher un indicateur de chargement
+                const loadingIndicator = document.createElement('div');
+                loadingIndicator.id = 'loading-indicator';
+                loadingIndicator.style.position = 'absolute';
+                loadingIndicator.style.top = '0';
+                loadingIndicator.style.left = '0';
+                loadingIndicator.style.width = '100%';
+                loadingIndicator.style.height = '100%';
+                loadingIndicator.style.opacity = '0.6';
+                loadingIndicator.style.zIndex = '1000';
+                loadingIndicator.style.display = 'flex';
+                loadingIndicator.style.justifyContent = 'center';
+                loadingIndicator.style.alignItems = 'center';
+                loadingIndicator.innerHTML = '<img src="static/images/waiting.gif" alt="Chargement..." style="max-width: 100%; max-height: 100%;">';
+                document.querySelector('.map-container').appendChild(loadingIndicator);
+                
+                fetch('/upload_video', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+
+                    // Supprimer le message de chargement
+                    document.getElementById('loading-indicator').remove();
+
+                    if (data.error) {
+                        alert('Erreur: ' + data.error);
+                        return;
+                    }
+                    
+                    pendingInvaders = data.new_flashed;
+                    
+                    // Mettre à jour le compteur
+                    document.getElementById('new-count').textContent = pendingInvaders.length;
+                    
+                    // Afficher la section de validation
+                    document.querySelector('.upload-section').style.display = 'none';
+                    document.getElementById('validation-section').style.display = 'block';
+                    
+                    // Rafraîchir la carte avec les nouveaux marqueurs bleus
+                    document.getElementById('map-frame').contentWindow.location.reload();
+                })
+                .catch(error => {
+                    alert('Erreur lors du traitement de la vidéo');
+                    console.error('Error:', error);
+                });
+                
+                // Réinitialiser l'input file
+                e.target.value = '';
+            });
+            
+            function validateInvaders() {
+                fetch('/validate_flashed_invaders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        invader_ids: pendingInvaders
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // La carte est déjà mise à jour côté serveur
+                        document.getElementById('map-frame').contentWindow.location.reload();
+                        closeValidationPanel();
+                    }
+                })
+                .catch(error => {
+                    alert('Erreur lors de la validation');
+                    console.error('Error:', error);
+                });
+            }
+            
+            function cancelValidation() {
+                closeValidationPanel();
+                // Rafraîchir la carte pour enlever les marqueurs bleus
+                document.getElementById('map-frame').contentWindow.location.reload();
+            }
+            
+            function closeValidationPanel() {
+                document.getElementById('validation-section').style.display = 'none';
+                document.querySelector('.upload-section').style.display = 'block';
+                pendingInvaders = [];
+            }
     </script>
 </body>
 </html>

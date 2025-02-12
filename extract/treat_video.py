@@ -3,7 +3,7 @@ import easyocr
 import re
 
 
-def get_invaders_names_from_video_path(video_path):
+def get_invader_from_video_path(video_path):
     """
     Extract a list of invaders 'PA_XXXX' from a video file path.
     """
@@ -27,6 +27,8 @@ def get_invaders_names_from_video_path(video_path):
         # Skip every other frame
         if frame_count % 4 != 0:
             continue
+        if frame_count % 50 == 0:
+            print(f"Processing frame {frame_count}/{total_frames}")
         
         # Convert to grayscale for better OCR accuracy
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -51,11 +53,12 @@ def get_invaders_names_from_video_path(video_path):
                     else:
                         results_bis[invader] += 1
     for invader, count in results_bis.items():
-        if count <= 13:
+        if count <= 11:
             results_bis.pop(invader)
 
     
-    formatted_invaders = [f"PA_{int(invader.split('_')[1]):04d}" for invader in results_bis.keys()]
+    formatted_invaders = [f"PA_{int(invader.split('_')[1]):04d}" for invader in results_bis.keys() if int(invader.split('_')[1]) <= 1500]
+    print(formatted_invaders)
     return formatted_invaders
 
 
@@ -64,7 +67,7 @@ if __name__ == "__main__":
 
     video_path = "data/invaders_cropped.MOV"
     time_before = time.time()
-    invaders = get_invaders_names_from_video_path(video_path)
+    invaders = get_invader_from_video_path(video_path)
     time_after = time.time()
     print("Time taken:", time_after - time_before)
     print(invaders)

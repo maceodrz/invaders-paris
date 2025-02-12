@@ -3,19 +3,42 @@ import folium
 import pandas as pd
 import os
 from folium.plugins import MousePosition
+import os
+from werkzeug.utils import secure_filename
+from extract.treat_video import get_invader_from_video_path
 
 app = Flask(__name__)
 
 CSV_FILE = "data/cleaned_invaders.csv"
 
+# Configurations pour l'upload
+UPLOAD_FOLDER = 'uploads'
+ALLOWED_EXTENSIONS = {'mp4', 'mov', 'avi'}
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+PENDING_INVADERS = set()
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 def get_marker_color(row):
     """Determine marker color based on Flashed and Flashable status"""
     if not row["Flashable"]:
-        return "gray"
+        return "grey"
+    if str(row["id"]) in PENDING_INVADERS:  # Vérifier si l'invader est en attente
+        return "blue"
     return "green" if row["Flashed"] else "violet"
 
-def create_map():
+def create_map(to_validate=False):
     df = pd.read_csv(CSV_FILE)
+    
+    if PENDING_INVADERS:
+        for invader_id in PENDING_INVADERS:
+            mask = df['id'] == invader_id
+            if any(mask):
+                df.loc[mask, 'Flashed'] = True
     
     # Ensure Flashable column exists with default True
     if "Flashable" not in df.columns:
@@ -52,7 +75,7 @@ def create_map():
                     if (marker) {
                         // Update marker color based on action
                         const newColor = data.newColor;
-                        marker.src = marker.src.replace(/(red|green|violet|gray)/, newColor);
+                        marker.src = marker.src.replace(/(red|green|violet|grey)/, newColor);
                     }
                     
                     // Update popup content
@@ -140,14 +163,18 @@ def create_map():
         </div>
         """
         icon = folium.DivIcon(html=icon_html)
-        
+
         marker = folium.Marker(
             location=[row["Latitude"], row["Longitude"]],
             popup=folium.Popup(popup_html, max_width=300),
             icon=icon
         )
         marker._name = f'marker_{invader_id}'
-        marker.add_to(paris_map)
+        
+        if to_validate and invader_id in PENDING_INVADERS:
+            marker.add_to(paris_map)
+        elif not to_validate:
+            marker.add_to(paris_map)
     
     paris_map.save("static/flashed_invaders_map.html")
 
@@ -202,6 +229,12 @@ def update_invader_status():
         if not any(mask):
             return jsonify({"status": "error", "message": "Invader not found"}), 404
         
+        if str(invader_id) in PENDING_INVADERS:
+            # Si on unflash un invader en attente, le retirer de la liste des pending
+            if action == "unflash":
+                PENDING_INVADERS.remove(str(invader_id))
+                df.loc[mask, "Flashed"] = False
+
         row = df.loc[mask].iloc[0]
         
         if action in ["flash", "unflash"]:
@@ -242,6 +275,85 @@ def search_invaders():
     # Convert IDs to strings for searching
     matching_ids = df[df['id'].astype(str).str.contains(query)]['id'].tolist()
     return jsonify(matching_ids)
+
+# Nouvelle route pour l'upload et le traitement vidéo
+@app.route('/upload_video', methods=['POST'])
+def upload_video():
+    if 'video' not in request.files:
+        return jsonify({'error': 'No video file'}), 400
+    
+    video_file = request.files['video']
+    if video_file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+        
+    if video_file and allowed_file(video_file.filename):
+        filename = secure_filename(video_file.filename)
+        video_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        video_file.save(video_path)
+        
+        try:
+            # Obtenir la liste des invaders depuis la vidéo
+            invader_ids = get_invader_from_video_path(video_path)
+            print(invader_ids)
+            
+            # Nettoyer le fichier uploadé
+            os.remove(video_path)
+            
+            # Lire les données actuelles
+            df = pd.read_csv(CSV_FILE)
+            
+            # Identifier les nouveaux invaders flashés
+            new_flashed = []
+            for invader_id in invader_ids:
+                mask = df['id'] == invader_id
+                if any(mask) and not df.loc[mask, 'Flashed'].iloc[0]:
+                    new_flashed.append(invader_id)
+            print(f"BEFORE GLOBAL New flashed invaders: {len(new_flashed)}")
+            
+            # Stocker les nouveaux invaders en attente
+            global PENDING_INVADERS
+            PENDING_INVADERS = set(new_flashed)
+            
+            print(f"New flashed invaders: {len(new_flashed)}")
+            
+            
+            # Créer une nouvelle carte avec les changements
+            create_map(to_validate=True)
+            
+            return jsonify({
+                'status': 'success',
+                'new_flashed': new_flashed,
+                'total_found': len(invader_ids)
+            })
+            
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+        
+            
+    return jsonify({'error': 'Invalid file type'}), 400
+
+# Route pour valider les invaders détectés
+@app.route('/validate_flashed_invaders', methods=['POST'])
+def validate_flashed_invaders():
+    invader_ids = list(PENDING_INVADERS)
+    
+    df = pd.read_csv(CSV_FILE)
+    
+    # Mettre à jour le statut des invaders
+    for invader_id in invader_ids:
+        mask = df['id'] == invader_id
+        if any(mask):
+            df.loc[mask, 'Flashed'] = True
+    
+    df.to_csv(CSV_FILE, index=False)
+    
+    # Vider la liste des invaders en attente
+    PENDING_INVADERS.clear()
+    
+    # Créer une nouvelle carte avec les changements
+    create_map()
+    
+    return jsonify({'status': 'success'})
 
 if __name__ == "__main__":
     app.run(debug=True)
