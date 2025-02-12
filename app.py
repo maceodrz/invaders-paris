@@ -31,7 +31,7 @@ def get_marker_color(row):
         return "blue"
     return "green" if row["Flashed"] else "violet"
 
-def create_map(to_validate=False):
+def create_map(to_validate=False, only_flashable=False, only_unflashed=False, only_flashed=False):
     df = pd.read_csv(CSV_FILE)
     
     if PENDING_INVADERS:
@@ -148,9 +148,9 @@ def create_map(to_validate=False):
         <div style="font-family: Arial, sans-serif; padding: 10px;">
             <h3 style="margin: 0 0 10px 0;">Invader Details</h3>
             <p><strong>ID:</strong> {invader_id}</p>
-            <p><strong>Address:</strong> {row['address']}</p>
-            <p><strong>Status:</strong> <span class="status-text">{'Flashed' if row['Flashed'] else 'Not Flashed'}</span></p>
-            <p><strong>Flashable:</strong> <span class="flashable-text">{'Yes' if row['Flashable'] else 'No'}</span></p>
+            <p><strong>Addresse:</strong> {row['address']}</p>
+            <p><strong>Statut:</strong> <span class="status-text">{'Flashé' if row['Flashed'] else "Je t'attends !"}</span></p>
+            <p><strong>Flashable:</strong> <span class="flashable-text">{'Yep' if row['Flashable'] else 'Nope'}</span></p>
             {button_html}
         </div>
         """
@@ -173,7 +173,16 @@ def create_map(to_validate=False):
         
         if to_validate and invader_id in PENDING_INVADERS:
             marker.add_to(paris_map)
-        elif not to_validate:
+        elif only_flashable and row["Flashable"]:
+            if only_unflashed and not row["Flashed"]:
+                marker.add_to(paris_map)
+            elif not only_unflashed: # Display all flashable
+                marker.add_to(paris_map)
+        elif only_unflashed and not row["Flashed"] and not only_flashable:
+            marker.add_to(paris_map)
+        elif not only_flashed and not only_flashable and not only_unflashed and not to_validate:
+            marker.add_to(paris_map)
+        elif only_flashed and row["Flashed"]:
             marker.add_to(paris_map)
     
     paris_map.save("static/flashed_invaders_map.html")
@@ -210,8 +219,32 @@ def generate_buttons_html(invader_id, is_flashed, is_flashable):
 
 @app.route("/")
 def home():
+    return render_template("valentine.html")  # La nouvelle page d'accueil
+
+@app.route("/map")
+def map_page():
     create_map()
-    return render_template("index.html")
+    return render_template("map.html")  # L'ancienne page index.html renommée en map.html
+
+@app.route("/unflashed_invaders")
+def map_unflashed():
+    create_map(only_unflashed=True)
+    return render_template("map.html")
+
+@app.route("/flashable_invaders")
+def map_flashable():
+    create_map(only_flashable=True)
+    return render_template("map.html")
+
+@app.route("/flashable_and_unflashed_invaders")
+def map_flashable_unflashed():
+    create_map(only_flashable=True, only_unflashed=True)
+    return render_template("map.html")
+
+@app.route("/flashed_invaders")
+def map_flashed():
+    create_map(only_flashed=True)
+    return render_template("map.html")
 
 @app.route("/update_invader_status", methods=["POST"])
 def update_invader_status():
@@ -316,9 +349,12 @@ def upload_video():
             
             print(f"New flashed invaders: {len(new_flashed)}")
             
-            
+            if not new_flashed:
+                raise ValueError("No new invaders found in the video.")
+
             # Créer une nouvelle carte avec les changements
             create_map(to_validate=True)
+
             
             return jsonify({
                 'status': 'success',
@@ -329,7 +365,6 @@ def upload_video():
         except Exception as e:
             return jsonify({'error': str(e)}), 500
         
-            
     return jsonify({'error': 'Invalid file type'}), 400
 
 # Route pour valider les invaders détectés

@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashed Invaders Map</title>
+    <title>La Carte des Invaders de Chupa</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const title = document.querySelector('h1');
+            title.style.cursor = 'pointer';
+            title.addEventListener('click', () => {
+                window.location.href = "{{ url_for('home') }}";
+            });
+        });
+    </script>
     <style>
         body {
             margin: 0;
@@ -25,7 +34,7 @@
         }
 
         h1::after {
-            content: 'Flashed Invaders Map';
+            content: 'La Carte des Invaders de Chupa';
             position: absolute;
             top: 0;
             left: 0;
@@ -110,7 +119,7 @@
         }
 
         .button {
-            background-color: #4CAF50;
+            background-color: #bb26b9;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -120,7 +129,7 @@
         }
         
         .button:hover {
-            background-color: #45a049;
+            background-color: #701379;
         }
         
         .button.cancel {
@@ -215,10 +224,66 @@
             transform: translate(0, 0);
             }
         }
+        .filter-container {
+            margin: 15px 0;
+        }
+    
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .filter-button {
+            padding: 8px 16px;
+            border: 2px solid #f09bdd;
+            background-color: black;
+            color: #f09bdd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    
+        .filter-button:hover {
+            background-color: #f09bdd;
+            color: black;
+        }
+    
+        .filter-button.active {
+            background-color: #f09bdd;
+            color: black;
+        }
     </style>
 </head>
 <body>
-    <h1>Flashed Invaders Map</h1>
+    <h1>La Carte des Invaders de Chupa</h1>
+
+    <!-- Add buttons for different map views -->
+    <div class="filter-container" style="text-align: center; margin-bottom: 20px;">
+        <div class="filter-buttons">
+            <button id="all-invaders" class="filter-button active" data-filter="all">
+                Tous les Invaders
+            </button>
+            <button id="flashable-invaders" class="filter-button" data-filter="flashable">
+                Flashables
+            </button>
+            <button id="unflashed-invaders" class="filter-button" data-filter="unflashed">
+                Non Flashés
+            </button>
+            <button id="flashable-unflashed" class="filter-button" data-filter="flashable-unflashed">
+                Flashables & Non Flashés
+            </button>
+            <button id="flashed" class="filter-button" data-filter="flashed">
+                Déjà Flashés (trop forte)
+            </button>
+        </div>
+    </div>
+    <div class="stats-container" style="text-align: center; margin-bottom: 10px;">
+        <span class="stat-item">Total Flashés: <span id="total-flashed">0</span></span>
+        <span class="stat-item">Reste à Flasher: <span id="total-unflashed">0</span></span>
+        <span class="stat-item">Progression: <span id="progress">0</span>%</span>
+    </div>
     <div class="map-container">
         <div class="search-container">
             <input 
@@ -232,8 +297,110 @@
         </div>
         <iframe id="map-frame" src="{{ url_for('static', filename='flashed_invaders_map.html') }}"></iframe>
     </div>
+    <div class="legend" style="position: absolute; bottom: 20px; right: 10px; background: white; padding: 10px; border-radius: 4px; z-index: 1000;">
+        <div><span style="color: rgb(37, 179, 37);">●</span> Flashé</div>
+        <div><span style="color: rgb(153, 77, 190);">●</span> À Flasher</div>
+        <div><span style="color: grey;">●</span> Impossible</div>
+    </div>
 
     <script>
+
+        let currentFilter = 'all';
+
+        // Fonction pour mettre à jour l'état des boutons
+        function updateFilterButtons(activeFilter) {
+            document.querySelectorAll('.filter-button').forEach(button => {
+                button.classList.remove('active');
+                if (button.dataset.filter === activeFilter) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // Fonction pour mettre à jour la carte
+        function updateMapView(filter) {
+            const mapFrame = document.getElementById('map-frame');
+            let url;
+        
+            switch(filter) {
+                case 'flashable':
+                    fetch("{{ url_for('map_flashable') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+                    break;
+                case 'unflashed':
+                    fetch("{{ url_for('map_unflashed') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+                    break;
+                case 'flashable-unflashed':
+                    fetch("{{ url_for('map_flashable_unflashed') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+                    break;
+                case 'flashed':
+                    fetch("{{ url_for('map_flashed') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+                    break;
+                default:
+                    fetch("{{ url_for('map_page') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+            }
+        }
+
+        // Initialisation des écouteurs d'événements
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.filter-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const newFilter = e.target.dataset.filter;
+                    if (currentFilter !== newFilter) {
+                        currentFilter = newFilter;
+                        updateFilterButtons(currentFilter);
+                        updateMapView(currentFilter);
+                    }
+                });
+            });
+        });
+
+        // Réinitialiser le filtre après validation des invaders
+        function resetFilters() {
+            currentFilter = 'all';
+            updateFilterButtons('all');
+            updateMapView('all');
+        }
+
+        // Modifier la fonction validateInvaders pour inclure la réinitialisation des filtres
+        function validateInvaders() {
+            fetch('/validate_flashed_invaders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    invader_ids: pendingInvaders
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('map-frame').contentWindow.location.reload();
+                    closeValidationPanel();
+                    resetFilters(); // Réinitialiser les filtres après validation
+                }
+            })
+            .catch(error => {
+                alert('Erreur lors de la validation');
+                console.error('Error:', error);
+            });
+        }
+
         let debounceTimeout;
         const searchResults = document.querySelector('.search-results');
 
@@ -317,8 +484,8 @@
     </script>
         <div class="controls-container">
             <div class="upload-section">
-                <h3>Upload Vidéo</h3>
-                <p class="info-text">Faire un screen vidéo assez lent (scroller avec le doigt sans le lâcher dans l'élan). Et cut la fin pour garder uniquement la partie où on voit les invaders.</p>
+                <h3 style="color: #7d197d; text-align: center; font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif; margin-bottom: 10px;"><strong>Chargement de ta galerie FlashInvaders</strong></h3>
+                <p class="info-text">Pour charger ta galerie, tu vas devoir faire un screen vidéo assez lent de ta galerie FlashInvaders(scroller avec le doigt sans le lâcher dans l'élan). Et cut la fin pour garder uniquement la partie où on voit les invaders. Le traitement peut prendre un peu de temps (environ 5min par minute de vidéo)</p>
                 <input type="file" id="video-upload" accept=".mp4,.mov,.avi" style="display: none;">
                 <button class="button" onclick="document.getElementById('video-upload').click()">Choisir une vidéo</button>
             </div>
@@ -432,3 +599,6 @@
     </script>
 </body>
 </html>
+<footer style="position: fixed; bottom: 10px; right: 10px; font-size: 0.8rem; color: #b92574; font-style: italic;">
+    @ made by chups
+</footer>

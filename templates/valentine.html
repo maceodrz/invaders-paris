@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeuse Saint-Valentin</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFE6F3;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #FF69B4;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background-color: #FF69B4;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        .invader {
+            position: fixed;
+            top: 0;
+            width: 70px;
+            height: 50px;
+            background-image: url('static/images/invaders_png/invader_2.png');
+            background-size: cover;
+            animation: fall 4s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes fall {
+            0% {
+            transform: translateY(10px);
+            }
+            100% {
+            transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Joyeuse Saint-Valentin</h1>
+        <div class="message">
+            Pour ma chupa la plus grande des collectionneuse, sauras-tu deviner quel est ton cadeau ?
+        </div>
+        <a href="/map" class="button">Accéder à la carte magique</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            class InvaderColumn {
+                constructor(leftPosition, delayed = false) {
+                    this.leftPosition = leftPosition;
+                    this.delayed = delayed;
+                    this.initialize();
+                }
+
+                initialize() {
+                    // Commencer après un délai pour les colonnes alternées
+                    setTimeout(() => {
+                        this.spawnInvader();
+                        // Créer un nouvel invader toutes les 4 secondes
+                        setInterval(() => this.spawnInvader(), 2000);
+                    }, this.delayed ? 1000 : 0);
+                }
+
+                spawnInvader() {
+                    const invader = document.createElement('div');
+                    invader.classList.add('invader');
+                    invader.style.left = `${this.leftPosition}px`;
+                    invader.style.transform = 'translateY(-100px)';
+                    document.body.appendChild(invader);
+
+                    // Forcer un reflow pour que la transition fonctionne
+                    invader.offsetHeight;
+
+                    // Démarrer l'animation
+                    requestAnimationFrame(() => {
+                        invader.style.transform = `translateY(${window.innerHeight + 100}px)`;
+                    });
+
+                    // Supprimer l'invader après l'animation
+                    setTimeout(() => {
+                        invader.remove();
+                    }, 8000);
+                }
+            }
+
+            let columns = [];
+
+            const initInvaders = () => {
+                // Nettoyer les anciens invaders et colonnes
+                document.querySelectorAll('.invader').forEach(inv => inv.remove());
+                columns.forEach(col => clearInterval(col.interval));
+                columns = [];
+
+                // Créer de nouvelles colonnes
+                const screenWidth = window.innerWidth;
+                const spacing = 200;
+                const numColumns = Math.ceil(screenWidth / spacing);
+
+                for (let i = 0; i < numColumns; i++) {
+                    const leftPosition = i * spacing;
+                    columns.push(new InvaderColumn(leftPosition, i % 2 === 1));
+                }
+            };
+
+            // Initialisation
+            initInvaders();
+
+            // Réajuster lors du redimensionnement de la fenêtre
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(initInvaders, 300);
+            });
+        });
+    </script>
+</body>
+</html>
+<footer style="position: fixed; bottom: 10px; right: 10px; font-size: 0.8rem; color: #a32066; font-style: italic;">
+    @ made by chups
+</footer>
