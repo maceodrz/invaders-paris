@@ -5,7 +5,8 @@ venv
 venv
 
 # data
-data
+# data
+video
 static/flash_invaders_map/html
 
 # Python things

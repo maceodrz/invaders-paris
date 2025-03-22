@@ -5,7 +5,7 @@ import os
 from folium.plugins import MousePosition
 import os
 from werkzeug.utils import secure_filename
-from extract.treat_video import get_invader_from_video_path
+#from extract.treat_video import get_invader_from_video_path
 
 app = Flask(__name__)
 
@@ -148,7 +148,7 @@ def create_map(to_validate=False, only_flashable=False, only_unflashed=False, on
         <div style="font-family: Arial, sans-serif; padding: 10px;">
             <h3 style="margin: 0 0 10px 0;">Invader Details</h3>
             <p><strong>ID:</strong> {invader_id}</p>
-            <p><strong>Addresse:</strong> {row['address']}</p>
+            <p><strong>Adresse:</strong> {row['address']}</p>
             <p><strong>Statut:</strong> <span class="status-text">{'Flashé' if row['Flashed'] else "Je t'attends !"}</span></p>
             <p><strong>Flashable:</strong> <span class="flashable-text">{'Yep' if row['Flashable'] else 'Nope'}</span></p>
             {button_html}
@@ -326,12 +326,9 @@ def upload_video():
         
         try:
             # Obtenir la liste des invaders depuis la vidéo
-            invader_ids = get_invader_from_video_path(video_path)
-            print(invader_ids)
-            
-            # Nettoyer le fichier uploadé
-            os.remove(video_path)
-            
+            # invader_ids = get_invader_from_video_path(video_path)
+            # print(invader_ids) # TODO remettre pour le local, là c'est pour déployer sans pytorch, esayocr et tt
+            invader_ids = ["PA_862"]
             # Lire les données actuelles
             df = pd.read_csv(CSV_FILE)
             
@@ -355,40 +352,18 @@ def upload_video():
             # Créer une nouvelle carte avec les changements
             create_map(to_validate=True)
 
-            
             return jsonify({
                 'status': 'success',
                 'new_flashed': new_flashed,
                 'total_found': len(invader_ids)
             })
-            
         except Exception as e:
             return jsonify({'error': str(e)}), 500
+        finally:
+            # Nettoyer le fichier uploadé
+            os.remove(video_path)
         
     return jsonify({'error': 'Invalid file type'}), 400
-
-# Route pour valider les invaders détectés
-@app.route('/validate_flashed_invaders', methods=['POST'])
-def validate_flashed_invaders():
-    invader_ids = list(PENDING_INVADERS)
-    
-    df = pd.read_csv(CSV_FILE)
-    
-    # Mettre à jour le statut des invaders
-    for invader_id in invader_ids:
-        mask = df['id'] == invader_id
-        if any(mask):
-            df.loc[mask, 'Flashed'] = True
-    
-    df.to_csv(CSV_FILE, index=False)
-    
-    # Vider la liste des invaders en attente
-    PENDING_INVADERS.clear()
-    
-    # Créer une nouvelle carte avec les changements
-    create_map()
-    
-    return jsonify({'status': 'success'})
 
 if __name__ == "__main__":
     app.run(debug=True)

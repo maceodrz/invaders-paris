@@ -52,20 +52,25 @@ def get_invader_from_video_path(video_path):
                         results_bis[invader] += 4
                     else:
                         results_bis[invader] += 1
-    for invader, count in results_bis.items():
-        if count <= 11:
-            results_bis.pop(invader)
+    print(results_bis)
+    invaders_to_remove = [invader for invader, count in results_bis.items() if count <= 4]
+    for invader in invaders_to_remove:
+        results_bis.pop(invader)
 
     
-    formatted_invaders = [f"PA_{int(invader.split('_')[1]):04d}" for invader in results_bis.keys() if int(invader.split('_')[1]) <= 1500]
-    print(formatted_invaders)
+    formatted_invaders = [f"PA_{int(invader.split('_')[1]):04d}" for invader in results_bis.keys() if int(invader.split('_')[1]) <= 1600]
+    with open("data/invaders.json", "w") as json_file:
+        json.dump(formatted_invaders, json_file, indent=4)
+    print("Exported invaders to data/invaders.json")
+    print("Invaders found:", formatted_invaders)
     return formatted_invaders
 
 
 if __name__ == "__main__":
     import time
+    import json
 
-    video_path = "data/invaders_cropped.MOV"
+    video_path = "video/WDQU5020.MP4"
     time_before = time.time()
     invaders = get_invader_from_video_path(video_path)
     time_after = time.time()
