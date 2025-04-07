@@ -5,23 +5,58 @@ import os
 from folium.plugins import MousePosition
 import os
 from werkzeug.utils import secure_filename
-#from extract.treat_video import get_invader_from_video_path
+
+# from extract.treat_video import get_invader_from_video_path
+
+
+# from google.oauth2.service_account import Credentials
+# import gspread
+
+
+# # Google Sheets setup
+# SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+# SERVICE_ACCOUNT_FILE = 'path/to/your/service_account.json'  # Update with your service account file path
+# SPREADSHEET_ID = 'your_google_sheet_id'  # Update with your Google Sheet ID
+
+# credentials = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+# gc = gspread.authorize(credentials)
+# sheet = gc.open_by_key(SPREADSHEET_ID).sheet1
+
+# def get_data_from_sheet():
+#     """Fetch data from Google Sheet and return as a DataFrame."""
+#     data = sheet.get_all_records()
+#     return pd.DataFrame(data)
+
+# def update_sheet_from_dataframe(df):
+#     """Update Google Sheet with the contents of a DataFrame."""
+#     sheet.clear()
+#     sheet.update([df.columns.values.tolist()] + df.values.tolist())
+
+# # Replace CSV_FILE with Google Sheets integration
+# def get_dataframe():
+#     return get_data_from_sheet()
+
+# def save_dataframe(df):
+#     update_sheet_from_dataframe(df)
 
 app = Flask(__name__)
 
-CSV_FILE = "data/cleaned_invaders.csv"
+CSV_FILE = (
+    "data/cleaned_invaders_v2.csv"  # TODO: rajouter "Flashed at + date pour chacun"
+)
 
 # Configurations pour l'upload
-UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = {'mp4', 'mov', 'avi'}
+UPLOAD_FOLDER = "uploads"
+ALLOWED_EXTENSIONS = {"mp4", "mov", "avi"}
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 PENDING_INVADERS = set()
 
 
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 def get_marker_color(row):
     """Determine marker color based on Flashed and Flashable status"""
@@ -31,28 +66,35 @@ def get_marker_color(row):
         return "blue"
     return "green" if row["Flashed"] else "violet"
 
-def create_map(to_validate=False, only_flashable=False, only_unflashed=False, only_flashed=False):
+
+def create_map(
+    to_validate=False, only_flashable=False, only_unflashed=False, only_flashed=False
+):
     df = pd.read_csv(CSV_FILE)
-    
+
     if PENDING_INVADERS:
         for invader_id in PENDING_INVADERS:
-            mask = df['id'] == invader_id
+            mask = df["id"] == invader_id
             if any(mask):
-                df.loc[mask, 'Flashed'] = True
-    
+                df.loc[mask, "Flashed"] = True
+
     # Ensure Flashable column exists with default True
     if "Flashable" not in df.columns:
         df["Flashable"] = True
         df.to_csv(CSV_FILE, index=False)
-    
+
     # Create a map centered on Paris
-    paris_map = folium.Map(location=[48.8566, 2.3522], zoom_start=12, tiles="OpenStreetMap")
-    
+    paris_map = folium.Map(
+        location=[48.8566, 2.3522], zoom_start=12, tiles="OpenStreetMap"
+    )
+
     # Add mouse position display
     MousePosition().add_to(paris_map)
-    
+
     # Add custom JavaScript to handle button clicks
-    paris_map.get_root().header.add_child(folium.Element("""
+    paris_map.get_root().header.add_child(
+        folium.Element(
+            """
         <script>
         function updateInvaderStatus(invaderId, markerElement, action) {
             fetch("/update_invader_status", {
@@ -106,23 +148,25 @@ def create_map(to_validate=False, only_flashable=False, only_unflashed=False, on
             });
         }
         </script>
-    """))
-    
+    """
+        )
+    )
+
     # Add points from the CSV
     for _, row in df.iterrows():
         color = get_marker_color(row)
-        invader_id = str(row['id'])
-        
+        invader_id = str(row["id"])
+
         # Create buttons HTML based on current status
         if not row["Flashable"]:
             button_html = (
                 '<div class="button-container">'
-                f'<button onclick="updateInvaderStatus(\'{invader_id}\', this, \'enable\')" '
+                f"<button onclick=\"updateInvaderStatus('{invader_id}', this, 'enable')\" "
                 'style="background-color: #4CAF50; color: white; padding: 8px 16px; '
                 'border: none; border-radius: 4px; cursor: pointer; margin-bottom: 5px;" '
-                'onmouseover="this.style.backgroundColor=\'#45a049\'" '
-                'onmouseout="this.style.backgroundColor=\'#4CAF50\'">'
-                'Enable Flashing</button></div>'
+                "onmouseover=\"this.style.backgroundColor='#45a049'\" "
+                "onmouseout=\"this.style.backgroundColor='#4CAF50'\">"
+                "Enable Flashing</button></div>"
             )
         else:
             flash_button = (
@@ -134,27 +178,29 @@ def create_map(to_validate=False, only_flashable=False, only_unflashed=False, on
                 f'{"Unflash" if row["Flashed"] else "Mark as Flashed"}</button><br>'
             )
             impossible_button = (
-                f'<button onclick="updateInvaderStatus(\'{invader_id}\', this, \'disable\')" '
+                f"<button onclick=\"updateInvaderStatus('{invader_id}', this, 'disable')\" "
                 'style="background-color: #808080; color: white; padding: 8px 16px; '
                 'border: none; border-radius: 4px; cursor: pointer;" '
-                'onmouseover="this.style.backgroundColor=\'#666666\'" '
-                'onmouseout="this.style.backgroundColor=\'#808080\'">'
-                'Impossible to Flash</button>'
+                "onmouseover=\"this.style.backgroundColor='#666666'\" "
+                "onmouseout=\"this.style.backgroundColor='#808080'\">"
+                "Impossible to Flash</button>"
             )
-            button_html = f'<div class="button-container">{flash_button}{impossible_button}</div>'
-        
+            button_html = (
+                f'<div class="button-container">{flash_button}{impossible_button}</div>'
+            )
+
         # Create popup HTML
         popup_html = f"""
-        <div style="font-family: Arial, sans-serif; padding: 10px;">
-            <h3 style="margin: 0 0 10px 0;">Invader Details</h3>
-            <p><strong>ID:</strong> {invader_id}</p>
-            <p><strong>Adresse:</strong> {row['address']}</p>
-            <p><strong>Statut:</strong> <span class="status-text">{'Flashé' if row['Flashed'] else "Je t'attends !"}</span></p>
-            <p><strong>Flashable:</strong> <span class="flashable-text">{'Yep' if row['Flashable'] else 'Nope'}</span></p>
+        <div style="font-family: Arial, sans-serif; font-size: 10px; padding: 3px;">
+            <h4 style="margin: 0 0 3px 0;">Invader Details</h4>
+            <p style="margin: 0;"><strong>ID:</strong> {invader_id}</p>
+            <p style="margin: 0;"><strong>Adresse:</strong> {row['address']}</p>
+            <p style="margin: 0;"><strong>Statut:</strong> <span class="status-text">{'Flashé' if row['Flashed'] else "Je t'attends !"}</span></p>
+            <p style="margin: 0;"><strong>Flashable:</strong> <span class="flashable-text">{'Yep' if row['Flashable'] else 'Nope'}</span></p>
             {button_html}
         </div>
         """
-        
+
         # Create marker with data attribute
         icon_html = f"""
         <div>
@@ -166,39 +212,45 @@ def create_map(to_validate=False, only_flashable=False, only_unflashed=False, on
 
         marker = folium.Marker(
             location=[row["Latitude"], row["Longitude"]],
-            popup=folium.Popup(popup_html, max_width=300),
-            icon=icon
+            popup=folium.Popup(popup_html, max_width=100),
+            icon=icon,
         )
-        marker._name = f'marker_{invader_id}'
-        
+        marker._name = f"marker_{invader_id}"
+
         if to_validate and invader_id in PENDING_INVADERS:
             marker.add_to(paris_map)
         elif only_flashable and row["Flashable"]:
             if only_unflashed and not row["Flashed"]:
                 marker.add_to(paris_map)
-            elif not only_unflashed: # Display all flashable
+            elif not only_unflashed:  # Display all flashable
                 marker.add_to(paris_map)
         elif only_unflashed and not row["Flashed"] and not only_flashable:
             marker.add_to(paris_map)
-        elif not only_flashed and not only_flashable and not only_unflashed and not to_validate:
+        elif (
+            not only_flashed
+            and not only_flashable
+            and not only_unflashed
+            and not to_validate
+        ):
             marker.add_to(paris_map)
         elif only_flashed and row["Flashed"]:
             marker.add_to(paris_map)
-    
+
     paris_map.save("static/flashed_invaders_map.html")
+
 
 def generate_buttons_html(invader_id, is_flashed, is_flashable):
     """Generate HTML for buttons based on current status"""
     if not is_flashable:
         return (
-            f'<button onclick="updateInvaderStatus(\'{invader_id}\', this, \'enable\')" '
+            f"<button onclick=\"updateInvaderStatus('{invader_id}', this, 'enable')\" "
             'style="background-color: #4CAF50; color: white; padding: 8px 16px; '
             'border: none; border-radius: 4px; cursor: pointer; margin-bottom: 5px;" '
-            'onmouseover="this.style.backgroundColor=\'#45a049\'" '
-            'onmouseout="this.style.backgroundColor=\'#4CAF50\'">'
-            'Enable Flashing</button>'
+            "onmouseover=\"this.style.backgroundColor='#45a049'\" "
+            "onmouseout=\"this.style.backgroundColor='#4CAF50'\">"
+            "Enable Flashing</button>"
         )
-    
+
     flash_button = (
         f'<button onclick="updateInvaderStatus(\'{invader_id}\', this, \'{"unflash" if is_flashed else "flash"}\')" '
         f'style="background-color: {"#f44336" if is_flashed else "#4CAF50"}; color: white; padding: 8px 16px; '
@@ -208,43 +260,52 @@ def generate_buttons_html(invader_id, is_flashed, is_flashable):
         f'{"Unflash" if is_flashed else "Mark as Flashed"}</button><br>'
     )
     impossible_button = (
-        f'<button onclick="updateInvaderStatus(\'{invader_id}\', this, \'disable\')" '
+        f"<button onclick=\"updateInvaderStatus('{invader_id}', this, 'disable')\" "
         'style="background-color: #808080; color: white; padding: 8px 16px; '
         'border: none; border-radius: 4px; cursor: pointer;" '
-        'onmouseover="this.style.backgroundColor=\'#666666\'" '
-        'onmouseout="this.style.backgroundColor=\'#808080\'">'
-        'Impossible to Flash</button>'
+        "onmouseover=\"this.style.backgroundColor='#666666'\" "
+        "onmouseout=\"this.style.backgroundColor='#808080'\">"
+        "Impossible to Flash</button>"
     )
     return flash_button + impossible_button
+
 
 @app.route("/")
 def home():
     return render_template("valentine.html")  # La nouvelle page d'accueil
 
+
 @app.route("/map")
 def map_page():
     create_map()
-    return render_template("map.html")  # L'ancienne page index.html renommée en map.html
+    return render_template(
+        "map.html"
+    )  # L'ancienne page index.html renommée en map.html
+
 
 @app.route("/unflashed_invaders")
 def map_unflashed():
     create_map(only_unflashed=True)
     return render_template("map.html")
 
+
 @app.route("/flashable_invaders")
 def map_flashable():
     create_map(only_flashable=True)
     return render_template("map.html")
+
 
 @app.route("/flashable_and_unflashed_invaders")
 def map_flashable_unflashed():
     create_map(only_flashable=True, only_unflashed=True)
     return render_template("map.html")
 
+
 @app.route("/flashed_invaders")
 def map_flashed():
     create_map(only_flashed=True)
     return render_template("map.html")
+
 
 @app.route("/update_invader_status", methods=["POST"])
 def update_invader_status():
@@ -252,16 +313,16 @@ def update_invader_status():
         data = request.get_json()
         invader_id = data.get("id")
         action = data.get("action")
-        
+
         if not invader_id or action not in ["flash", "unflash", "disable", "enable"]:
             return jsonify({"status": "error", "message": "Invalid request"}), 400
-        
+
         df = pd.read_csv(CSV_FILE)
         mask = df["id"] == invader_id
-        
+
         if not any(mask):
             return jsonify({"status": "error", "message": "Invader not found"}), 404
-        
+
         if str(invader_id) in PENDING_INVADERS:
             # Si on unflash un invader en attente, le retirer de la liste des pending
             if action == "unflash":
@@ -269,10 +330,13 @@ def update_invader_status():
                 df.loc[mask, "Flashed"] = False
 
         row = df.loc[mask].iloc[0]
-        
+
         if action in ["flash", "unflash"]:
             if not row["Flashable"]:
-                return jsonify({"status": "error", "message": "Invader is not flashable"}), 400
+                return (
+                    jsonify({"status": "error", "message": "Invader is not flashable"}),
+                    400,
+                )
             new_flashed = action == "flash"
             df.loc[mask, "Flashed"] = new_flashed
         else:  # disable/enable
@@ -280,50 +344,56 @@ def update_invader_status():
             df.loc[mask, "Flashable"] = new_flashable
             if not new_flashable:
                 df.loc[mask, "Flashed"] = False
-        
+
         df.to_csv(CSV_FILE, index=False)
-        
+
         # Get updated row
         updated_row = df.loc[mask].iloc[0]
-        
-        return jsonify({
-            "status": "success",
-            "message": f"Invader {invader_id} updated successfully",
-            "newColor": get_marker_color(updated_row),
-            "newStatus": "Flashed" if updated_row["Flashed"] else "Not Flashed",
-            "newFlashable": "Yes" if updated_row["Flashable"] else "No",
-            "newButtonsHtml": generate_buttons_html(invader_id, updated_row["Flashed"], updated_row["Flashable"])
-        })
-    
+
+        return jsonify(
+            {
+                "status": "success",
+                "message": f"Invader {invader_id} updated successfully",
+                "newColor": get_marker_color(updated_row),
+                "newStatus": "Flashed" if updated_row["Flashed"] else "Not Flashed",
+                "newFlashable": "Yes" if updated_row["Flashable"] else "No",
+                "newButtonsHtml": generate_buttons_html(
+                    invader_id, updated_row["Flashed"], updated_row["Flashable"]
+                ),
+            }
+        )
+
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+
 @app.route("/search_invaders")
 def search_invaders():
-    query = request.args.get('query', '').strip()
+    query = request.args.get("query", "").strip()
     if not query:
         return jsonify([])
-    
+
     df = pd.read_csv(CSV_FILE)
     # Convert IDs to strings for searching
-    matching_ids = df[df['id'].astype(str).str.contains(query)]['id'].tolist()
+    matching_ids = df[df["id"].astype(str).str.contains(query)]["id"].tolist()
     return jsonify(matching_ids)
 
+
 # Nouvelle route pour l'upload et le traitement vidéo
-@app.route('/upload_video', methods=['POST'])
+@app.route("/upload_video", methods=["POST"])
 def upload_video():
-    if 'video' not in request.files:
-        return jsonify({'error': 'No video file'}), 400
-    
-    video_file = request.files['video']
-    if video_file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
-        
+    if "video" not in request.files:
+        return jsonify({"error": "No video file"}), 400
+
+    video_file = request.files["video"]
+    if video_file.filename == "":
+        return jsonify({"error": "No selected file"}), 400
+
     if video_file and allowed_file(video_file.filename):
         filename = secure_filename(video_file.filename)
-        video_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        video_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
         video_file.save(video_path)
-        
+
         try:
             # Obtenir la liste des invaders depuis la vidéo
             # invader_ids = get_invader_from_video_path(video_path)
@@ -331,39 +401,42 @@ def upload_video():
             invader_ids = ["PA_862"]
             # Lire les données actuelles
             df = pd.read_csv(CSV_FILE)
-            
+
             # Identifier les nouveaux invaders flashés
             new_flashed = []
             for invader_id in invader_ids:
-                mask = df['id'] == invader_id
-                if any(mask) and not df.loc[mask, 'Flashed'].iloc[0]:
+                mask = df["id"] == invader_id
+                if any(mask) and not df.loc[mask, "Flashed"].iloc[0]:
                     new_flashed.append(invader_id)
             print(f"BEFORE GLOBAL New flashed invaders: {len(new_flashed)}")
-            
+
             # Stocker les nouveaux invaders en attente
             global PENDING_INVADERS
             PENDING_INVADERS = set(new_flashed)
-            
+
             print(f"New flashed invaders: {len(new_flashed)}")
-            
+
             if not new_flashed:
                 raise ValueError("No new invaders found in the video.")
 
             # Créer une nouvelle carte avec les changements
             create_map(to_validate=True)
 
-            return jsonify({
-                'status': 'success',
-                'new_flashed': new_flashed,
-                'total_found': len(invader_ids)
-            })
+            return jsonify(
+                {
+                    "status": "success",
+                    "new_flashed": new_flashed,
+                    "total_found": len(invader_ids),
+                }
+            )
         except Exception as e:
-            return jsonify({'error': str(e)}), 500
+            return jsonify({"error": str(e)}), 500
         finally:
             # Nettoyer le fichier uploadé
             os.remove(video_path)
-        
-    return jsonify({'error': 'Invalid file type'}), 400
+
+    return jsonify({"error": "Invalid file type"}), 400
+
 
 if __name__ == "__main__":
     app.run(debug=True)
