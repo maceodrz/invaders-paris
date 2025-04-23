@@ -1,0 +1,280 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+    background-color: black;
+  }
+  
+  .map-page h1 {
+    color: #ebe047;
+    text-align: center;
+    font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .map-page h1::after {
+    content: 'La Carte des Invaders de Chupa';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: rgb(206, 135, 5);
+    z-index: -1;
+    transform: translate(2px, 2px);
+  }
+  
+  .map-container {
+    width: 100%;
+    height: 70vh;
+    border: 2px solid #f09bdd;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .search-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 300px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+  }
+  
+  .search-results {
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+  }
+  
+  .search-results.visible {
+    display: block;
+  }
+  
+  .search-result-item {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .search-result-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  .controls-container {
+    width: 100%;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+  
+  .upload-section {
+    margin-bottom: 20px;
+  }
+  
+  .validation-section {
+    display: none;
+  }
+  
+  .validation-section.visible {
+    display: block;
+  }
+  
+  .button {
+    background-color: #bb26b9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .button:hover {
+    background-color: #701379;
+  }
+  
+  .button.cancel {
+    background-color: #f44336;
+  }
+  
+  .button.cancel:hover {
+    background-color: #da190b;
+  }
+  
+  .info-text {
+    margin: 10px 0;
+    color: #666;
+  }
+  
+  .status-text {
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .floating-image {
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    opacity: 0.8;
+    animation: float 8s infinite;
+  }
+  
+  .floating-image.top-left {
+    top: 15px;
+    left: 10px;
+    z-index: -1;
+  }
+  
+  .floating-image.top-right {
+    top: 10px;
+    right: 10px;
+    z-index: -1;
+  }
+  
+  .floating-image.top-middle-left {
+    top: 15px;
+    left: 25%;
+    z-index: -1;
+  }
+  
+  .floating-image.top-middle-right {
+    top: 10px;
+    right: 25%;
+    z-index: -1;
+  }
+  
+  .floating-image.middle-right {
+    top: 50%;
+    right: 10px;
+    z-index: 2;
+  }
+  
+  .floating-image.middle-left {
+    top: 50%;
+    left: 10px;
+    z-index: 2;
+  }
+  
+  .floating-image.bottom-left {
+    bottom: 10px;
+    left: 10px;
+    z-index: 2;
+  }
+  
+  .floating-image.bottom-right {
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(10px, -10px);
+    }
+    50% {
+      transform: translate(0, -20px);
+    }
+    75% {
+      transform: translate(-10px, -10px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  .filter-container {
+    margin: 15px 0;
+    text-align: center;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .filter-button {
+    padding: 8px 16px;
+    border: 2px solid #f09bdd;
+    background-color: black;
+    color: #f09bdd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-button:hover {
+    background-color: #f09bdd;
+    color: black;
+  }
+  
+  .filter-button.active {
+    background-color: #f09bdd;
+    color: black;
+  }
+  
+  .stats-container {
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .stat-item {
+    margin: 0 10px;
+  }
+  
+  .legend {
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+  
+  footer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: #b92574;
+    font-style: italic;
+  }

@@ -2,3 +2,5 @@ flask
 folium
 pandas
 werkzeug
+gspread
+google-auth
