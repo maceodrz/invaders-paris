@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-function SearchBar() {
+function SearchBar({ onSearchResultClick }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
@@ -40,7 +40,7 @@ function SearchBar() {
         const response = await fetch(`/search_invaders?query=${encodeURIComponent(value)}`);
         const data = await response.json();
         
-        setResults(data);
+        setResults(data); // Ici, on stocke les IDs dans results
         setShowResults(data.length > 0);
       } catch (error) {
         console.error('Error searching invaders:', error);
@@ -49,15 +49,7 @@ function SearchBar() {
   };
 
   const handleResultClick = (id) => {
-    // Accéder à l'iframe et cliquer sur le marqueur
-    const mapFrame = document.getElementById('map-frame');
-    if (mapFrame && mapFrame.contentWindow) {
-      const marker = mapFrame.contentWindow.document.querySelector(`[data-invader-id="${id}"]`);
-      if (marker) {
-        marker.click();
-      }
-    }
-    setShowResults(false);
+    onSearchResultClick(id); // Appelle la fonction pour centrer la carte
   };
 
   return (
@@ -74,15 +66,22 @@ function SearchBar() {
         className={`search-results ${showResults ? 'visible' : ''}`}
         style={{ display: showResults ? 'block' : 'none' }}
       >
-        {results.map((id) => (
-          <div 
-            key={id} 
-            className="search-result-item"
-            onClick={() => handleResultClick(id)}
-          >
-            Invader {id}
-          </div>
-        ))}
+        {results.length > 0 ? (
+          results.map((id) => (
+            <div 
+              key={id} 
+              className="search-result-item"
+              onClick={() => {
+                handleResultClick(id);
+                setShowResults(false); // Stop displaying the list of IDs
+              }}
+            >
+              Invader {id} {/* Affiche l'ID dans la liste */}
+            </div>
+          ))
+        ) : (
+          <div>Aucun résultat trouvé</div> // Message lorsqu'aucun résultat n'est trouvé
+        )}
       </div>
     </div>
   );

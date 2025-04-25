@@ -236,7 +236,7 @@ def create_map(
         elif only_flashed and row["Flashed"]:
             marker.add_to(paris_map)
 
-    paris_map.save("static/flashed_invaders_map.html")
+    paris_map.save("invaders-frontend/public/static/flashed_invaders_map.html")
 
 
 def generate_buttons_html(invader_id, is_flashed, is_flashable):
@@ -289,7 +289,7 @@ def map_unflashed():
     return render_template("map.html")
 
 
-@app.route("/flashable_invaders")
+@app.route("/get_invaders")
 def map_flashable():
     create_map(only_flashable=True)
     return render_template("map.html")
@@ -305,6 +305,64 @@ def map_flashable_unflashed():
 def map_flashed():
     create_map(only_flashed=True)
     return render_template("map.html")
+
+@app.route('/api/invaders')
+def get_invaders():
+    df = pd.read_csv(CSV_FILE)
+    invaders_data = []
+    for _, row in df.iterrows():
+        invader = {
+            "id": str(row["id"]),
+            "address": row["address"],
+            "lat": row["Latitude"],
+            "lng": row["Longitude"],
+            "flashed": row["Flashed"],
+            "flashable": row["Flashable"],
+            "type": "flashable" if row["Flashable"] else "unflashable",
+            "status": "flashed" if row["Flashed"] else "not flashed",
+        }
+        invaders_data.append(invader)
+    filter_type = request.args.get('filter', 'all')
+
+    if filter_type == 'all':
+        filtered_invaders = invaders_data
+    elif filter_type == 'flashable':
+        filtered_invaders = [inv for inv in invaders_data if inv['flashable']]
+    elif filter_type == 'unflashed':
+        filtered_invaders = [inv for inv in invaders_data if not inv['flashed']]
+    elif filter_type == 'flashable-unflashed':
+        filtered_invaders = [inv for inv in invaders_data if inv['flashable'] and not inv['flashed']]
+    elif filter_type == 'flashed':
+        filtered_invaders = [inv for inv in invaders_data if inv['flashed']]
+    else:
+        filtered_invaders = []
+
+    return jsonify(filtered_invaders)
+
+@app.route('/api/new_update_invader_status', methods=['POST'])
+def new_update_invader_status():
+    data = request.get_json()
+    invader_id = data.get("id")
+    new_status = data.get("newAction")
+    # Load and modify the CSV or database
+    df = pd.read_csv(CSV_FILE)
+    if invader_id not in df['id'].values:
+        return jsonify(status="error", message="Invader not found")
+
+    mask = df['id'] == invader_id
+
+    if new_status in ['flash', 'unflash']:
+        if not df.loc[mask, 'Flashable'].iloc[0]:
+            return jsonify(status="error", message="Invader is not flashable")
+        df.loc[mask, 'Flashed'] = (new_status == 'flash')
+    elif new_status in ['disable', 'enable']:
+        new_flashable = (new_status == 'enable')
+        df.loc[mask, 'Flashable'] = new_flashable
+        if not new_flashable:
+            df.loc[mask, 'Flashed'] = False
+    df.to_csv(CSV_FILE, index=False)
+
+    return jsonify(status="success") # message="Status mis à jour !"
 
 
 @app.route("/update_invader_status", methods=["POST"])
@@ -366,6 +424,19 @@ def update_invader_status():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route("/get_stats")
+def get_stats():
+    df = pd.read_csv(CSV_FILE)
+    total_flashed = df[df['Flashed'] == True].shape[0]
+    total_unflashed = df[df['Flashable'] == True].shape[0]
+    progress = total_flashed / (total_flashed + total_unflashed) * 100 if (total_flashed + total_unflashed) > 0 else 0
+    return jsonify(
+        {
+            "total_flashed": total_flashed,
+            "total_unflashed": total_unflashed,
+            "progress": progress,
+        }
+    )
 
 @app.route("/search_invaders")
 def search_invaders():
