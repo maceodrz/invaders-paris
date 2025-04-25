@@ -428,8 +428,10 @@ def update_invader_status():
 def get_stats():
     df = pd.read_csv(CSV_FILE)
     total_flashed = df[df['Flashed'] == True].shape[0]
-    total_unflashed = df[df['Flashable'] == True].shape[0]
-    progress = total_flashed / (total_flashed + total_unflashed) * 100 if (total_flashed + total_unflashed) > 0 else 0
+    total_unflashed = df[df['Flashable'] == True].shape[0] - total_flashed
+    progress = total_flashed / (total_flashed + total_unflashed) * 10000 if (total_flashed + total_unflashed) > 0 else 0
+    progress = int(progress)
+    progress = progress / 100
     return jsonify(
         {
             "total_flashed": total_flashed,
