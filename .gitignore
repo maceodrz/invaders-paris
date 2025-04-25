@@ -7,7 +7,12 @@ venv
 # data
 # data
 video
-static/flash_invaders_map/html
+invaders-backend/static/flashed_invaders_map.html
+invaders-backend/data
+data
+
+# frontend
+invaders-frontend/public/static/flashed_invaders_map.html
 
 # Python things
 __pycache__

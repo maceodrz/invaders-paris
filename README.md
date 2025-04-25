@@ -3,7 +3,17 @@ Projet de maintien d'une map qui montre les invaders validés à Paris, ceux qu'
 
 # Utilisation
 
+```
+cd invaders-backend
 python3 app.py
+```
+
+```
+cd invaders-frontend
+npm start
+```
+
+Dockerisation en cours
 
 ## Rentrer ses invaders
 ### Désactivé pour le moment, à décommenter dans app.py
