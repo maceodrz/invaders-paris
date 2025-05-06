@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { createRoot } from 'react-dom/client';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import SearchBar from './SearchBar';
 import Legend from './Legend';
+import '../styles/popup.css';
 
 // Correction icônes Leaflet pour React
 delete L.Icon.Default.prototype._getIconUrl;
@@ -20,7 +22,6 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
   const markerRefs = useRef(new Map());
   const userMarkerRef = useRef(null);
 
-
   const createCustomIcon = (color) => {
     return new L.Icon({
       iconUrl: `static/images/markers/marker-icon-${color}.png`,
@@ -36,6 +37,67 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
     if (invader.type !== "flashable") return "grey";
     if (pendingInvaders.includes(String(invader.id))) return "blue";
     return invader.status === "flashed" ? "green" : "violet";
+  };
+
+  // Cleanup function to properly unmount React roots when component unmounts or filters change
+  useEffect(() => {
+    // Capture la valeur actuelle pour la fonction de nettoyage
+    const currentMarkerRefs = markerRefs.current;
+    
+    return () => {
+      // Clean up all React roots in popups
+      currentMarkerRefs.forEach((marker) => {
+        if (marker.popupRoot) {
+          marker.popupRoot.unmount();
+          marker.popupRoot = null;
+        }
+      });
+    };
+  }, [currentFilter]);
+
+  const renderPopupContent = (marker, invader) => {
+    // Attendre que le DOM de la popup soit disponible
+    setTimeout(() => {
+      const popupElement = marker.getPopup().getElement();
+      if (!popupElement) return;
+
+      // Trouver le conteneur de contenu dans la popup
+      const contentContainer = popupElement.querySelector('.leaflet-popup-content');
+      if (!contentContainer) return;
+
+      // Si nous n'avons pas encore de root pour cette popup, en créer un
+      if (!marker.popupRoot) {
+        // Vider le contenu existant
+        contentContainer.innerHTML = '';
+        // Créer un div pour le contenu React
+        const reactContainer = document.createElement('div');
+        contentContainer.appendChild(reactContainer);
+        marker.popupRoot = createRoot(reactContainer);
+      }
+
+      // Rendre le contenu React dans la popup
+      marker.popupRoot.render(
+        <div style={{ maxLength: '100px', wordWrap: 'break-word' }}>
+          <h3 className="popup-h3">son p'tit nom : {invader.id}</h3>
+          <p className="popup-paragraph">Type : {invader.type}</p>
+          <p className="popup-paragraph">Status : {invader.status}</p>
+          <p className="popup-paragraph">Addresse : {invader.address}</p>
+          {invader.type === 'flashable' && invader.status !== 'flashed' && (
+        <button className="popup-button flash" onClick={() => handleStatusUpdate(invader.id, 'flash')}>Flash</button>
+          )}
+          {invader.status === 'flashed' && (
+          <button className="popup-button unflash" onClick={() => handleStatusUpdate(invader.id, 'unflash')}>Unflash</button>
+        )}
+
+          {invader.type === 'flashable' && (
+        <button className="popup-button disable" onClick={() => handleStatusUpdate(invader.id, 'disable')}>Disable</button>
+          )}
+          {invader.type !== 'flashable' && (
+        <button className="popup-button enable" onClick={() => handleStatusUpdate(invader.id, 'enable')}>Enable</button>
+          )}
+        </div>
+      );
+    }, 0);
   };
 
   const handleStatusUpdate = async (id, newAction) => {
@@ -55,8 +117,8 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
         const data = await res.json();
 
         if (data.status === 'success') {
-          // Mette à jour l'état 'invaders' en fonction de l'action
-            const updatedInvaders = invaders.map((inv) => {
+          // Mettre à jour l'état 'invaders' en fonction de l'action
+          const updatedInvaders = invaders.map((inv) => {
             if (inv.id === id) {
               let updatedInv = { ...inv };
               if (newAction === 'flash') updatedInv.status = 'flashed';
@@ -67,30 +129,32 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
               return updatedInv;
             }
             return inv;
-            });
+          });
 
-            // Mettre à jour les marqueurs sans déclencher un re-render complet
-            const updatedInvader = updatedInvaders.find((inv) => inv.id === id);
-            if (updatedInvader) {
-              const newColor = getMarkerColor(updatedInvader);
-              const marker = markerRefs.current.get(id);
-              if (marker) {
+          // Mettre à jour l'état local
+          setInvaders(updatedInvaders);
+
+          // Mettre à jour les marqueurs sans déclencher un re-render complet
+          const updatedInvader = updatedInvaders.find((inv) => inv.id === id);
+          if (updatedInvader) {
+            const newColor = getMarkerColor(updatedInvader);
+            const marker = markerRefs.current.get(id);
+            
+            if (marker) {
               marker.setIcon(createCustomIcon(newColor));
-              } else {
-              console.error(`Marker not found for invader with id: ${id}`);
+              
+              // Si la popup est ouverte, mettre à jour son contenu
+              if (marker.isPopupOpen()) {
+                renderPopupContent(marker, updatedInvader);
               }
+            } else {
+              console.error(`Marker not found for invader with id: ${id}`);
             }
+          }
 
-            // setTimeout(() => {
-            // setInvaders(updatedInvaders);
-            // }, 100); // Attendre que le flyTo soit terminé avant de rafraîchir l'état
-            setTimeout(() => {
-          const invader = invaders.find((inv) => inv.id === id);
-          if (invader) {
+          setTimeout(() => {
             mapRef.current.flyTo([currentCenter.lat, currentCenter.lng], currentZoom);
-          } else {
-            console.warn(`No invader found with id: ${id}`);
-          }}, 200); // Attendre que le flyTo soit terminé avant de rafraîchir l'état
+          }, 200);
         } else {
           alert('Erreur : ' + data.message);
         }
@@ -136,7 +200,7 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
               shadowSize: [41, 41],
           }))
             .addTo(mapRef.current)
-            .bindPopup("Vous êtes ici");
+            .bindPopup("Wopopop, t'es là !");
           userMarkerRef.current = marker;
         }
   
@@ -148,13 +212,25 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
       }
     );
   };
-  
-  
 
   function MapComponent({ invaders }) {
+    useEffect(() => {
+      // Capture la valeur actuelle pour la fonction de nettoyage
+      const currentMarkerRefs = markerRefs.current;
+      
+      return () => {
+        // Nettoyer les roots React
+        currentMarkerRefs.forEach(marker => {
+          if (marker.popupRoot) {
+            marker.popupRoot.unmount();
+            marker.popupRoot = null;
+          }
+        });
+      };
+    }, [invaders]);
 
     return (
-      <MapContainer center={[48.8566, 2.3522]} zoom={12} style={{ height: '600px', width: '100%' }} ref={mapRef}>
+      <MapContainer center={[48.8566, 2.3522]} zoom={12} style={{ height: '100%', width: '100%' }} ref={mapRef}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {invaders.map((invader) => (
           <Marker
@@ -162,31 +238,39 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
             position={[invader.lat, invader.lng]}
             icon={createCustomIcon(getMarkerColor(invader))}
             ref={(ref) => {
-              if (ref) markerRefs.current.set(invader.id, ref);
-              else markerRefs.current.delete(invader.id); // Nettoyage
+              if (ref) {
+                markerRefs.current.set(invader.id, ref);
+                
+                // Configurer la popup avec un contenu initial simple
+                ref.bindPopup(`<div>Chargement...</div>`, { 
+                  minWidth: 250,
+                  className: 'custom-popup'
+                });
+                
+                // Configurer un gestionnaire pour rendre le contenu React quand la popup s'ouvre
+                ref.on('popupopen', () => {
+                  if (ref.getPopup()) {
+                    renderPopupContent(ref, invader);
+                  }
+                });
+                ref.on('popupclose', () => {
+                  if (ref.popupRoot) {
+                    ref.popupRoot.unmount();
+                    ref.popupRoot = null;
+                  }
+                });
+              } else {
+                // Nettoyage quand le marqueur est supprimé
+                const marker = markerRefs.current.get(invader.id);
+                if (marker) {
+                  if (marker.popupRoot) {
+                    marker.popupRoot.unmount();
+                  }
+                  markerRefs.current.delete(invader.id);
+                }
+              }
             }}
-          >
-            <Popup>
-              <div>
-                <h3>son p'tit nom : {invader.id}</h3>
-                <p>Type : {invader.type}</p>
-                <p>Status : {invader.status}</p>
-                <p>Addresse : {invader.address}</p>
-                {invader.type === 'flashable' && invader.status !== 'flashed' && (
-                  <button onClick={() => handleStatusUpdate(invader.id, 'flash')}>Flash</button>
-                )}
-                {invader.status === 'flashed' && (
-                  <button onClick={() => handleStatusUpdate(invader.id, 'unflash')}>Unflash</button>
-                )}
-                {invader.type === 'flashable' && (
-                  <button onClick={() => handleStatusUpdate(invader.id, 'disable')}>Disable</button>
-                )}
-                {invader.type !== 'flashable' && (
-                  <button onClick={() => handleStatusUpdate(invader.id, 'enable')}>Enable</button>
-                )}
-              </div>
-            </Popup>
-          </Marker>
+          />
         ))}
       </MapContainer>
     );
@@ -230,8 +314,8 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
           <div>Chargement...</div>
         </div>
       )}
+      {/* <Legend /> */}
       <MapComponent invaders={invaders} />
-      <Legend />
       <button
         onClick={handleLocateUser}
         style={{
@@ -247,9 +331,8 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
           cursor: 'pointer',
         }}
       >
-        📍 TT'
+        📍 Ma Position
       </button>
-
     </div>
   );
 }

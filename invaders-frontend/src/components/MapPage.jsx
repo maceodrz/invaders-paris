@@ -6,6 +6,7 @@ import StatsDisplay from './StatsDisplay';
 import ControlsContainer from './ControlsContainer';
 import FloatingImages from './FloatingImages';
 import Footer from './Footer';
+import Legend from './Legend';
 
 function MapPage() {
   const [currentFilter, setCurrentFilter] = useState('all');
@@ -86,16 +87,17 @@ function MapPage() {
       />
       <StatsDisplay stats={stats} />
       <MapContainer 
-        currentFilter={currentFilter} 
+        currentFilter={currentFilter}
         pendingInvaders={pendingInvaders}
       />
-      <ControlsContainer 
+      <Legend />
+      {/* {<ControlsContainer 
         pendingInvaders={pendingInvaders}
         setPendingInvaders={setPendingInvaders}
         isValidating={isValidating}
         setIsValidating={setIsValidating}
         validateInvaders={handleValidateInvaders}
-      />
+      />} */}
       <FloatingImages />
       <Footer />
     </div>
