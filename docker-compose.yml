@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./invaders-backend
+    container_name: invaders-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    restart: unless-stopped
+
+  frontend:
+    build: ./invaders-frontend
+    container_name: invaders-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./invaders-frontend:/app
+    restart: unless-stopped
+    depends_on:
+      - backend
