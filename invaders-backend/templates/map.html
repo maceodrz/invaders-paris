@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Carte des Invaders de Chupa</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const title = document.querySelector('h1');
+            title.style.cursor = 'pointer';
+            title.addEventListener('click', () => {
+                window.location.href = "{{ url_for('home') }}";
+            });
+        });
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 100vh;
+            background-color: black;
+        }
+        
+        h1 {
+            color: #ebe047;
+            text-align: center;
+            font-family:'Copperplate', 'Arial Narrow', Arial, sans-serif;
+            margin: 0;
+            position: relative;
+        }
+
+        h1::after {
+            content: 'La Carte des Invaders de Chupa';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: rgb(206, 135, 5);
+            z-index: -1;
+            transform: translate(2px, 2px);
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 70vh;
+            border: 2px solid #f09bdd;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .search-container {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+        }
+        
+        .search-results {
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 1px;
+        }
+        
+        .search-result-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+        
+        .search-result-item:hover {
+            background-color: #f0f0f0;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .controls-container {
+            width: 100%;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .upload-section {
+            margin-bottom: 20px;
+        }
+
+        .validation-section {
+            display: none;
+        }
+
+        .button {
+            background-color: #bb26b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        .button:hover {
+            background-color: #701379;
+        }
+        
+        .button.cancel {
+            background-color: #f44336;
+        }
+        
+        .button.cancel:hover {
+            background-color: #da190b;
+        }
+
+        .info-text {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .status-text {
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .floating-image {
+            position: absolute;
+            width: 50px;
+            height: 40px;
+            opacity: 0.8;
+            animation: float 8s infinite;
+        }
+
+        .floating-image.top-left {
+            top: 15px;
+            left: 10px;
+            z-index: -1;
+        }
+
+        .floating-image.top-right {
+            top: 10px;
+            right: 10px;
+            z-index: -1;
+        }
+
+        .floating-image.top-middle-left {
+            top: 15px;
+            left: 25%;
+            z-index: -1;
+        }
+
+        .floating-image.top-middle-right {
+            top: 10px;
+            right: 25%;
+            z-index: -1;
+        }
+
+        .floating-image.middle-right {
+            top: 50%;
+            right: 10px;
+            z-index: 2;
+        }
+
+        .floating-image.middle-left {
+            top: 50%;
+            left: 10px;
+            z-index: 2;
+        }
+
+        .floating-image.bottom-left {
+            bottom: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+
+        .floating-image.bottom-right {
+            bottom: 10px;
+            right: 10px;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0% {
+            transform: translate(0, 0);
+            }
+            25% {
+            transform: translate(10px, -10px);
+            }
+            50% {
+            transform: translate(0, -20px);
+            }
+            75% {
+            transform: translate(-10px, -10px);
+            }
+            100% {
+            transform: translate(0, 0);
+            }
+        }
+        .filter-container {
+            margin: 15px 0;
+        }
+    
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .filter-button {
+            padding: 8px 16px;
+            border: 2px solid #f09bdd;
+            background-color: black;
+            color: #f09bdd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    
+        .filter-button:hover {
+            background-color: #f09bdd;
+            color: black;
+        }
+    
+        .filter-button.active {
+            background-color: #f09bdd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>La Carte des Invaders de Chupa</h1>
+
+    <!-- Add buttons for different map views -->
+    <div class="filter-container" style="text-align: center; margin-bottom: 20px;">
+        <div class="filter-buttons">
+            <button id="all-invaders" class="filter-button active" data-filter="all">
+                Tous les Invaders
+            </button>
+            <button id="flashable-invaders" class="filter-button" data-filter="flashable">
+                Flashables
+            </button>
+            <button id="unflashed-invaders" class="filter-button" data-filter="unflashed">
+                Non Flashés
+            </button>
+            <button id="flashable-unflashed" class="filter-button" data-filter="flashable-unflashed">
+                Flashables & Non Flashés
+            </button>
+            <button id="flashed" class="filter-button" data-filter="flashed">
+                Déjà Flashés (trop forte)
+            </button>
+        </div>
+    </div>
+    <div class="stats-container" style="text-align: center; margin-bottom: 10px;">
+        <span class="stat-item">Total Flashés: <span id="total-flashed">0</span></span>
+        <span class="stat-item">Reste à Flasher: <span id="total-unflashed">0</span></span>
+        <span class="stat-item">Progression: <span id="progress">0</span>%</span>
+    </div>
+    <div class="map-container">
+        <div class="search-container">
+            <input 
+                type="text" 
+                class="search-input" 
+                placeholder="Rechercher un ID (ex: 12)"
+                oninput="searchInvaders(this.value)"
+                style="box-sizing: border-box;"
+            >
+            <div class="search-results"></div>
+        </div>
+        <iframe id="map-frame" src="{{ url_for('static', filename='flashed_invaders_map.html') }}"></iframe>
+    </div>
+    <div class="legend" style="position: absolute; top: 40%; right: 10px; background: white; padding: 10px; border-radius: 4px; z-index: 1000;">
+        <div><span style="color: rgb(37, 179, 37);">●</span> Flashé</div>
+        <div><span style="color: rgb(153, 77, 190);">●</span> À Flasher</div>
+        <div><span style="color: grey;">●</span> Impossible</div>
+    </div>
+
+    <script>
+
+        let currentFilter = 'all';
+
+        // Fonction pour mettre à jour l'état des boutons
+        function updateFilterButtons(activeFilter) {
+            document.querySelectorAll('.filter-button').forEach(button => {
+                button.classList.remove('active');
+                if (button.dataset.filter === activeFilter) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // Fonction pour mettre à jour la carte
+        function updateMapView(filter) {
+            const mapFrame = document.getElementById('map-frame');
+            let url;
+        
+            switch(filter) {
+                case 'flashable':
+                    fetch("{{ url_for('map_flashable') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+                    break;
+                case 'unflashed':
+                    fetch("{{ url_for('map_unflashed') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+                    break;
+                case 'flashable-unflashed':
+                    fetch("{{ url_for('map_flashable_unflashed') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+                    break;
+                case 'flashed':
+                    fetch("{{ url_for('map_flashed') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+                    break;
+                default:
+                    fetch("{{ url_for('map_page') }}")
+                        .then(() => {
+                            mapFrame.src = "{{ url_for('static', filename='flashed_invaders_map.html') }}";
+                        });
+            }
+        }
+
+        // Initialisation des écouteurs d'événements
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.filter-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const newFilter = e.target.dataset.filter;
+                    if (currentFilter !== newFilter) {
+                        currentFilter = newFilter;
+                        updateFilterButtons(currentFilter);
+                        updateMapView(currentFilter);
+                    }
+                });
+            });
+        });
+
+        // Réinitialiser le filtre après validation des invaders
+        function resetFilters() {
+            currentFilter = 'all';
+            updateFilterButtons('all');
+            updateMapView('all');
+        }
+
+        // Modifier la fonction validateInvaders pour inclure la réinitialisation des filtres
+        function validateInvaders() {
+            fetch('/validate_flashed_invaders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    invader_ids: pendingInvaders
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('map-frame').contentWindow.location.reload();
+                    closeValidationPanel();
+                    resetFilters(); // Réinitialiser les filtres après validation
+                }
+            })
+            .catch(error => {
+                alert('Erreur lors de la validation');
+                console.error('Error:', error);
+            });
+        }
+
+        let debounceTimeout;
+        const searchResults = document.querySelector('.search-results');
+
+        function searchInvaders(query) {
+            clearTimeout(debounceTimeout);
+            
+            if (query.length === 0) {
+                searchResults.style.display = 'none';
+                searchResults.innerHTML = '';
+                return;
+            }
+
+            debounceTimeout = setTimeout(() => {
+                fetch(`/search_invaders?query=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        searchResults.innerHTML = '';
+                        
+                        if (data.length === 0) {
+                            searchResults.style.display = 'none';
+                            return;
+                        }
+
+                        data.forEach(id => {
+                            const div = document.createElement('div');
+                            div.className = 'search-result-item';
+                            div.textContent = `Invader ${id}`;
+                            div.onclick = () => {
+                                const mapFrame = document.getElementById('map-frame');
+                                // Get the map window
+                                const mapWindow = mapFrame.contentWindow;
+                                // Find and click the marker
+                                const marker = mapWindow.document.querySelector(`[data-invader-id="${id}"]`);
+                                if (marker) {
+                                    marker.click();
+                                }
+                                // Hide search results
+                                searchResults.style.display = 'none';
+                            };
+                            searchResults.appendChild(div);
+                        });
+                        
+                        searchResults.style.display = 'block';
+                    })
+                    .catch(error => console.error('Error:', error));
+            }, 300); // Debounce delay
+        }
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Function to create floating images
+        function createFloatingImages() {
+            const images = [
+                'static/images/invaders_png/invader_1.png',
+                'static/images/invaders_png/invader_2.png',
+                'static/images/invaders_png/invader_3.png',
+                'static/images/invaders_png/invader_4.png',
+                'static/images/invaders_png/invader_7.png',
+                'static/images/invaders_png/invader_6.png',
+                'static/images/invaders_png/invader_5.png',
+                'static/images/invaders_png/invader_8.png',
+                // Add more image paths as needed
+            ];
+            const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'top-middle-left', 'top-middle-right', 'middle-right', 'middle-left'];
+            images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = `floating-image ${positions[index % positions.length]}`;
+                img.style.animationDuration = `${5 + Math.random() * 7}s`;
+                document.body.appendChild(img);
+            });
+        }
+
+        // Call the function to create floating images
+        createFloatingImages();
+    </script>
+        <div class="controls-container">
+            <div class="upload-section">
+                <h3 style="color: #7d197d; text-align: center; font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif; margin-bottom: 10px;"><strong>Chargement de ta galerie FlashInvaders</strong></h3>
+                <p class="info-text">Pour charger ta galerie, tu vas devoir faire un screen vidéo assez lent de ta galerie FlashInvaders(scroller avec le doigt sans le lâcher dans l'élan). Et cut la fin pour garder uniquement la partie où on voit les invaders. Le traitement peut prendre un peu de temps (environ 5min par minute de vidéo)</p>
+                <input type="file" id="video-upload" accept=".mp4,.mov,.avi" style="display: none;">
+                <button class="button" onclick="document.getElementById('video-upload').click()">Choisir une vidéo</button>
+            </div>
+    
+            <div class="validation-section" id="validation-section">
+                <h3>Validation des Invaders</h3>
+                <p class="status-text">Nouveaux invaders détectés: <span id="new-count">0</span></p>
+                <p class="info-text">Les invaders en bleu sont en attente de validation. Vous pouvez cliquer sur les marqueurs pour vérifier les détails avant de valider.</p>
+                <button class="button" onclick="validateInvaders()">Valider les invaders</button>
+                <button class="button cancel" onclick="cancelValidation()">Annuler</button>
+            </div>
+        </div>
+    
+        <script>
+            let pendingInvaders = [];
+            
+            document.getElementById('video-upload').addEventListener('change', function(e) {
+                if (!e.target.files.length) return;
+                
+                const file = e.target.files[0];
+                const formData = new FormData();
+                formData.append('video', file);
+                
+                // Afficher un indicateur de chargement
+                const loadingIndicator = document.createElement('div');
+                loadingIndicator.id = 'loading-indicator';
+                loadingIndicator.style.position = 'absolute';
+                loadingIndicator.style.top = '0';
+                loadingIndicator.style.left = '0';
+                loadingIndicator.style.width = '100%';
+                loadingIndicator.style.height = '100%';
+                loadingIndicator.style.opacity = '0.6';
+                loadingIndicator.style.zIndex = '1000';
+                loadingIndicator.style.display = 'flex';
+                loadingIndicator.style.justifyContent = 'center';
+                loadingIndicator.style.alignItems = 'center';
+                loadingIndicator.innerHTML = '<img src="static/images/waiting.gif" alt="Chargement..." style="max-width: 100%; max-height: 100%;">';
+                document.querySelector('.map-container').appendChild(loadingIndicator);
+                
+                fetch('/upload_video', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+
+                    // Supprimer le message de chargement
+                    document.getElementById('loading-indicator').remove();
+
+                    if (data.error) {
+                        alert('Erreur: ' + data.error);
+                        return;
+                    }
+                    
+                    pendingInvaders = data.new_flashed;
+                    
+                    // Mettre à jour le compteur
+                    document.getElementById('new-count').textContent = pendingInvaders.length;
+                    
+                    // Afficher la section de validation
+                    document.querySelector('.upload-section').style.display = 'none';
+                    document.getElementById('validation-section').style.display = 'block';
+                    
+                    // Rafraîchir la carte avec les nouveaux marqueurs bleus
+                    document.getElementById('map-frame').contentWindow.location.reload();
+                })
+                .catch(error => {
+                    alert('Erreur lors du traitement de la vidéo');
+                    console.error('Error:', error);
+                });
+                
+                // Réinitialiser l'input file
+                e.target.value = '';
+            });
+            
+            function validateInvaders() {
+                fetch('/validate_flashed_invaders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        invader_ids: pendingInvaders
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // La carte est déjà mise à jour côté serveur
+                        document.getElementById('map-frame').contentWindow.location.reload();
+                        closeValidationPanel();
+                    }
+                })
+                .catch(error => {
+                    alert('Erreur lors de la validation');
+                    console.error('Error:', error);
+                });
+            }
+            
+            function cancelValidation() {
+                closeValidationPanel();
+                // Rafraîchir la carte pour enlever les marqueurs bleus
+                document.getElementById('map-frame').contentWindow.location.reload();
+            }
+            
+            function closeValidationPanel() {
+                document.getElementById('validation-section').style.display = 'none';
+                document.querySelector('.upload-section').style.display = 'block';
+                pendingInvaders = [];
+            }
+    </script>
+</body>
+</html>
+<footer style="position: fixed; bottom: 10px; right: 10px; font-size: 0.8rem; color: #b92574; font-style: italic;">
+    @ made by chups
+</footer>
