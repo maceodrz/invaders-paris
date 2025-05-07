@@ -42,7 +42,6 @@ CORS(app)
 # def save_dataframe(df):
 #     update_sheet_from_dataframe(df)
 
-app = Flask(__name__)
 
 CSV_FILE = (
     "data/cleaned_invaders_v2.csv"  # TODO: rajouter "Flashed at + date pour chacun"
