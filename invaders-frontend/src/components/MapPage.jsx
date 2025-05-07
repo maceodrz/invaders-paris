@@ -8,6 +8,8 @@ import FloatingImages from './FloatingImages';
 import Footer from './Footer';
 import Legend from './Legend';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function MapPage() {
   const [currentFilter, setCurrentFilter] = useState('all');
   const [stats, setStats] = useState({
@@ -33,7 +35,7 @@ function MapPage() {
 
   const handleValidateInvaders = async () => {
     try {
-      const response = await fetch('/validate_flashed_invaders', {
+      const response = await fetch(`${apiUrl}/validate_flashed_invaders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +63,7 @@ function MapPage() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch('/get_stats');
+        const response = await fetch(`${apiUrl}/get_stats`);
         if (response.ok) {
           const data = await response.json();
           setStats({
@@ -80,6 +82,7 @@ function MapPage() {
 
   return (
     <div className="map-page">
+      {console.log("API URL:", process.env.REACT_APP_API_URL)}
       <Header />
       <FilterButtons 
         currentFilter={currentFilter} 

@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function SearchBar({ onSearchResultClick }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
@@ -37,7 +39,7 @@ function SearchBar({ onSearchResultClick }) {
 
     debounceTimeoutRef.current = setTimeout(async () => {
       try {
-        const response = await fetch(`/search_invaders?query=${encodeURIComponent(value)}`);
+        const response = await fetch(`${apiUrl}/search_invaders?query=${encodeURIComponent(value)}`);
         const data = await response.json();
         
         setResults(data); // Ici, on stocke les IDs dans results

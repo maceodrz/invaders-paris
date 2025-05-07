@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function ControlsContainer({ 
   pendingInvaders, 
   setPendingInvaders, 
@@ -33,7 +35,7 @@ function ControlsContainer({
       loadingIndicator.innerHTML = '<img src="static/images/waiting.gif" alt="Chargement..." style="max-width: 100%; max-height: 100%;">';
       document.querySelector('.map-container').appendChild(loadingIndicator);
       
-      const response = await fetch('/upload_video', {
+      const response = await fetch(`${apiUrl}/upload_video`, {
         method: 'POST',
         body: formData
       });

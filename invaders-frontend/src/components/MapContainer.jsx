@@ -7,6 +7,8 @@ import SearchBar from './SearchBar';
 import Legend from './Legend';
 import '../styles/popup.css';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 // Correction icônes Leaflet pour React
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -106,7 +108,7 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
         const currentCenter = mapRef.current.getCenter();
         const currentZoom = mapRef.current.getZoom();
 
-        const res = await fetch('/api/new_update_invader_status', {
+        const res = await fetch(`${apiUrl}/api/new_update_invader_status`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id, newAction })
@@ -281,7 +283,7 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
       setIsLoading(true);
 
       try {
-        const res = await fetch(`/api/invaders?filter=${currentFilter}`);
+        const res = await fetch(`${apiUrl}/api/invaders?filter=${currentFilter}`);
         const data = await res.json();
         setInvaders(data);
       } catch (error) {
