@@ -2,7 +2,7 @@ import React from 'react';
 
 function Header() {
   const handleTitleClick = () => {
-    window.location.href = "/"; // Utiliser react-router-dom pour une navigation SPA
+    window.location.href = "/valentine"; // Utiliser react-router-dom pour une navigation SPA
   };
 
   return (

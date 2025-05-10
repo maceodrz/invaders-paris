@@ -73,29 +73,32 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
         contentContainer.innerHTML = '';
         // Créer un div pour le contenu React
         const reactContainer = document.createElement('div');
+        reactContainer.style.width = '20px'; // 👈 limite la largeur du popup
+        reactContainer.style.overflowWrap = 'break-word';
+        reactContainer.className = 'custom-popup-container'; // optionnel pour CSS global
+
         contentContainer.appendChild(reactContainer);
         marker.popupRoot = createRoot(reactContainer);
       }
 
       // Rendre le contenu React dans la popup
       marker.popupRoot.render(
-        <div style={{ maxLength: '100px', wordWrap: 'break-word' }}>
+        <div style={{ width: '200px', lineHeight: '1.2', wordWrap: 'break-word' }}>
           <h3 className="popup-h3">son p'tit nom : {invader.id}</h3>
-          <p className="popup-paragraph">Type : {invader.type}</p>
+          {/* <p className="popup-paragraph">Type : {invader.type}</p> */}
           <p className="popup-paragraph">Status : {invader.status}</p>
           <p className="popup-paragraph">Addresse : {invader.address}</p>
           {invader.type === 'flashable' && invader.status !== 'flashed' && (
-        <button className="popup-button flash" onClick={() => handleStatusUpdate(invader.id, 'flash')}>Flash</button>
+            <button className="popup-button flash" onClick={() => handleStatusUpdate(invader.id, 'flash')}>Flash</button>
           )}
           {invader.status === 'flashed' && (
-          <button className="popup-button unflash" onClick={() => handleStatusUpdate(invader.id, 'unflash')}>Unflash</button>
-        )}
-
+            <button className="popup-button unflash" onClick={() => handleStatusUpdate(invader.id, 'unflash')}>Unflash</button>
+          )}
           {invader.type === 'flashable' && (
-        <button className="popup-button disable" onClick={() => handleStatusUpdate(invader.id, 'disable')}>Disable</button>
+            <button className="popup-button disable" onClick={() => handleStatusUpdate(invader.id, 'disable')}>Disable</button>
           )}
           {invader.type !== 'flashable' && (
-        <button className="popup-button enable" onClick={() => handleStatusUpdate(invader.id, 'enable')}>Enable</button>
+            <button className="popup-button enable" onClick={() => handleStatusUpdate(invader.id, 'enable')}>Enable</button>
           )}
         </div>
       );
@@ -245,7 +248,6 @@ function MapContainerComponent({ currentFilter, pendingInvaders }) {
                 
                 // Configurer la popup avec un contenu initial simple
                 ref.bindPopup(`<div>Chargement...</div>`, { 
-                  minWidth: 250,
                   className: 'custom-popup'
                 });
                 

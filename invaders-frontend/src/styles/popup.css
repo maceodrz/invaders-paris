@@ -29,11 +29,31 @@
   }
 .popup-paragraph {
     margin: 4px 0;
+    margin-bottom: 0px;
+    font-size: 10px;
 }
 
 .popup-h3 {
     font-size: 10px;
     font-weight: bold;
     margin-bottom: 8px;
+}
+
+.custom-popup {
+  max-width: 200px !important;
+  max-height: 200px !important;
+}
+
+.leaflet-popup-content {
+  width: 150px !important;
+  margin: 8px !important;
+  padding: 0 !important;
+  max-height: 200px !important;
+  overflow-y: auto !important;
+}
+
+.custom-popup-container {
+  width: 100%;
+  font-size: 10px;
 }
   

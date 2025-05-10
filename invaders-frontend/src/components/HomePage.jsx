@@ -116,7 +116,7 @@ function HomePage() {
         <div className="message">
           Pour ma chupa la plus grande des collectionneuse, sauras-tu deviner quel est ton cadeau ?
         </div>
-        <Link to="/map" className="button">Accéder à la carte magique</Link>
+        <Link to="/" className="button">Accéder à la carte magique</Link>
       </div>
       <footer style={{ position: 'fixed', bottom: '10px', right: '10px', fontSize: '0.8rem', color: '#a32066', fontStyle: 'italic' }}>
         @ made by chups
