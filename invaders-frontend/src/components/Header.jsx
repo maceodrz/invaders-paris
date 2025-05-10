@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const navigate = useNavigate();
+
   const handleTitleClick = () => {
-    window.location.href = "/valentine"; // Utiliser react-router-dom pour une navigation SPA
+    navigate('/valentine');
   };
 
   return (
