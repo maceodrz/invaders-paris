@@ -8,6 +8,7 @@ import { useGeolocation } from '../../hooks/useGeolocation';
 import { updateInvaderStatus } from '../../services/api';
 
 import SearchBar from './SearchBar';
+import AddressSearchBar from './AddressSearchBar';
 import Legend from './Legend';
 import UserLocationMarker from './UserLocationMarker';
 import PopupContent from './PopupContent';
@@ -42,6 +43,12 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
       initialZoomDoneRef.current = true;
     }
   }, [position, isTracking]);
+
+  const handleAddressSelect = (coords) => {
+    if (mapRef.current) {
+      mapRef.current.flyTo([coords.lat, coords.lon], 17);
+    }
+  };
 
   const handleStatusUpdate = async (id, newAction) => {
     try {
@@ -117,6 +124,7 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
   return (
     <div className="map-container">
       <SearchBar onSearchResultClick={handleSearchResultClick} />
+      <AddressSearchBar onAddressSelect={handleAddressSelect} />
       <Legend />
       <MapContainer center={[48.8566, 2.3522]} zoom={12} style={{ height: '100%', width: '100%' }} ref={mapRef}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
@@ -137,8 +145,8 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
         ))}
         {isTracking && position && <UserLocationMarker position={position} />}
       </MapContainer>
-      <button onClick={handleToggleTracking} className="button" style={{ position: 'absolute', bottom: '20px', right: '20px', zIndex: 1001 }}>
-        {isTracking ? '🛑 Arrêter la localisation' : '📍 Ma Position'}
+      <button onClick={handleToggleTracking} className="button" style={{ position: 'absolute', bottom: '10px', right: '10px', zIndex: 1001 }}>
+        {isTracking ? '🛑 Stop Loc' : '📍 Moi'}
       </button>
     </div>
   );

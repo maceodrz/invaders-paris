@@ -1,5 +1,23 @@
 const API_URL = process.env.REACT_APP_API_URL || "";
 
+export const searchAddress = async (query) => {
+  if (!query || query.length < 3) {
+      return []; // Don't search for very short queries
+  }
+  const NOMINATIM_URL = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5`;
+  
+  try {
+      const response = await fetch(NOMINATIM_URL);
+      if (!response.ok) {
+          throw new Error('Nominatim API request failed');
+      }
+      return response.json();
+  } catch (error) {
+      console.error("Error searching address:", error);
+      return [];
+  }
+};
+
 export const fetchFlashHistory = async () => {
   const response = await fetch(`${API_URL}/api/flash_history`);
   if (!response.ok) {
