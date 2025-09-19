@@ -155,6 +155,59 @@ def sync_with_uid():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/api/process_synced_data', methods=['POST'])
+def process_synced_data():
+    try:
+        request_data = request.get_json()
+        api_data = request_data.get('invadersData')
+
+        if not api_data:
+            return jsonify({"status": "error", "message": "No invadersData provided"}), 400
+
+        flashed_invaders_from_api = api_data.get('invaders', {})
+        api_invader_ids = set(flashed_invaders_from_api.keys())
+        
+        df = pd.read_csv(CSV_FILE)
+
+        # Ensure optional columns exist
+        if 'date_flash' not in df.columns: df['date_flash'] = ''
+        if 'image_url' not in df.columns: df['image_url'] = ''
+
+        df['date_flash'] = df['date_flash'].astype(object)
+        df['image_url'] = df['image_url'].astype(object)
+
+        updated_count = 0
+        reset_count = 0
+
+        # --- This is the exact same processing logic from your old function ---
+        for index, row in df.iterrows():
+            invader_id = row['id']
+            # Your normalization logic can stay if needed, but it's often better to normalize on both ends
+            # For simplicity, we assume IDs match or you have a good normalization function
+            
+            if invader_id in api_invader_ids:
+                if not row['Flashed']:
+                    updated_count += 1
+                df.at[index, 'Flashed'] = True
+                df.at[index, 'date_flash'] = flashed_invaders_from_api[invader_id].get('date_flash')
+                df.at[index, 'image_url'] = flashed_invaders_from_api[invader_id].get('image_url')
+            else:
+                if row['Flashed']:
+                    reset_count += 1
+                df.at[index, 'Flashed'] = False
+                df.at[index, 'date_flash'] = np.nan
+                df.at[index, 'image_url'] = np.nan
+        
+        df.to_csv(CSV_FILE, index=False)
+        
+        return jsonify({"status": "success", "message": f"{updated_count} invaders nouvellement flashés, {reset_count} réinitialisés."})
+
+    except Exception as e:
+        # Log the full error for debugging
+        print(f"Error processing synced data: {e}") 
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
 @app.route('/api/new_update_invader_status', methods=['POST'])
 def new_update_invader_status():
     # ... (this function remains the same as before) ...
