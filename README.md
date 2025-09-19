@@ -1,21 +1,25 @@
 # invaders-paris
+
 Projet de maintien d'une map qui montre les invaders validés à Paris, ceux qu'on ne peut pas flasher, leur adresse
 
 # Utilisation
 
 ```
 cd invaders-backend
+python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
 python3 app.py
 ```
 
 ```
 cd invaders-frontend
+npm install
 npm start
 ```
 
 Dockerisation en cours
 
 ## Rentrer ses invaders
+
 ### Désactivé pour le moment, à décommenter dans app.py
 
 Faire un screen video assez lent (scroller avec le doigt sans le lacher dans l'élan)
