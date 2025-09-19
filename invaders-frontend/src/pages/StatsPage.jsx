@@ -8,8 +8,8 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="custom-tooltip">
         <p className="label">{`Semaine du : ${label}`}</p>
-        <p className="intro" style={{ color: '#f09bdd' }}>{`Flashés cette semaine : ${payload[1].value}`}</p>
-        <p className="desc" style={{ color: '#bb26b9' }}>{`Total cumulé : ${payload[0].value}`}</p>
+        <p className="intro" style={{ color: '#f09bdd' }}>{`Flashés cette semaine : ${payload[0].value}`}</p>
+        <p className="desc" style={{ color: '#bb26b9' }}>{`Total cumulé : ${payload[1].value}`}</p>
       </div>
     );
   }
