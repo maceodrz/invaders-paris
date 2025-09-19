@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import MapPage from './components/MapPage';
+import HomePage from './pages/HomePage';
+import MapPage from './pages/MapPage';
+import StatsPage from './pages/StatsPage';
 import './styles/styles.css';
+import './styles/stats.css';
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MapPage />} />
         <Route path="/valentine" element={<HomePage />} />
+        <Route path="/stats" element={<StatsPage />} />
       </Routes>
     </Router>
   );
