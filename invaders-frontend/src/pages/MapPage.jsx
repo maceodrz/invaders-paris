@@ -7,6 +7,7 @@ import StatsDisplay from '../components/Invaders/StatsDisplay';
 import ControlsContainer from '../components/Invaders/ControlsContainer';
 import FloatingImages from '../components/common/FloatingImages';
 import Footer from '../components/Layout/Footer';
+import Legend from '../components/Map/Legend';
 
 function MapPage() {
   const { invaders, isLoading, error, updateLocalInvader, refetchInvaders } = useInvaders(); // Get refetch function
@@ -61,6 +62,7 @@ function MapPage() {
           updateLocalInvader={updateLocalInvader}
         />
       )}
+      <Legend />
       <ControlsContainer refetchInvaders={refetchInvaders} />
       <FloatingImages />
       <Footer />

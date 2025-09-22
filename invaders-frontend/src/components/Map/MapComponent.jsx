@@ -125,7 +125,6 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
     <div className="map-container">
       <SearchBar onSearchResultClick={handleSearchResultClick} />
       <AddressSearchBar onAddressSelect={handleAddressSelect} />
-      <Legend />
       <MapContainer center={[48.8566, 2.3522]} zoom={12} style={{ height: '100%', width: '100%' }} ref={mapRef}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
         {invaders.map((invader) => (
@@ -146,7 +145,7 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
         {isTracking && position && <UserLocationMarker position={position} />}
       </MapContainer>
       <button onClick={handleToggleTracking} className="button" style={{ position: 'absolute', bottom: '10px', right: '10px', zIndex: 1001 }}>
-        {isTracking ? '🛑 Stop Loc' : '📍 Moi'}
+        {isTracking ? '🛑' : '📍 Moi'}
       </button>
     </div>
   );
