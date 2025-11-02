@@ -99,3 +99,53 @@ export const searchInvadersAPI = async (query) => {
   }
   return response.json();
 };
+
+export const fetchCities = async () => {
+  const response = await fetch(`${API_URL}/api/cities`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch cities");
+  }
+  return response.json();
+};
+
+export const fetchInvadersByCity = async (cityCode) => {
+  const response = await fetch(`${API_URL}/api/invaders/${cityCode}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch invaders by city");
+  }
+  return response.json();
+};
+export const fetchPnoteInvaders = async () => {
+  // Utiliser un proxy CORS pour éviter les problèmes CORS
+  const CORS_PROXY = 'https://corsproxy.io/?';
+  const PNOTE_URL = 'https://pnote.eu/projects/invaders/map/invaders.json';
+  
+  try {
+    const response = await fetch(CORS_PROXY + encodeURIComponent(PNOTE_URL));
+    if (!response.ok) {
+      throw new Error("Failed to fetch pnote invaders");
+    }
+    return response.json();
+  } catch (error) {
+    console.error('Error fetching from pnote:', error);
+    throw error;
+  }
+};
+
+export const updateFromPnote = async () => {
+  // Récupérer les données depuis pnote
+  const pnoteInvaders = await fetchPnoteInvaders();
+  
+  // Envoyer au backend pour traitement
+  const response = await fetch(`${API_URL}/api/update_from_pnote`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ invaders: pnoteInvaders }),
+  });
+  
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.message || "Update from pnote failed");
+  }
+  return response.json();
+};

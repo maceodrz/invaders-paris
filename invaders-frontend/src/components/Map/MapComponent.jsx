@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../../styles/popup.css';
@@ -9,7 +9,6 @@ import { updateInvaderStatus } from '../../services/api';
 
 import SearchBar from './SearchBar';
 import AddressSearchBar from './AddressSearchBar';
-import Legend from './Legend';
 import UserLocationMarker from './UserLocationMarker';
 import PopupContent from './PopupContent';
 
@@ -19,18 +18,35 @@ L.Icon.Default.mergeOptions({
   iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png",
 });
+
 const createCustomIcon = (color) => new L.Icon({
   iconUrl: `/static/images/markers/marker-icon-${color}.png`,
   shadowUrl: `/static/images/markers/marker-shadow.png`,
-  iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41],
+  iconSize: [25, 41], 
+  iconAnchor: [12, 41], 
+  popupAnchor: [1, -34], 
+  shadowSize: [41, 41],
 });
+
 const getMarkerColor = (invader) => {
   if (!invader.flashable) return "grey";
   return invader.flashed ? "green" : "violet";
 };
 
+// Composant pour gérer le zoom sur la ville
+function CityZoom({ cityInfo }) {
+  const map = useMap();
 
-function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
+  useEffect(() => {
+    if (cityInfo && cityInfo.center && cityInfo.zoom) {
+      map.flyTo(cityInfo.center, cityInfo.zoom);
+    }
+  }, [cityInfo, map]);
+
+  return null;
+}
+
+function MapComponent({ invaders, allInvaders, updateLocalInvader, cityInfo }) {
   const mapRef = useRef(null);
   const markerRefs = useRef(new Map());
   const popupRoots = useRef(new Map());
@@ -57,8 +73,8 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
         updateLocalInvader(response.invader);
         const marker = markerRefs.current.get(id);
         if (marker && marker.isPopupOpen()) {
-            marker.closePopup();
-            marker.openPopup();
+          marker.closePopup();
+          marker.openPopup();
         }
       } else {
         alert(`Error: ${response.message}`);
@@ -82,10 +98,10 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
   
   const handleToggleTracking = () => {
     if (isTracking) {
-        stopTracking();
-        initialZoomDoneRef.current = false;
+      stopTracking();
+      initialZoomDoneRef.current = false;
     } else {
-        startTracking();
+      startTracking();
     }
   };
 
@@ -100,33 +116,46 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
 
         let root = popupRoots.current.get(invader.id);
         if (!root) {
-            root = createRoot(container);
-            popupRoots.current.set(invader.id, root);
+          root = createRoot(container);
+          popupRoots.current.set(invader.id, root);
         }
         root.render(
-            <PopupContent 
-                invader={invader} 
-                onStatusUpdate={handleStatusUpdate}
-                onCommentUpdate={updateLocalInvader}
-            />
+          <PopupContent 
+            invader={invader} 
+            onStatusUpdate={handleStatusUpdate}
+            onCommentUpdate={updateLocalInvader}
+          />
         );
       });
       ref.on('popupclose', () => {
         const root = popupRoots.current.get(invader.id);
         if (root) {
-            root.unmount();
-            popupRoots.current.delete(invader.id);
+          root.unmount();
+          popupRoots.current.delete(invader.id);
         }
       });
     }
   };
 
+  // Déterminer le centre par défaut
+  const defaultCenter = cityInfo && cityInfo.center ? cityInfo.center : [48.8566, 2.3522];
+  const defaultZoom = cityInfo && cityInfo.zoom ? cityInfo.zoom : 12;
+
   return (
     <div className="map-container">
       <SearchBar onSearchResultClick={handleSearchResultClick} />
       <AddressSearchBar onAddressSelect={handleAddressSelect} />
-      <MapContainer center={[48.8566, 2.3522]} zoom={12} style={{ height: '100%', width: '100%' }} ref={mapRef}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
+      <MapContainer 
+        center={defaultCenter} 
+        zoom={defaultZoom} 
+        style={{ height: '100%', width: '100%' }} 
+        ref={mapRef}
+      >
+        <TileLayer 
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' 
+        />
+        <CityZoom cityInfo={cityInfo} />
         {invaders.map((invader) => (
           <Marker
             key={invader.id}
@@ -144,8 +173,13 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader }) {
         ))}
         {isTracking && position && <UserLocationMarker position={position} />}
       </MapContainer>
-      <button onClick={handleToggleTracking} className="button" style={{ position: 'absolute', bottom: '10px', right: '10px', zIndex: 1001 }}>
-        {isTracking ? '🛑' : '📍 Moi'}
+      <button 
+        type="button"
+        onClick={handleToggleTracking} 
+        className="button" 
+        style={{ position: 'absolute', bottom: '20px', right: '20px', zIndex: 1001 }}
+      >
+        {isTracking ? '🛑 Stop loc' : '📍'}
       </button>
     </div>
   );

@@ -1,6 +1,5 @@
-// src/components/Invaders/ControlsContainer.jsx
-
 import React, { useState } from 'react';
+import { syncWithUid, updateFromPnote } from '../../services/api';
 // We don't need syncWithUid from api.js anymore for this specific function.
 // import { syncWithUid } from '../../services/api';
 
@@ -11,6 +10,7 @@ const JULIETTE_UID = "22CF04CD-2B32-4C6D-9B44-2BE3849268EB"; // Keep your defaul
 function ControlsContainer({ refetchInvaders }) {
   const [customUid, setCustomUid] = useState('');
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isUpdatingPnote, setIsUpdatingPnote] = useState(false);
   const [syncMessage, setSyncMessage] = useState('');
 
   const handleSync = async (uidToSync) => {
@@ -57,6 +57,26 @@ function ControlsContainer({ refetchInvaders }) {
     }
   };
 
+  const handleUpdateFromPnote = async () => {
+    setIsUpdatingPnote(true);
+    setSyncMessage('');
+
+    try {
+      const result = await updateFromPnote();
+      const message = `Mise à jour terminée!\n${result.message}`;
+      if (result.missing_in_pnote && result.missing_in_pnote.length > 0) {
+        console.log('Invaders manquants dans pnote.eu:', result.missing_in_pnote);
+      }
+      alert(message);
+      await refetchInvaders();
+    } catch (error) {
+      alert(`Update failed: ${error.message}`);
+      console.error(error);
+    } finally {
+      setIsUpdatingPnote(false);
+    }
+  };
+
   return (
     <div className="controls-container">
       <h3>Mettre à jour via l'API FlashInvaders</h3>
@@ -67,8 +87,9 @@ function ControlsContainer({ refetchInvaders }) {
         
         {/* Juliette's Button */}
         <button
+          type="button"
           className="button"
-          onClick={() => handleSync()} // Pass no UID to use the default
+          onClick={() => handleSync()}
           disabled={isSyncing}
         >
           {isSyncing ? 'Synchronisation...' : 'Mettre à jour la carte pour Juliette la best'}
@@ -87,6 +108,7 @@ function ControlsContainer({ refetchInvaders }) {
             style={{ width: '300px', marginBottom: '10px' }}
           />
           <button
+            type="button"
             className="button"
             onClick={() => handleSync(customUid)}
             disabled={isSyncing || !customUid}
@@ -94,6 +116,26 @@ function ControlsContainer({ refetchInvaders }) {
             {isSyncing ? 'Synchronisation...' : 'Mettre à jour avec mon ID'}
           </button>
         </div>
+
+        <hr style={{ margin: '20px 0' }} />
+
+        {/* Pnote Update Section */}
+        <div className="pnote-update-section">
+          <h4>Mise à jour depuis Invader.com</h4>
+          <p className="info-text">
+            Met à jour les statuts et informations des invaders selon les dernières données d'Invader.
+          </p>
+          <button
+            type="button"
+            className="button"
+            onClick={handleUpdateFromPnote}
+            disabled={isUpdatingPnote}
+            style={{ backgroundColor: '#9d4dbd' }}
+          >
+            {isUpdatingPnote ? 'Mise à jour en cours...' : 'Mettre à jour les invaders et leurs statuts d\'après Invader'}
+          </button>
+        </div>
+
         {syncMessage && <p>{syncMessage}</p>}
       </div>
     </div>
