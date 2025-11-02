@@ -1,26 +1,115 @@
-# invaders-paris
+# Invaders Paris 🛸
 
-Projet de maintien d'une map qui montre les invaders validés à Paris, ceux qu'on ne peut pas flasher, leur adresse
+A web application to track and map Space Invaders in Paris. This project maintains a map showing validated invaders, those that cannot be flashed, and their addresses.
 
-# Utilisation
+## Features
 
+- Interactive map showing all Space Invaders locations in Paris
+- Statistics dashboard with flash history and progress tracking
+- Backend API for managing invader data
+- Support for uploading flash videos (currently disabled)
+
+## Quick Start with Docker (Recommended) 🐳
+
+The easiest way to run the application is using Docker Compose:
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd invaders-paris
+
+# Start both frontend and backend services
+docker-compose up --build
 ```
+
+The application will be available at:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5000
+
+## Manual Development Setup 🔧
+
+If you prefer to run the services separately for development:
+
+### Backend Setup
+
+```bash
 cd invaders-backend
-python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+
+# Create virtual environment
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the Flask server
 python3 app.py
 ```
 
-```
+The backend will run on http://localhost:5000
+
+### Frontend Setup
+
+```bash
 cd invaders-frontend
+
+# Install dependencies
 npm install
+
+# Start the development server
 npm start
 ```
 
-Dockerisation en cours
+The frontend will run on http://localhost:3000 and will proxy API calls to the backend.
 
-## Rentrer ses invaders
+## Environment Variables
 
-### Désactivé pour le moment, à décommenter dans app.py
+Create a `.env` file in the `invaders-backend` directory with:
 
-Faire un screen video assez lent (scroller avec le doigt sans le lacher dans l'élan)
-Et cut la fin pour garder uniquement la partie où on voit les invaders (permet de bien prendre en compte les derniers invaders), vidéo exemple : insert link
+```
+RESTORE_INVADER_API=https://api.space-invaders.com/flashinvaders_v3_pas_trop_predictif/api/gallery?uid=
+MY_UID=your_uid_here
+```
+
+## API Endpoints
+
+The backend provides several API endpoints:
+
+- `GET /api/invaders` - Get all invaders data
+- `GET /api/flash_history` - Get flash history statistics
+- `GET /api/stats` - Get overall statistics
+- `POST /api/upload_flash` - Upload flash video (currently disabled)
+
+## Project Structure
+
+```
+invaders-paris/
+├── invaders-backend/          # Flask API server
+│   ├── app.py                # Main Flask application
+│   ├── data/                 # CSV data files
+│   ├── static/               # Static assets (images)
+│   ├── templates/            # HTML templates
+│   ├── uploads/              # Uploaded files
+│   └── Dockerfile            # Backend container config
+├── invaders-frontend/         # React application
+│   ├── src/                  # React source code
+│   ├── public/               # Public assets
+│   └── Dockerfile            # Frontend container config
+└── docker-compose.yml         # Multi-service orchestration
+```
+
+## Contributing Invaders Data 📹
+
+### Video Upload (Currently Disabled)
+
+To contribute new flashed invaders:
+
+1. Record a slow screen video (scroll with finger without releasing momentum)
+2. Edit the video to keep only the part showing the invaders (allows proper detection of the last invaders)
+3. Upload through the application interface (feature needs to be re-enabled in `app.py`)
+
+## Development Notes
+
+- The frontend is configured to proxy API requests to the backend during development
+- Docker volumes are mounted for live code reloading during development
+- The backend serves both API endpoints and static HTML templates
