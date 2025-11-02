@@ -204,3 +204,55 @@ footer {
     box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
   }
 }
+
+.city-selector-container {
+  text-align: center;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.city-label {
+  color: #ebe047;
+  font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.1rem;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.city-select {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: 2px solid #f09bdd;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
+}
+
+.city-select:hover {
+  background-color: #f09bdd;
+  color: white;
+}
+
+.city-select:focus {
+  outline: none;
+  border-color: #bb26b9;
+  box-shadow: 0 0 5px rgba(187, 38, 185, 0.5);
+}
+
+.pnote-update-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(157, 77, 189, 0.1);
+  border-radius: 8px;
+  border: 1px solid #9d4dbd;
+}
+
+.pnote-update-section h4 {
+  color: #9d4dbd;
+  margin-top: 0;
+}
