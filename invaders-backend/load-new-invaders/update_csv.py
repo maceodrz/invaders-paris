@@ -9,7 +9,16 @@ Se base sur le git https://github.com/goguelnikov/SpaceInvaders
 qui stocke les données sur les space invaders du monde et leur état dans un json.
 On le transforme pour pouvoir le traiter et modifier notre csv
 """
-
+# NEW: https://pnote.eu/projects/invaders/map/invaders.json -> tous les invaders au format json
+# dans une liste avec {
+#     "id": "AIX_01",
+#     "status": "OK",
+#     "hint": null,
+#     "instagramUrl": "https://www.instagram.com/explore/tags/aix_01/",
+#     "obf_lat": 43.5285840236,
+#     "obf_lng": 5.4431859342
+#   },
+# ensuite pour chercher : https://www.invader-spotter.art/cherche.php et c'est tout
 
 def json_to_df(json_path):
     """

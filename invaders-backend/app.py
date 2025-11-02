@@ -7,6 +7,8 @@ from flask_cors import CORS
 import requests
 from dotenv import load_dotenv
 from datetime import datetime
+import json
+import os
 
 load_dotenv()
 
@@ -90,7 +92,8 @@ def sync_with_uid():
     data = request.get_json()
     uid = data.get("uid", MY_UID)
 
-    if not RESTORE_INVADER_API: return jsonify({"status": "error", "message": "API URL not configured"}), 500
+    if not RESTORE_INVADER_API: 
+        return jsonify({"status": "error", "message": "API URL not configured"}), 500
         
     try:
         api_url = f"{RESTORE_INVADER_API}{uid}"
@@ -103,8 +106,10 @@ def sync_with_uid():
         
         df = pd.read_csv(CSV_FILE)
 
-        if 'date_flash' not in df.columns: df['date_flash'] = ''
-        if 'image_url' not in df.columns: df['image_url'] = ''
+        if 'date_flash' not in df.columns: 
+            df['date_flash'] = ''
+        if 'image_url' not in df.columns: 
+            df['image_url'] = ''
 
         # Convert columns to object type to allow mixed types and None/NaN
         df['date_flash'] = df['date_flash'].astype(object)
@@ -115,23 +120,24 @@ def sync_with_uid():
 
         for index, row in df.iterrows():
             invader_id = row['id']
-            # If invader_id is like XX_YYY and YYY starts with zeroes, drop the zeroes
+            
+            # Normaliser l'ID si nécessaire (enlever les zéros superflus)
             if isinstance(invader_id, str) and '_' in invader_id:
                 prefix, suffix = invader_id.split('_', 1)
                 if suffix.isdigit():
-                    if prefix == "PA" and len(suffix) == 4 and suffix.startswith("000") and suffix[3] in "123456789":
-                        new_invader_id = f"{prefix}_0{suffix[3]}"
-                        if new_invader_id != invader_id:
-                            invader_id = new_invader_id
-                            df.at[index, 'id'] = invader_id
-                    elif prefix == "PA" and len(suffix) == 2 and suffix.startswith("0") and suffix[1] in "123456789":
-                        pass
-                    else:
-                        new_suffix = str(int(suffix))
-                        new_invader_id = f"{prefix}_{new_suffix}"
-                        if new_invader_id != invader_id:
-                            invader_id = new_invader_id
-                            df.at[index, 'id'] = invader_id
+                    new_suffix = str(int(suffix))
+                    normalized_id = f"{prefix}_{new_suffix}"
+                    
+                    # Vérifier si la version normalisée existe dans l'API
+                    if normalized_id in api_invader_ids:
+                        if not row['Flashed']:
+                            updated_count += 1
+                        df.at[index, 'Flashed'] = True
+                        df.at[index, 'date_flash'] = flashed_invaders_from_api[normalized_id].get('date_flash')
+                        df.at[index, 'image_url'] = flashed_invaders_from_api[normalized_id].get('image_url')
+                        continue
+            
+            # Vérifier avec l'ID original
             if invader_id in api_invader_ids:
                 if not row['Flashed']:
                     updated_count += 1
@@ -139,16 +145,19 @@ def sync_with_uid():
                 df.at[index, 'date_flash'] = flashed_invaders_from_api[invader_id].get('date_flash')
                 df.at[index, 'image_url'] = flashed_invaders_from_api[invader_id].get('image_url')
             else:
-                # This invader is NOT in the API response, mark as NOT flashed
+                # Cet invader n'est PAS dans la réponse de l'API, marquer comme NON flashé
                 if row['Flashed']:
                     reset_count += 1
                 df.at[index, 'Flashed'] = False
-                df.at[index, 'date_flash'] = np.nan # Use numpy.nan for proper empty values
+                df.at[index, 'date_flash'] = np.nan
                 df.at[index, 'image_url'] = np.nan
         
         df.to_csv(CSV_FILE, index=False)
         
-        return jsonify({"status": "success", "message": f"{updated_count} invaders nouvellement flashés, {reset_count} réinitialisés."})
+        return jsonify({
+            "status": "success", 
+            "message": f"{updated_count} invaders nouvellement flashés, {reset_count} réinitialisés."
+        })
 
     except requests.exceptions.RequestException as e:
         return jsonify({"status": "error", "message": f"Failed to call external API: {e}"}), 502
@@ -210,7 +219,6 @@ def process_synced_data():
 
 @app.route('/api/new_update_invader_status', methods=['POST'])
 def new_update_invader_status():
-    # ... (this function remains the same as before) ...
     try:
         data = request.get_json()
         invader_id = data.get("id")
@@ -343,5 +351,186 @@ def upload_video():
             os.remove(video_path)
     return jsonify({"error": "Invalid file type"}), 400
 
+# Charger le mapping des villes au démarrage de l'app
+CITY_MAPPING_FILE = "data/city_mapping.json"
+if os.path.exists(CITY_MAPPING_FILE):
+    with open(CITY_MAPPING_FILE, 'r', encoding='utf-8') as f:
+        CITY_MAPPING = json.load(f)
+else:
+    print(f"Le fichier {CITY_MAPPING_FILE} n'existe pas.")
+    CITY_MAPPING = {
+        "PA": {"name": "Paris", "country": "🇫🇷", "zoom": 12, "center": [48.8566, 2.3522], "includes": ["PA", "VRS"]},
+        "VRS": {"name": "Versailles", "country": "🇫🇷", "zoom": 13, "center": [48.8014, 2.1301]},
+    }
+
+@app.route('/api/cities')
+def get_cities():
+    """Retourne la liste des villes disponibles"""
+    return jsonify(CITY_MAPPING)
+
+@app.route('/api/update_from_pnote', methods=['POST'])
+def update_from_pnote():
+    """
+    Met à jour les invaders depuis les données fournies par le frontend
+    (qui a fait le curl vers pnote.eu)
+    """
+    try:
+        data = request.get_json()
+        pnote_invaders = data.get('invaders', [])
+        
+        if not pnote_invaders:
+            return jsonify({"status": "error", "message": "No invaders data provided"}), 400
+        
+        df = pd.read_csv(CSV_FILE)
+        
+        # Créer la colonne instagram_url si elle n'existe pas
+        if 'instagram_url' not in df.columns:
+            df['instagram_url'] = ''
+        
+        # Créer la colonne hint si elle n'existe pas
+        if 'hint' not in df.columns:
+            df['hint'] = ''
+            
+        # Créer la colonne status si elle n'existe pas
+        if 'status' not in df.columns:
+            df['status'] = ''
+        
+        # Créer la colonne comment si elle n'existe pas
+        if 'comment' not in df.columns:
+            df['comment'] = ''
+        
+        updated_count = 0
+        added_count = 0
+        status_changed_count = 0
+        invaders_not_in_pnote = []
+        
+        # Créer un dictionnaire des invaders pnote pour un accès rapide
+        pnote_dict = {inv['id']: inv for inv in pnote_invaders}
+        
+        # Traiter les invaders existants dans le CSV
+        for index, row in df.iterrows():
+            invader_id = row['id']
+            
+            if invader_id in pnote_dict:
+                pnote_inv = pnote_dict[invader_id]
+                
+                # Mettre à jour instagram_url
+                if pnote_inv.get('instagramUrl'):
+                    df.at[index, 'instagram_url'] = pnote_inv['instagramUrl']
+                    updated_count += 1
+                
+                # Mettre à jour hint
+                if pnote_inv.get('hint'):
+                    df.at[index, 'hint'] = pnote_inv['hint']
+                
+                # Mettre à jour status
+                df.at[index, 'status'] = pnote_inv.get('status', '')
+                
+                # Gérer les changements de flashabilité
+                current_status = pnote_inv.get('status', '')
+                current_flashable = row['Flashable']
+                current_comment = str(row.get('comment', ''))
+                
+                if current_status == 'OK' and not current_flashable:
+                    df.at[index, 'Flashable'] = True
+                    new_comment = current_comment + " | Flashable d'après les dernières données" if current_comment else "Flashable d'après les dernières données"
+                    df.at[index, 'comment'] = new_comment
+                    status_changed_count += 1
+                    
+                elif current_status != 'OK' and current_status != '' and current_flashable:
+                    df.at[index, 'Flashable'] = False
+                    new_comment = current_comment + f" | Non flashable car status = {current_status} d'après les dernières données" if current_comment else f"Non flashable car status = {current_status} d'après les dernières données"
+                    df.at[index, 'comment'] = new_comment
+                    status_changed_count += 1
+        
+        # Ajouter les nouveaux invaders
+        existing_ids = set(df['id'].values)
+        for inv_id, inv_data in pnote_dict.items():
+            if inv_id not in existing_ids:
+                new_row = {
+                    'id': inv_id,
+                    'Latitude': inv_data.get('obf_lat', 0),
+                    'Longitude': inv_data.get('obf_lng', 0),
+                    'address': 'À déterminer',
+                    'Flashed': False,
+                    'Flashable': inv_data.get('status') == 'OK',
+                    'status': inv_data.get('status', ''),
+                    'hint': inv_data.get('hint', ''),
+                    'instagram_url': inv_data.get('instagramUrl', ''),
+                    'comment': '',
+                    'date_flash': '',
+                    'image_url': ''
+                }
+                df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+                added_count += 1
+        
+        # Identifier les invaders dans le CSV mais pas dans pnote
+        pnote_ids = set(pnote_dict.keys())
+        csv_ids = set(df['id'].values)
+        missing_in_pnote = csv_ids - pnote_ids
+        
+        if missing_in_pnote:
+            invaders_not_in_pnote = list(missing_in_pnote)
+            print(f"Invaders dans le CSV mais pas dans pnote.eu: {invaders_not_in_pnote}")
+        
+        # Sauvegarder le CSV
+        df.to_csv(CSV_FILE, index=False)
+        
+        return jsonify({
+            "status": "success",
+            "message": f"Mise à jour terminée: {updated_count} invaders mis à jour, {added_count} ajoutés, {status_changed_count} changements de statut",
+            "updated": updated_count,
+            "added": added_count,
+            "status_changed": status_changed_count,
+            "missing_in_pnote": invaders_not_in_pnote
+        })
+        
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/api/invaders/<city_code>')
+def get_invaders_by_city(city_code):
+    """Retourne les invaders d'une ville spécifique"""
+    try:
+        df = pd.read_csv(CSV_FILE)
+        
+        # Vérifier si la ville inclut d'autres villes (comme Paris inclut Versailles)
+        city_info = CITY_MAPPING.get(city_code)
+        if not city_info:
+            return jsonify({"error": "City not found"}), 404
+        
+        # Obtenir les codes de villes à inclure
+        city_codes = city_info.get('includes', [city_code])
+        
+        # Filtrer les invaders
+        filtered_df = df[df['id'].str.split('_').str[0].isin(city_codes)]
+        
+        # Préparer les données
+        for col in ['hint', 'comment', 'date_flash', 'image_url', 'instagram_url']:
+            if col not in filtered_df.columns:
+                filtered_df[col] = ''
+        
+        filtered_df = filtered_df.fillna('')
+        
+        formatted_data = [{
+            "id": str(row["id"]),
+            "address": row["address"],
+            "lat": row["Latitude"],
+            "lng": row["Longitude"],
+            "flashed": bool(row["Flashed"]),
+            "flashable": bool(row["Flashable"]),
+            "date_flash": row.get("date_flash", ""),
+            "image_url": row.get("image_url", ""),
+            "hint": row.get("hint", ""),
+            "comment": row.get("comment", ""),
+            "instagram_url": row.get("instagram_url", ""),
+        } for _, row in filtered_df.iterrows()]
+        
+        return jsonify({
+            "invaders": formatted_data,
+            "city_info": city_info
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
