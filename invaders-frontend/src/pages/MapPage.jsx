@@ -10,6 +10,8 @@ import CitySelector from '../components/Map/CitySelector';
 import FloatingImages from '../components/common/FloatingImages';
 import Footer from '../components/Layout/Footer';
 import Legend from '../components/Map/Legend';
+import SantaClaus from '../components/common/SantaClaus';
+import Snowfall from '../components/common/Snowfall';
 
 function MapPage() {
   const { invaders, isLoading, error, updateLocalInvader, refetchInvaders } = useInvaders();
@@ -108,9 +110,12 @@ function MapPage() {
           cityInfo={cityInfo}
         />
       )}
-      <Legend />
+      {/* <Legend /> */}
       <ControlsContainer refetchInvaders={refetchInvaders} />
       <FloatingImages />
+      
+      <SantaClaus />
+      <Snowfall />
       <Footer />
     </div>
   );

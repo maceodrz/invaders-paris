@@ -130,7 +130,7 @@ function ControlsContainer({ refetchInvaders }) {
             className="button"
             onClick={handleUpdateFromPnote}
             disabled={isUpdatingPnote}
-            style={{ backgroundColor: '#9d4dbd' }}
+            style={{ backgroundColor: '#146b3a' }}
           >
             {isUpdatingPnote ? 'Mise à jour en cours...' : 'Mettre à jour les invaders et leurs statuts d\'après Invader'}
           </button>

@@ -6,16 +6,31 @@ body {
   flex-direction: column;
   gap: 20px;
   min-height: 100vh;
-  background-color: black;
+  
+  /* --- BACKGROUND NOËL (Bandes Rouges) --- */
+  background-color: #8b0000;
+  background-image: repeating-linear-gradient(
+      45deg,
+      #8b0000,
+      #8b0000 20px,
+      #a61c1c 20px,
+      #a61c1c 40px
+  );
+  color: #fff;
+  overflow-x: hidden; /* Empêche le scroll horizontal dû à la neige */
 }
 
+
 .map-page h1 {
-  color: #ebe047;
+  /* Candy Cane Red */
+  color: #146b3a;
   text-align: center;
   font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
   margin: 0;
   position: relative;
   cursor: pointer;
+  text-shadow: 2px 2px 0px #fff; /* Snow effect on text */
+  letter-spacing: 2px;
 }
 
 .map-page h1::after {
@@ -25,7 +40,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  color: rgb(206, 135, 5);
+  /* Gold Shadow */
+  color: #d4af37;
   z-index: -1;
   transform: translate(2px, 2px);
 }
@@ -33,11 +49,13 @@ body {
 .map-container {
   width: 100%;
   height: 90vh;
-  border: 2px solid #f09bdd;
+  /* Gold Border with Glow */
+  border: 4px solid #d4af37;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
   z-index: 1;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
 .search-container {
@@ -46,10 +64,11 @@ body {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   padding: 4px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 2px solid #146b3a; /* Green border */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   width: 200px;
 }
 
@@ -58,10 +77,11 @@ body {
   top: 10px;
   right: 10px;
   z-index: 1000;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   padding: 4px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 2px solid #146b3a;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   width: 250px;
 }
 
@@ -80,6 +100,7 @@ body {
   background: white;
   border: 1px solid #ddd;
   border-radius: 1px;
+  color: black;
 }
 
 .search-result-item {
@@ -94,7 +115,8 @@ body {
 .controls-container {
   width: 100%;
   padding: 20px;
-  background: #f5f5f5;
+  background: rgba(20, 107, 58, 0.15); /* Subtle Green tint */
+  border: 1px solid #146b3a;
   border-radius: 8px;
   box-sizing: border-box;
   z-index: 1;
@@ -102,17 +124,20 @@ body {
 }
 
 .button {
-  background-color: #bb26b9;
+  /* Christmas Red Button */
+  background-color: #146b3a;
   color: white;
   padding: 10px 20px;
-  border: none;
+  border: 1px solid white;
   border-radius: 4px;
   cursor: pointer;
   margin-right: 10px;
+  transition: all 0.2s;
 }
 
 .button:hover {
-  background-color: #701379;
+  background-color: #d42426;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
 .floating-image {
@@ -141,32 +166,39 @@ body {
 
 .filter-container { margin: 15px 0; text-align: center; }
 .filter-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
 .filter-button {
   padding: 8px 16px;
-  border: 2px solid #f09bdd;
-  background-color: black;
-  color: #f09bdd;
+  /* Green borders */
+  border: 2px solid #146b3a;
+  background-color: #051410;
+  color: #146b3a;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: bold;
 }
-.filter-button:hover, .filter-button.active { background-color: #f09bdd; color: black; }
 
-.stats-container { text-align: center; margin-bottom: 10px; color: white; }
-.stat-item { margin: 0 10px; }
+.filter-button:hover, .filter-button.active { 
+  background-color: #146b3a; 
+  color: white;
+  border-color: #d4af37; /* Gold accent on active */
+}
+
+.stats-container { text-align: center; margin-bottom: 10px; color: #d4af37; }
+.stat-item { margin: 0 10px; font-weight: bold; }
 
 .legend {
   position: absolute;
   top: 10%;
   right: 10px;
-  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.9);
   padding: 10px;
-  border: 2px solid #f09bdd;
+  border: 2px solid #d4af37; /* Gold border */
   border-radius: 4px;
   z-index: 1000;
-  color: #ebe047;
+  color: #fff;
   font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
-  opacity: 0.6;
 }
 
 footer {
@@ -174,8 +206,9 @@ footer {
   bottom: 10px;
   right: 10px;
   font-size: 0.8rem;
-  color: #b92574;
+  color: #d4af37;
   font-style: italic;
+  text-shadow: 1px 1px 2px #000;
 }
 
 /* User Location Marker Animation */
@@ -184,24 +217,24 @@ footer {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: rgba(255, 105, 180, 0.9); /* Pink color */
+  background: rgba(220, 20, 60, 0.9); /* Red color for location */
   cursor: pointer;
-  box-shadow: 0 0 0 rgba(255, 105, 180, 0.4);
+  box-shadow: 0 0 0 rgba(220, 20, 60, 0.4);
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
+    box-shadow: 0 0 0 0 rgba(220, 20, 60, 0.7);
   }
   70% {
     transform: scale(1.2);
-    box-shadow: 0 0 0 12px rgba(255, 105, 180, 0);
+    box-shadow: 0 0 0 12px rgba(220, 20, 60, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
+    box-shadow: 0 0 0 0 rgba(220, 20, 60, 0);
   }
 }
 
@@ -209,12 +242,13 @@ footer {
   text-align: center;
   margin: 15px 0;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgb(6, 78, 37, 0.5);
   border-radius: 8px;
+  border: 1px solid #146b3a;
 }
 
 .city-label {
-  color: #ebe047;
+  color: #d4af37; /* Gold */
   font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.1rem;
   margin-right: 10px;
@@ -224,7 +258,7 @@ footer {
 .city-select {
   padding: 8px 16px;
   font-size: 1rem;
-  border: 2px solid #f09bdd;
+  border: 2px solid #bb2528; /* Red border */
   background-color: white;
   color: black;
   border-radius: 4px;
@@ -234,25 +268,53 @@ footer {
 }
 
 .city-select:hover {
-  background-color: #f09bdd;
+  background-color: #bb2528;
   color: white;
 }
 
 .city-select:focus {
   outline: none;
-  border-color: #bb26b9;
-  box-shadow: 0 0 5px rgba(187, 38, 185, 0.5);
+  border-color: #d4af37;
+  box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
 }
 
 .pnote-update-section {
   margin-top: 20px;
   padding: 15px;
-  background-color: rgba(157, 77, 189, 0.1);
+  background-color: rgba(20, 107, 58, 0.1);
   border-radius: 8px;
-  border: 1px solid #9d4dbd;
+  border: 1px solid #146b3a;
 }
 
 .pnote-update-section h4 {
-  color: #9d4dbd;
+  color: #146b3a;
   margin-top: 0;
+}
+
+.snowflake {
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  text-shadow: 0 0 5px #000;
+  position: fixed;
+  top: -10%;
+  z-index: 9999; /* Très haut pour passer devant la map */
+  user-select: none;
+  cursor: default;
+  pointer-events: none; /* Important pour pouvoir cliquer sur la map à travers la neige */
+  animation-name: snowflakes-fall, snowflakes-shake;
+  animation-duration: 10s, 3s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-play-state: running, running;
+}
+
+@keyframes snowflakes-fall {
+  0% { top: -10%; }
+  100% { top: 100%; }
+}
+
+@keyframes snowflakes-shake {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(80px); }
 }
