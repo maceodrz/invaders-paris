@@ -6,7 +6,7 @@ function Snowfall() {
     snowContainer.id = 'snow-container';
     document.body.appendChild(snowContainer);
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 10; i++) {
         const flake = document.createElement('div');
         flake.innerHTML = '❄';
         flake.className = 'snowflake';
