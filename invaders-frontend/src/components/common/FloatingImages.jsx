@@ -4,7 +4,7 @@ function FloatingImages() {
   useEffect(() => {
     const images = [
       'static/images/invaders_png/invader_1.png',
-      'static/images/invaders_png/invader_2.png',
+      'static/images/invaders_png/invader_christmas-min.png',
       'static/images/invaders_png/invader_3.png',
       'static/images/invaders_png/invader_4.png',
       'static/images/invaders_png/invader_7.png',
