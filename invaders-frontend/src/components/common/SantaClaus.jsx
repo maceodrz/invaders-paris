@@ -27,7 +27,7 @@ function SantaClaus() {
       onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
     >
       <img 
-        src="/static/images/invaders_png/invader_11.png"
+        src="static/images/invaders_png/invader_christmas-min.png"
         alt="Christmas Invader"
         style={{
             width: '60px',

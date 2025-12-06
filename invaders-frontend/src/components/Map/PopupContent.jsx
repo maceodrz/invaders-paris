@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { updateInvaderComment } from '../../services/api';
 
 function PopupContent({ invader, onStatusUpdate, onCommentUpdate }) {
-  const { id, address, flashed, flashable, hint, image_url, comment: initialComment } = invader;
+  const { id, address, flashed, flashable, hint, image_url, comment: initialComment, instagram_url } = invader;
   const [comment, setComment] = useState(initialComment || '');
   const [isSaving, setIsSaving] = useState(false);
   const [isEditing, setIsEditing] = useState(!initialComment); // Start editing if no initial comment
@@ -45,6 +45,11 @@ function PopupContent({ invader, onStatusUpdate, onCommentUpdate }) {
       )}
 
       <p className="popup-paragraph"><strong>Statut :</strong> {flashed ? 'Flashé' : 'Non flashé'}</p>
+      <p className="popup-paragraph">
+        <strong>
+          <a href={instagram_url} target="_blank" rel="noopener noreferrer">Voir sur instagram</a>
+        </strong>
+      </p>
       <p className="popup-paragraph"><strong>Adresse :</strong> {address}</p>
       {hint && <p className="popup-paragraph"><strong>Indice :</strong> {hint}</p>}
       
