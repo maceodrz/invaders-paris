@@ -15,7 +15,6 @@ function FloatingImages() {
     
     const positions = [
       'top-left', 
-      'top-right', 
       'bottom-left', 
       'bottom-right', 
       'top-middle-left', 

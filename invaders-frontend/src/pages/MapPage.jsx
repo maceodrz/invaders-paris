@@ -11,12 +11,11 @@ import FloatingImages from '../components/common/FloatingImages';
 import Footer from '../components/Layout/Footer';
 import Legend from '../components/Map/Legend';
 import SantaClaus from '../components/common/SantaClaus';
-import Snowfall from '../components/common/Snowfall';
 
 function MapPage() {
   const { invaders, isLoading, error, updateLocalInvader, refetchInvaders } = useInvaders();
   const [currentFilter, setCurrentFilter] = useState('all');
-  const [currentCity, setCurrentCity] = useState('PA');
+  const [currentCity, setCurrentCity] = useState('PA'); // change to BGK before moving.
   const [cityInvaders, setCityInvaders] = useState([]);
   const [cityInfo, setCityInfo] = useState(null);
   const [stats, setStats] = useState({ totalFlashed: 0, progress: 0 });
@@ -35,16 +34,16 @@ function MapPage() {
 
   // Load Paris data by default on component mount
   useEffect(() => {
-    const loadParisData = async () => {
+    const loadBangkokData = async () => {
       try {
-        const data = await fetchInvadersByCity('PA');
+        const data = await fetchInvadersByCity('PA'); // change to BGK before moving.
         setCityInvaders(data.invaders);
         setCityInfo(data.city_info);
       } catch (err) {
-        console.error('Failed to load Paris invaders:', err);
+        console.error('Failed to load Bangkok invaders:', err);
       }
     };
-    loadParisData();
+    loadBangkokData();
   }, []);
 
   // Charger les invaders par ville
@@ -115,7 +114,6 @@ function MapPage() {
       <FloatingImages />
       
       <SantaClaus />
-      <Snowfall />
       <Footer />
     </div>
   );

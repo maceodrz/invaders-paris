@@ -7,30 +7,50 @@ body {
   gap: 20px;
   min-height: 100vh;
   
-  /* --- BACKGROUND NOËL (Bandes Rouges) --- */
-  background-color: #8b0000;
-  background-image: repeating-linear-gradient(
-      45deg,
-      #8b0000,
-      #8b0000 20px,
-      #a61c1c 20px,
-      #a61c1c 40px
-  );
-  color: #fff;
-  overflow-x: hidden; /* Empêche le scroll horizontal dû à la neige */
+  /* --- BACKGROUND VACANCES (Ciel, Mer, Sable) --- */
+  background: linear-gradient(to bottom, 
+      #87CEEB 0%, 
+      #87CEEB 40%, 
+      #0077be 40%, 
+      #0077be 70%, 
+      #edc9af 70%, 
+      #edc9af 100%);
+  background-attachment: fixed;
+  color: #005a8d;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Nuages en fond */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background-image: 
+      radial-gradient(circle at 10% 20%, white 3%, transparent 8%),
+      radial-gradient(circle at 25% 15%, white 5%, transparent 12%),
+      radial-gradient(circle at 45% 25%, white 4%, transparent 10%),
+      radial-gradient(circle at 65% 10%, white 6%, transparent 15%),
+      radial-gradient(circle at 85% 20%, white 4%, transparent 10%);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -1;
 }
 
 
 .map-page h1 {
-  /* Candy Cane Red */
-  color: #146b3a;
+  color: #005a8d;
   text-align: center;
-  font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Arial Black', Gadget, sans-serif;
   margin: 0;
   position: relative;
   cursor: pointer;
-  text-shadow: 2px 2px 0px #fff; /* Snow effect on text */
-  letter-spacing: 2px;
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .map-page h1::after {
@@ -40,22 +60,21 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Gold Shadow */
-  color: #d4af37;
+  color: #ff9900;
   z-index: -1;
   transform: translate(2px, 2px);
+  opacity: 0.5;
 }
 
 .map-container {
   width: 100%;
   height: 90vh;
-  /* Gold Border with Glow */
-  border: 4px solid #d4af37;
-  border-radius: 8px;
+  border: 4px solid #ff9900;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .search-container {
@@ -67,8 +86,8 @@ body {
   background: rgba(255, 255, 255, 0.95);
   padding: 4px;
   border-radius: 8px;
-  border: 2px solid #146b3a; /* Green border */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  border: 2px solid #0077be; /* Blue border */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   width: 200px;
 }
 
@@ -80,8 +99,8 @@ body {
   background: rgba(255, 255, 255, 0.95);
   padding: 4px;
   border-radius: 8px;
-  border: 2px solid #146b3a;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  border: 2px solid #0077be;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   width: 250px;
 }
 
@@ -115,37 +134,45 @@ body {
 .controls-container {
   width: 100%;
   padding: 20px;
-  background: rgba(20, 107, 58, 0.15); /* Subtle Green tint */
-  border: 1px solid #146b3a;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.4); /* Glassmorphism effect */
+  backdrop-filter: blur(10px);
+  border: 2px solid #ff9900;
+  border-radius: 12px;
   box-sizing: border-box;
   z-index: 1;
   margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .button {
-  /* Christmas Red Button */
-  background-color: #146b3a;
+  /* Sunny Orange Button */
+  background-color: #ff9900;
   color: white;
   padding: 10px 20px;
-  border: 1px solid white;
-  border-radius: 4px;
+  border: none;
+  border-radius: 25px;
   cursor: pointer;
   margin-right: 10px;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
-  background-color: #d42426;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  background-color: #e68a00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .floating-image {
   position: absolute;
   width: 50px;
   height: 40px;
-  opacity: 0.8;
+  opacity: 0.9;
   animation: float 8s infinite;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .floating-image.top-left { top: 15px; left: 10px; z-index: -1; }
@@ -158,10 +185,10 @@ body {
 .floating-image.bottom-right { bottom: 10px; right: 10px; z-index: 2; }
 
 @keyframes float {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(10px, -10px); }
-  50% { transform: translate(0, -20px); }
-  75% { transform: translate(-10px, -10px); }
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10px, -10px) rotate(5deg); }
+  50% { transform: translate(0, -20px) rotate(0deg); }
+  75% { transform: translate(-10px, -10px) rotate(-5deg); }
 }
 
 .filter-container { margin: 15px 0; text-align: center; }
@@ -169,36 +196,46 @@ body {
 
 .filter-button {
   padding: 8px 16px;
-  /* Green borders */
-  border: 2px solid #146b3a;
-  background-color: #051410;
-  color: #146b3a;
-  border-radius: 4px;
+  /* Sea Blue borders */
+  border: 2px solid #0077be;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #0077be;
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: bold;
 }
 
 .filter-button:hover, .filter-button.active { 
-  background-color: #146b3a; 
+  background-color: #0077be; 
   color: white;
-  border-color: #d4af37; /* Gold accent on active */
+  border-color: #ff9900; /* Orange accent on active */
 }
 
-.stats-container { text-align: center; margin-bottom: 10px; color: #d4af37; }
+.stats-container { 
+  text-align: center; 
+  margin-bottom: 10px; 
+  color: #005a8d; 
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  align-self: center;
+}
 .stat-item { margin: 0 10px; font-weight: bold; }
 
 .legend {
   position: absolute;
   top: 10%;
   right: 10px;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   padding: 10px;
-  border: 2px solid #d4af37; /* Gold border */
-  border-radius: 4px;
+  border: 2px solid #ff9900; /* Orange border */
+  border-radius: 8px;
   z-index: 1000;
-  color: #fff;
-  font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
+  color: #005a8d;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 footer {
@@ -206,9 +243,9 @@ footer {
   bottom: 10px;
   right: 10px;
   font-size: 0.8rem;
-  color: #d4af37;
+  color: #005a8d;
   font-style: italic;
-  text-shadow: 1px 1px 2px #000;
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
 }
 
 /* User Location Marker Animation */
@@ -217,24 +254,24 @@ footer {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: rgba(220, 20, 60, 0.9); /* Red color for location */
+  background: rgba(0, 119, 190, 0.9); /* Blue color for location */
   cursor: pointer;
-  box-shadow: 0 0 0 rgba(220, 20, 60, 0.4);
+  box-shadow: 0 0 0 rgba(0, 119, 190, 0.4);
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(220, 20, 60, 0.7);
+    box-shadow: 0 0 0 0 rgba(0, 119, 190, 0.7);
   }
   70% {
     transform: scale(1.2);
-    box-shadow: 0 0 0 12px rgba(220, 20, 60, 0);
+    box-shadow: 0 0 0 12px rgba(0, 119, 190, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(220, 20, 60, 0);
+    box-shadow: 0 0 0 0 rgba(0, 119, 190, 0);
   }
 }
 
@@ -242,14 +279,14 @@ footer {
   text-align: center;
   margin: 15px 0;
   padding: 10px;
-  background-color: rgb(6, 78, 37, 0.5);
-  border-radius: 8px;
-  border: 1px solid #146b3a;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  border: 2px solid #ff9900;
 }
 
 .city-label {
-  color: #d4af37; /* Gold */
-  font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
+  color: #005a8d;
   font-size: 1.1rem;
   margin-right: 10px;
   font-weight: bold;
@@ -258,63 +295,39 @@ footer {
 .city-select {
   padding: 8px 16px;
   font-size: 1rem;
-  border: 2px solid #bb2528; /* Red border */
+  border: 2px solid #0077be; /* Blue border */
   background-color: white;
-  color: black;
-  border-radius: 4px;
+  color: #005a8d;
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
 }
 
 .city-select:hover {
-  background-color: #bb2528;
+  background-color: #0077be;
   color: white;
 }
 
 .city-select:focus {
   outline: none;
-  border-color: #d4af37;
-  box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+  border-color: #ff9900;
+  box-shadow: 0 0 8px rgba(255, 153, 0, 0.4);
 }
 
 .pnote-update-section {
   margin-top: 20px;
   padding: 15px;
-  background-color: rgba(20, 107, 58, 0.1);
-  border-radius: 8px;
-  border: 1px solid #146b3a;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  border: 1px solid #0077be;
 }
 
 .pnote-update-section h4 {
-  color: #146b3a;
+  color: #005a8d;
   margin-top: 0;
 }
 
 .snowflake {
-  color: #fff;
-  font-size: 1em;
-  font-family: Arial, sans-serif;
-  text-shadow: 0 0 5px #000;
-  position: fixed;
-  top: -10%;
-  z-index: 9999; /* Très haut pour passer devant la map */
-  user-select: none;
-  cursor: default;
-  pointer-events: none; /* Important pour pouvoir cliquer sur la map à travers la neige */
-  animation-name: snowflakes-fall, snowflakes-shake;
-  animation-duration: 10s, 3s;
-  animation-timing-function: linear, ease-in-out;
-  animation-iteration-count: infinite, infinite;
-  animation-play-state: running, running;
-}
-
-@keyframes snowflakes-fall {
-  0% { top: -10%; }
-  100% { top: 100%; }
-}
-
-@keyframes snowflakes-shake {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(80px); }
+  display: none; /* Hide snowflakes in summer theme */
 }

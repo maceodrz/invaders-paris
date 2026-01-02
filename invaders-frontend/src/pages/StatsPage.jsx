@@ -8,8 +8,8 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="custom-tooltip">
         <p className="label">{`Semaine du : ${label}`}</p>
-        <p className="intro" style={{ color: '#f09bdd' }}>{`Flashés cette semaine : ${payload[0].value}`}</p>
-        <p className="desc" style={{ color: '#bb26b9' }}>{`Total cumulé : ${payload[1].value}`}</p>
+        <p className="intro" style={{ color: '#0077be' }}>{`Flashés cette semaine : ${payload[0].value}`}</p>
+        <p className="desc" style={{ color: '#ff9900' }}>{`Total cumulé : ${payload[1].value}`}</p>
       </div>
     );
   }
@@ -105,23 +105,23 @@ function StatsPage() {
           >
             <defs>
               <linearGradient id="colorDaily" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#f09bdd" stopOpacity={0.6}/>
-                <stop offset="95%" stopColor="#f09bdd" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#0077be" stopOpacity={0.6}/>
+                <stop offset="95%" stopColor="#0077be" stopOpacity={0.1}/>
               </linearGradient>
               <linearGradient id="colorCumulative" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#bb26b9" stopOpacity={0.7}/>
-                <stop offset="95%" stopColor="#bb26b9" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#ff9900" stopOpacity={0.7}/>
+                <stop offset="95%" stopColor="#ff9900" stopOpacity={0.1}/>
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(235, 224, 71, 0.2)" />
-            <XAxis dataKey="displayDate" stroke="#ebe047" tick={{ fill: '#ebe047' }} />
-            <YAxis stroke="#ebe047" tick={{ fill: '#ebe047' }} />
-            <Tooltip content={<CustomTooltip />} wrapperStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', border: '1px solid #ebe047', borderRadius: '5px' }} />
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 80, 141, 0.1)" />
+            <XAxis dataKey="displayDate" stroke="#005a8d" tick={{ fill: '#005a8d' }} />
+            <YAxis stroke="#005a8d" tick={{ fill: '#005a8d' }} />
+            <Tooltip content={<CustomTooltip />} wrapperStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', border: '2px solid #ff9900', borderRadius: '8px' }} />
             
             <Area
               type="monotone"
               dataKey="weekly"
-              stroke="#f09bdd"
+              stroke="#0077be"
               fillOpacity={1}
               fill="url(#colorDaily)"
               name="Flashs par semaine"
@@ -129,7 +129,7 @@ function StatsPage() {
             <Area
               type="monotone"
               dataKey="cumulative"
-              stroke="#ebe047"
+              stroke="#ff9900"
               fillOpacity={1}
               fill="url(#colorCumulative)"
               name="Total cumulé"

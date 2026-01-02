@@ -15,8 +15,8 @@ function SantaClaus() {
       aria-label="Go to Christmas Page"
       style={{
         position: 'fixed',
-        bottom: '20px',
-        left: '20px',
+        top: '20px',
+        right: '20px',
         cursor: 'pointer',
         zIndex: 2000,
         animation: 'bounce 2s infinite',
@@ -45,7 +45,6 @@ function SantaClaus() {
           transform: 'rotate(15deg)',
           filter: 'drop-shadow(0 2px 2px rgba(0,0,0,0.5))'
       }}>
-        🎅
       </div>
 
       <style>

@@ -137,9 +137,9 @@ function MapComponent({ invaders, allInvaders, updateLocalInvader, cityInfo }) {
     }
   };
 
-  // Déterminer le centre par défaut
-  const defaultCenter = cityInfo && cityInfo.center ? cityInfo.center : [48.8566, 2.3522];
-  const defaultZoom = cityInfo && cityInfo.zoom ? cityInfo.zoom : 12;
+  // Déterminer le centre par défaut (Bangkok par défaut)
+  const defaultCenter = cityInfo && cityInfo.center ? cityInfo.center : [13.7563, 100.5018];
+  const defaultZoom = cityInfo && cityInfo.zoom ? cityInfo.zoom : 11;
 
   return (
     <div className="map-container">

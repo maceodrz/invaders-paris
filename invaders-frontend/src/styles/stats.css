@@ -1,6 +1,6 @@
 .stats-page {
-    background-color: black;
-    color: #ebe047;
+    background: linear-gradient(to bottom, #87CEEB 0%, #edc9af 100%);
+    color: #005a8d;
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
@@ -15,34 +15,43 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
 }
 
 .stats-header h1 {
-    font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #005a8d;
+    margin: 0;
 }
 
 .chart-container {
     width: 95%;
     max-width: 1200px;
     height: 500px;
-    background-color: rgba(20, 20, 20, 0.5);
-    border: 1px solid #ebe047;
-    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #ff9900;
+    border-radius: 12px;
     padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .custom-tooltip {
-    background-color: rgba(10, 10, 10, 0.85);
-    border: 1px solid #ebe047;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px solid #ff9900;
     padding: 10px;
-    border-radius: 5px;
-    color: white;
+    border-radius: 8px;
+    color: #005a8d;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .custom-tooltip .label {
     font-weight: bold;
     margin-bottom: 5px;
-    color: #ebe047;
+    color: #005a8d;
 }
 
 .recent-invaders-section {
@@ -52,11 +61,13 @@
 }
 
 .recent-invaders-section h2 {
-    font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
-    color: #ebe047;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #005a8d;
     text-align: center;
     margin-bottom: 30px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
 }
 
 .recent-invaders-grid {
@@ -67,28 +78,30 @@
 }
 
 .invader-card {
-    background-color: rgba(20, 20, 20, 0.5);
-    border: 1px solid #ebe047;
-    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #ff9900;
+    border-radius: 12px;
     padding: 15px;
     text-align: center;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     min-width: 160px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .invader-card:hover {
     transform: translateY(-5px);
-    border-color: #f09bdd;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    border-color: #0077be;
 }
 
 .invader-image-container {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin: 0 auto 10px;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    border: 2px solid #ebe047;
-    background-color: rgba(40, 40, 40, 0.8);
+    border: 2px solid #0077be;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,19 +110,19 @@
 .invader-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
+    object-fit: contain;
+    padding: 5px;
 }
 
 .invader-id {
     font-weight: bold;
-    color: #ebe047;
+    color: #005a8d;
     font-size: 1.1rem;
     margin-bottom: 5px;
-    font-family: 'Copperplate', 'Arial Narrow', Arial, sans-serif;
 }
 
 .invader-date {
-    color: #f09bdd;
+    color: #ff9900;
+    font-weight: bold;
     font-size: 0.9rem;
 }
